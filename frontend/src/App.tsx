@@ -1,5 +1,6 @@
 import Header from './components/layout/Header';
 import HeroSlider from './components/home/HeroSlider';
+import AboutUs from './components/home/AboutUs';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main className="flex-grow flex flex-col w-full">
         <HeroSlider />
+        <AboutUs />
         {/* Other sections will go here */}
       </main>
     </div>
