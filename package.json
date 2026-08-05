@@ -2,13 +2,11 @@
   "name": "shree-cms",
   "private": true,
   "workspaces": [
-    "frontend",
-    "backend",
-    "shared"
+    "frontend"
   ],
   "scripts": {
     "dev": "npm run dev --workspace frontend",
-    "build": "npm run build --workspace frontend && npm run build --workspace backend"
+    "build": "npm run build --workspace frontend"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
