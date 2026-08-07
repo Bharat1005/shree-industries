@@ -82,12 +82,12 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <button 
               onClick={() => setIsDownloadModalOpen(true)}
-              className="flex items-center gap-2 border border-brand-dark text-brand-dark font-semibold text-sm px-4 py-2 rounded-sm hover:bg-brand-dark hover:text-white transition-colors"
+              className="flex items-center gap-2 border border-brand-dark text-brand-dark font-semibold text-xs sm:text-sm px-6 py-2.5 rounded-lg hover:bg-brand-dark hover:text-white hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider"
             >
               <FileText size={16} />
               DOWNLOAD CATALOGUE
             </button>
-            <a href="#" className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-sm px-5 py-2.5 rounded-sm hover:bg-yellow-500 transition-colors">
+            <a href="#" className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10">
               GET A QUOTE
               <ArrowRight size={16} />
             </a>
@@ -133,11 +133,11 @@ const Header = () => {
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-100">
                 <button 
                   onClick={() => setIsDownloadModalOpen(true)}
-                  className="flex items-center justify-center gap-2 border border-brand-dark text-brand-dark font-semibold text-sm px-4 py-2 rounded-sm text-center"
+                  className="flex items-center justify-center gap-2 border border-brand-dark text-brand-dark font-semibold text-xs sm:text-sm px-6 py-2.5 rounded-lg text-center hover:bg-brand-dark hover:text-white hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider"
                 >
                   <FileText size={16} /> DOWNLOAD CATALOGUE
                 </button>
-                <a href="#" className="flex items-center justify-center gap-2 bg-brand-yellow text-brand-dark font-bold text-sm px-4 py-2 rounded-sm text-center">
+                <a href="#" className="flex items-center justify-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg text-center hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10">
                   GET A QUOTE <ArrowRight size={16} />
                 </a>
               </div>

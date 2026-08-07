@@ -1,183 +1,141 @@
-import { useState, useEffect, useRef } from 'react';
-import { Check, ArrowRight } from 'lucide-react';
-import aboutMain from '../../assets/about_main.png';
-import aboutInt1 from '../../assets/about_int1.png';
-import aboutInt2 from '../../assets/about_int2.png';
+import { ArrowUpRight, Clock, Smile, Folder, Boxes, ShieldCheck } from 'lucide-react';
+import aboutWorker from '../../assets/about_manufacturing_worker.png';
+
+// Industrial factory building exterior image
+const factoryExteriorImg = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80";
 
 const AboutUs = () => {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const stats = [
+    {
+      id: 1,
+      icon: <Clock className="w-8 h-8 text-[#009DE1]" />,
+      count: "25+",
+      label: "Years of Experience"
+    },
+    {
+      id: 2,
+      icon: <Smile className="w-8 h-8 text-[#009DE1]" />,
+      count: "200+",
+      label: "Happy Clients"
+    },
+    {
+      id: 3,
+      icon: <Folder className="w-8 h-8 text-[#009DE1]" />,
+      count: "5000+",
+      label: "Completed Projects"
+    },
+    {
+      id: 4,
+      icon: <Boxes className="w-8 h-8 text-[#009DE1]" />,
+      count: "50+",
+      label: "Product Ranges"
+    },
+    {
+      id: 5,
+      icon: <ShieldCheck className="w-8 h-8 text-[#009DE1]" />,
+      count: "100%",
+      label: "Certified Quality"
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [hasAnimated]);
-
-  useEffect(() => {
-    if (!hasAnimated) return;
-
-    let start = 0;
-    const end = 25;
-    const duration = 1500; // 1.5 seconds animation
-    const stepTime = Math.abs(Math.floor(duration / end));
-
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start >= end) {
-        clearInterval(timer);
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [hasAnimated]);
+  ];
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="py-16 sm:py-24 bg-white overflow-hidden"
-      id="about-us"
-    >
+    <section className="pt-16 pb-12 sm:pt-24 sm:pb-16 bg-white overflow-hidden" id="about-us">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        {/* Main 2-Column Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-16">
           
-          {/* Left Column: Image collage */}
-          <div className="relative w-full aspect-[4/3] sm:aspect-[1.35/1] lg:aspect-[1.15/1] max-w-xl mx-auto lg:mx-0">
-            {/* Background Blue Outline for Bottom Left Image */}
-            <div className="absolute left-[-2%] bottom-[0%] w-[44%] h-[46%] border-l-2 border-t-2 border-b-2 border-brand-blue/30 rounded-l-2xl z-0"></div>
-
-            {/* Main factory image */}
-            <div className="absolute top-[0%] left-[8%] w-[84%] h-[68%] z-10 overflow-hidden rounded-2xl shadow-md group">
+          {/* Left Column: Overlapping Photos (5 cols on lg, added mobile px-4 padding) */}
+          <div className="lg:col-span-5 relative w-full max-w-md mx-auto lg:mx-0 min-h-[380px] sm:min-h-[440px] flex flex-col justify-center px-4 sm:px-0">
+            
+            {/* Top-Left Photo: Office/Engineers */}
+            <div className="w-[70%] aspect-[4/3.5] rounded-3xl overflow-hidden shadow-lg border border-slate-100/50 z-10 self-start">
               <img 
-                src={aboutMain} 
-                alt="Shree Industries Factory Exterior" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                src={aboutWorker} 
+                alt="Shree Industries Factory Work" 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
 
-            {/* Bottom-left factory interior image */}
-            <div className="absolute bottom-[2%] left-[0%] w-[44%] h-[46%] z-20 overflow-hidden rounded-xl border-[6px] border-white shadow-lg group">
+
+
+            {/* Curved Orange Connection Arrow SVG (Responsive size) */}
+            <svg 
+              className="absolute top-[18%] right-[18%] sm:right-[22%] w-16 h-12 sm:w-24 sm:h-16 text-[#f7c51e] z-25 pointer-events-none transform rotate-[10deg] animate-pulse" 
+              viewBox="0 0 100 60" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="3.5" 
+              strokeLinecap="round"
+            >
+              <path d="M10,50 Q45,5 90,25" strokeDasharray="5 5" />
+              <path d="M78,20 L90,25 L82,37" fill="none" />
+            </svg>
+
+            {/* Bottom-Right Photo: Factory Building Exterior */}
+            <div className="w-[68%] aspect-[4/3.5] rounded-3xl overflow-hidden shadow-lg border border-slate-100/50 z-20 self-end -mt-16 relative">
               <img 
-                src={aboutInt1} 
-                alt="Shree Industries Manufacturing Interior 1" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                src={factoryExteriorImg} 
+                alt="Shree Industries Building" 
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
-            </div>
-
-            {/* Bottom-right factory interior image */}
-            <div className="absolute bottom-[2%] right-[4%] w-[48%] h-[46%] z-20 overflow-hidden rounded-xl border-[6px] border-white shadow-lg group">
-              <img 
-                src={aboutInt2} 
-                alt="Shree Industries Manufacturing Interior 2" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-
-            {/* Gold wireframe offset behind the badge */}
-            <div className="absolute left-[13%] top-[49%] w-[24%] h-[24%] border-2 border-brand-yellow rounded-xl z-10"></div>
-
-            {/* Blue Counter Badge */}
-            <div className="absolute left-[15%] top-[51%] w-[24%] h-[24%] flex flex-col items-center justify-center bg-brand-blue text-white rounded-xl shadow-xl text-center z-30 p-2 sm:p-4 select-none hover:scale-105 transition-transform duration-300">
-              <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight">
-                {count}+
-              </span>
-              <span className="text-[8px] sm:text-[10px] lg:text-xs font-bold tracking-wider uppercase mt-0.5 sm:mt-1.5 text-blue-100">
-                Years of
-              </span>
-              <span className="text-[8px] sm:text-[10px] lg:text-xs font-bold tracking-wider uppercase text-blue-100">
-                Trust
-              </span>
             </div>
           </div>
 
-          {/* Right Column: Text content */}
-          <div className="flex flex-col space-y-6 lg:space-y-8">
-            <div className="space-y-3">
-              <div className="inline-flex items-center">
-                <span className="text-brand-blue font-bold text-sm tracking-wider uppercase relative pb-1.5">
-                  About Us
-                  <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-brand-yellow"></span>
-                </span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-dark leading-tight">
-                Leading Manufacturer of Industrial Switchgear & Electrical Products
-              </h2>
+          {/* Right Column: Text Content & Description (7 cols on lg) */}
+          <div className="lg:col-span-7 flex flex-col text-left justify-center lg:pl-4">
+            {/* Tag Badge */}
+            <span className="self-start text-[#009DE1] font-bold text-xs tracking-wider uppercase bg-[#E6F5FC] px-4 py-1.5 rounded-lg mb-4">
+              ABOUT US
+            </span>
+
+            {/* Heading Title */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 font-sans tracking-tight leading-[1.25] mb-4">
+              We are a certified electrical switchgear and modular distribution board manufacturer.
+            </h2>
+
+            {/* Description Text */}
+            <div className="space-y-4 text-slate-600 text-xs sm:text-sm leading-relaxed mb-8">
+              <p>
+                Shree Industries is a leading manufacturer and supplier of high-quality switchgears, distribution boards, metal boxes, and industrial plugs & sockets based in Rajkot, Gujarat. Built on a foundation of rigorous Total Quality Management (TQM) and engineering innovation, we specialize in delivering safe, heat-resistant, and low-maintenance electrical solutions.
+              </p>
+              <p>
+                With over two decades of technical expertise, our state-of-the-art manufacturing facility is equipped with advanced testing systems to ensure absolute compliance with international safety standards. Guided by a client-centric approach and transparent policies, we design durable products tailored to support commercial, residential, and heavy industrial power distribution networks worldwide.
+              </p>
             </div>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Shree Industries is a trusted name in the manufacturing of high-quality LT Control Switches, Rotary Switches, Metal Enclosures, Distribution Boards and more. Our products are known for their durability, safety and superior performance.
-            </p>
-
-            {/* Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-200">
-                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                </div>
-                <span className="text-slate-700 font-medium text-xs sm:text-sm lg:text-base">
-                  ISO 9001:2015 Certified Company
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-200">
-                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                </div>
-                <span className="text-slate-700 font-medium text-xs sm:text-sm lg:text-base">
-                  High Quality Raw Materials
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-200">
-                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                </div>
-                <span className="text-slate-700 font-medium text-xs sm:text-sm lg:text-base">
-                  Advanced Manufacturing Facility
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-200">
-                  <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                </div>
-                <span className="text-slate-700 font-medium text-xs sm:text-sm lg:text-base">
-                  Timely Delivery & Best Support
-                </span>
-              </div>
-            </div>
-
-            {/* Read More Button */}
-            <div className="pt-2">
-              <a 
-                href="#about-us" 
-                className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-md shadow-md transition-all duration-300 group hover:shadow-lg"
-              >
-                Read More About Us
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </div>
+            {/* CTA Read More Button (Common Style fill) */}
+            <a 
+              href="#contact" 
+              className="inline-flex items-center gap-1.5 px-6 py-2.5 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-brand-yellow/10 w-fit cursor-pointer"
+            >
+              Read More
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
 
         </div>
+
+        {/* Bottom Statistics Row with dividers */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-10 gap-x-6 border-t border-slate-100 pt-12 mt-16 text-center px-4 sm:px-0">
+          {stats.map((stat) => (
+            <div 
+              key={stat.id} 
+              className="flex flex-col items-center px-2 md:border-r border-slate-200/60 last:border-r-0"
+            >
+              <div className="mb-4 transform transition-transform duration-300 hover:scale-110">
+                {stat.icon}
+              </div>
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 select-none">
+                {stat.count}
+              </div>
+              <p className="text-[11px] sm:text-xs font-semibold text-slate-500 max-w-[130px] leading-snug">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

@@ -71,18 +71,18 @@ const HeroSlider = () => {
                     <p className="text-base sm:text-lg font-medium mb-2 text-gray-200">
                       {slide.subtitle}
                     </p>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-[1.2] mb-6 whitespace-pre-line tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-[1.2] mb-6 whitespace-pre-line tracking-tight">
                       {slide.title}
                     </h1>
                     <p className="text-xs sm:text-sm text-gray-300 mb-8 whitespace-pre-line leading-relaxed max-w-lg">
                       {slide.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-4">
-                      <a href="#" className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-sm px-6 py-3 rounded hover:bg-yellow-500 transition-colors uppercase tracking-wide">
+                      <a href="#" className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-3 rounded-lg hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10">
                         Explore Products
                         <ArrowRight size={18} />
                       </a>
-                      <a href="#" className="flex items-center gap-2 bg-transparent border-2 border-white/80 text-white font-bold text-sm px-6 py-3 rounded hover:bg-white/10 transition-colors uppercase tracking-wide">
+                      <a href="#" className="flex items-center gap-2 bg-transparent border border-white/80 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider">
                         Request a Quote
                       </a>
                     </div>

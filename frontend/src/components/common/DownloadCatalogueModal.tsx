@@ -138,7 +138,7 @@ const DownloadCatalogueModal: React.FC<DownloadCatalogueModalProps> = ({ isOpen,
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold py-3 px-4 rounded-md transition-colors mt-6 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold py-3 px-4 rounded-lg hover:-translate-y-0.5 transition-all duration-300 mt-6 disabled:opacity-70 disabled:cursor-not-allowed uppercase tracking-wider text-xs sm:text-sm shadow-lg shadow-brand-yellow/10"
                 >
                   {isSubmitting ? 'Processing...' : (
                     <>
