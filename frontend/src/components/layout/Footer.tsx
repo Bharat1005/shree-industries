@@ -1,7 +1,28 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
-const Footer = () => {
+interface FooterProps {
+  setCurrentPage: (page: 'home' | 'about') => void;
+}
+
+const Footer = ({ setCurrentPage }: FooterProps) => {
   const currentYear = new Date().getFullYear();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string, href: string) => {
+    if (name === 'About Us') {
+      e.preventDefault();
+      setCurrentPage('about');
+    } else if (href.startsWith('#')) {
+      e.preventDefault();
+      setCurrentPage('home');
+      // Set scroll timeout to wait for home template rendering
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 60);
+    }
+  };
 
   return (
     <footer className="w-full bg-transparent relative mt-16 sm:mt-24">
@@ -71,6 +92,7 @@ const Footer = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-blue flex-shrink-0 transition-transform duration-300 group-hover:scale-125"></span>
                   <a 
                     href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.name, link.href)}
                     className="text-slate-600 text-sm font-medium hover:text-brand-blue transition-colors duration-200"
                   >
                     {link.name}

@@ -2,10 +2,20 @@ import { useState } from 'react';
 import { Phone, Mail, Award, FileText, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import DownloadCatalogueModal from '../common/DownloadCatalogueModal';
 
-const Header = () => {
+interface HeaderProps {
+  currentPage: 'home' | 'about';
+  setCurrentPage: (page: 'home' | 'about') => void;
+}
+
+const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+  const handleNavClick = (page: 'home' | 'about') => {
+    setCurrentPage(page);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="w-full">
@@ -41,19 +51,40 @@ const Header = () => {
           
           {/* Logo Section */}
           <div className="flex items-center">
-            <a href="/" className="flex-shrink-0">
+            <button 
+              onClick={() => handleNavClick('home')} 
+              className="flex-shrink-0 cursor-pointer outline-none"
+            >
               <img 
                 src="https://shree-industries.co.in/images/shree_switch_logo.png" 
                 alt="Shree Switch Gear Logo" 
                 className="h-16 w-auto object-contain"
               />
-            </a>
+            </button>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-6">
-            <a href="#" className="text-brand-blue font-bold text-sm border-b-2 border-brand-yellow pb-1">HOME</a>
-            <a href="#" className="text-brand-dark hover:text-brand-blue font-semibold text-sm transition-colors">ABOUT US</a>
+            <button 
+              onClick={() => handleNavClick('home')}
+              className={`text-sm pb-1 transition-all cursor-pointer ${
+                currentPage === 'home' 
+                  ? 'text-brand-blue font-bold border-b-2 border-brand-yellow' 
+                  : 'text-brand-dark hover:text-brand-blue font-semibold'
+              }`}
+            >
+              HOME
+            </button>
+            <button 
+              onClick={() => handleNavClick('about')}
+              className={`text-sm pb-1 transition-all cursor-pointer ${
+                currentPage === 'about' 
+                  ? 'text-brand-blue font-bold border-b-2 border-brand-yellow' 
+                  : 'text-brand-dark hover:text-brand-blue font-semibold'
+              }`}
+            >
+              ABOUT US
+            </button>
             
             <div 
               className="relative group"
@@ -106,8 +137,18 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 shadow-lg absolute w-full">
             <nav className="flex flex-col gap-4">
-              <a href="#" className="text-brand-blue font-bold text-sm">HOME</a>
-              <a href="#" className="text-brand-dark font-semibold text-sm">ABOUT US</a>
+              <button 
+                onClick={() => handleNavClick('home')}
+                className={`text-left text-sm ${currentPage === 'home' ? 'text-brand-blue font-bold' : 'text-brand-dark font-semibold'}`}
+              >
+                HOME
+              </button>
+              <button 
+                onClick={() => handleNavClick('about')}
+                className={`text-left text-sm ${currentPage === 'about' ? 'text-brand-blue font-bold' : 'text-brand-dark font-semibold'}`}
+              >
+                ABOUT US
+              </button>
               
               <div className="flex flex-col gap-2">
                 <button 

@@ -4,7 +4,7 @@ import aboutWorker from '../../assets/about_manufacturing_worker.png';
 // Industrial factory building exterior image
 const factoryExteriorImg = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80";
 
-const AboutUs = () => {
+const AboutUs = ({ showHeader = true }: { showHeader?: boolean }) => {
   const stats = [
     {
       id: 1,
@@ -105,13 +105,15 @@ const AboutUs = () => {
             </div>
 
             {/* CTA Read More Button (Common Style fill) */}
-            <a 
-              href="#contact" 
-              className="inline-flex items-center gap-1.5 px-6 py-2.5 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-brand-yellow/10 w-fit cursor-pointer"
-            >
-              Read More
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            {showHeader && (
+              <a 
+                href="#contact" 
+                className="inline-flex items-center gap-1.5 px-6 py-2.5 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-brand-yellow/10 w-fit cursor-pointer"
+              >
+                Read More
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            )}
           </div>
 
         </div>
