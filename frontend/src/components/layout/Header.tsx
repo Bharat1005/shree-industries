@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, Award, FileText, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+import { Phone, Mail, Award, FileText, Menu, X, ArrowRight } from 'lucide-react';
 import DownloadCatalogueModal from '../common/DownloadCatalogueModal';
 
 interface HeaderProps {
