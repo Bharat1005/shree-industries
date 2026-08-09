@@ -61,7 +61,7 @@ const AboutUs = ({ showHeader = true }: { showHeader?: boolean }) => {
 
             {/* Curved Orange Connection Arrow SVG (Responsive size) */}
             <svg 
-              className="absolute top-[18%] right-[18%] sm:right-[22%] w-16 h-12 sm:w-24 sm:h-16 text-[#f7c51e] z-25 pointer-events-none transform rotate-[10deg] animate-pulse" 
+              className="absolute top-[18%] right-[18%] sm:right-[22%] w-16 h-12 sm:w-24 sm:h-16 text-brand-orange z-25 pointer-events-none transform rotate-[10deg] animate-pulse" 
               viewBox="0 0 100 60" 
               fill="none" 
               stroke="currentColor" 

@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 interface FooterProps {
-  setCurrentPage: (page: 'home' | 'about') => void;
+  setCurrentPage: (page: 'home' | 'about' | 'products') => void;
 }
 
 const Footer = ({ setCurrentPage }: FooterProps) => {
@@ -11,6 +11,9 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
     if (name === 'About Us') {
       e.preventDefault();
       setCurrentPage('about');
+    } else if (name === 'Products') {
+      e.preventDefault();
+      setCurrentPage('products');
     } else if (href.startsWith('#')) {
       e.preventDefault();
       setCurrentPage('home');
@@ -26,37 +29,9 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
 
   return (
     <footer className="w-full bg-transparent relative mt-16 sm:mt-24">
-      {/* 1. Top Overlapping Banner */}
-      <div className="relative -mt-12 sm:-mt-16 md:-mt-20 z-20 max-w-6xl mx-auto px-4">
-        <div className="bg-gradient-to-r from-brand-blue to-brand-lightblue text-white rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 md:-skew-x-12 relative overflow-hidden shadow-xl shadow-brand-blue/10 border border-white/10 hover:shadow-2xl transition-all duration-500 group">
-          {/* Animated decorative subtle background glow */}
-          <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
-          
-          {/* Slanted lines behind banner */}
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none hidden sm:block">
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-              <circle cx="30" cy="30" r="28" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" />
-            </svg>
-          </div>
-
-          {/* Unskewed container for content */}
-          <div className="md:skew-x-12 flex flex-col md:flex-row items-center justify-between w-full gap-6 relative z-10">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight text-center md:text-left leading-tight max-w-xl">
-              Let's collaborate to spread our brilliance.
-            </h3>
-            <a 
-              href="#contact-us" 
-              className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
-            >
-              Contact Us →
-            </a>
-          </div>
-        </div>
-      </div>
-
     <div className="w-full bg-white relative overflow-hidden border-t border-slate-100">
       {/* 2. Main Footer Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 sm:pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-12 sm:pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 border-b border-slate-100 pb-12">
           
           {/* Column 1: Brand Info (4 cols) */}
@@ -229,51 +204,6 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
             Crafted with precision & passion
           </p>
         </div>
-      </div>
-
-      {/* 4. Background Decorative Patterns (Bottom-Right) */}
-      <div className="absolute bottom-0 right-2 sm:right-4 md:right-6 pointer-events-none z-0">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          xmlnsXlink="http://www.w3.org/1999/xlink" 
-          version="1.1" 
-          id="Layer_1" 
-          x="0px" 
-          y="0px" 
-          viewBox="0 0 270 270" 
-          xmlSpace="preserve"
-          className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] md:w-[270px] md:h-[270px]"
-        >
-          <defs>
-            <pattern y="270" width="28.3" height="25.5" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_2" viewBox="0 -25.5 28.3 25.5" style={{ overflow: 'visible' }}>
-              <g>
-                <rect x="0" y="-25.5" fill="none" width="28.3" height="25.5"/>
-                <rect x="0" y="-5.7" fill="#009DE1" width="28.3" height="2.8"/>
-                <rect x="0" y="-14.2" fill="#009DE1" width="28.3" height="2.8"/>
-                <rect x="0" y="-22.7" fill="#009DE1" width="28.3" height="2.8"/>
-              </g>
-            </pattern>
-            <pattern y="270" width="28.3" height="25.5" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_3" viewBox="0 -25.5 28.3 25.5" style={{ overflow: 'visible' }}>
-              <g>
-                <rect x="0" y="-25.5" fill="none" width="28.3" height="25.5"/>
-                <rect x="0" y="-5.7" fill="#f7c51e" width="28.3" height="2.8"/>
-                <rect x="0" y="-14.2" fill="#f7c51e" width="28.3" height="2.8"/>
-                <rect x="0" y="-22.7" fill="#f7c51e" width="28.3" height="2.8"/>
-              </g>
-            </pattern>
-            <pattern id="SVGID_1_" xlinkHref="#New_Pattern_Swatch_2" patternTransform="matrix(0.5295 0.5295 -0.5295 0.5295 -8243.2666 523.207)"></pattern>
-            <pattern id="SVGID_2_" xlinkHref="#New_Pattern_Swatch_3" patternTransform="matrix(0.5295 0.5295 -0.5295 0.5295 -8243.2666 523.207)"></pattern>
-            <pattern id="SVGID_3_" xlinkHref="#New_Pattern_Swatch_3" patternTransform="matrix(0.5295 0.5295 -0.5295 0.5295 -8243.2666 523.207)"></pattern>
-            <pattern id="SVGID_4_" xlinkHref="#New_Pattern_Swatch_2" patternTransform="matrix(0.5295 0.5295 -0.5295 0.5295 -8243.2666 523.207)"></pattern>
-          </defs>
-          <g>
-            <circle fill="url(#SVGID_1_)" cx="135" cy="45" r="45"/>
-            <circle fill="url(#SVGID_2_)" cx="225" cy="135" r="45"/>
-            <circle fill="url(#SVGID_3_)" cx="135" cy="135" r="45"/>
-            <circle fill="url(#SVGID_4_)" cx="225" cy="225" r="45"/>
-            <path fill="#009DE1" d="M90,270c49.7,0,90-40.3,90-90H0C0,229.7,40.3,270,90,270z"/>
-          </g>
-        </svg>
       </div>
       </div>
     </footer>

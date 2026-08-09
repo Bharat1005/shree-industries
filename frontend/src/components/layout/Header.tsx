@@ -3,16 +3,15 @@ import { Phone, Mail, Award, FileText, ChevronDown, Menu, X, ArrowRight } from '
 import DownloadCatalogueModal from '../common/DownloadCatalogueModal';
 
 interface HeaderProps {
-  currentPage: 'home' | 'about';
-  setCurrentPage: (page: 'home' | 'about') => void;
+  currentPage: 'home' | 'about' | 'products';
+  setCurrentPage: (page: 'home' | 'about' | 'products') => void;
 }
 
 const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
-  const handleNavClick = (page: 'home' | 'about') => {
+  const handleNavClick = (page: 'home' | 'about' | 'products') => {
     setCurrentPage(page);
     setIsMobileMenuOpen(false);
   };
@@ -86,22 +85,16 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
               ABOUT US
             </button>
             
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsProductsDropdownOpen(true)}
-              onMouseLeave={() => setIsProductsDropdownOpen(false)}
+            <button 
+              onClick={() => handleNavClick('products')}
+              className={`text-sm pb-1 transition-all cursor-pointer ${
+                currentPage === 'products' 
+                  ? 'text-brand-blue font-bold border-b-2 border-brand-yellow' 
+                  : 'text-brand-dark hover:text-brand-blue font-semibold'
+              }`}
             >
-              <button className="flex items-center gap-1 text-brand-dark hover:text-brand-blue font-semibold text-sm transition-colors pb-1">
-                PRODUCTS <ChevronDown size={14} className={`transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {/* Dropdown menu */}
-              <div className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-xl rounded-md border border-gray-100 overflow-hidden transition-all duration-200 origin-top ${isProductsDropdownOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'}`}>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-lightblue hover:text-brand-blue">Switches</a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-lightblue hover:text-brand-blue">MCBs & RCCBs</a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-lightblue hover:text-brand-blue">Distribution Boards</a>
-              </div>
-            </div>
+              PRODUCTS
+            </button>
 
             <a href="#" className="text-brand-dark hover:text-brand-blue font-semibold text-sm transition-colors">INFRASTRUCTURE</a>
             <a href="#" className="text-brand-dark hover:text-brand-blue font-semibold text-sm transition-colors">QUALITY</a>
@@ -150,21 +143,12 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
                 ABOUT US
               </button>
               
-              <div className="flex flex-col gap-2">
-                <button 
-                  className="flex items-center justify-between text-brand-dark font-semibold text-sm"
-                  onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-                >
-                  PRODUCTS <ChevronDown size={16} className={`transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {isProductsDropdownOpen && (
-                  <div className="pl-4 flex flex-col gap-2 border-l-2 border-brand-yellow ml-2 mt-1">
-                    <a href="#" className="text-gray-600 text-sm">Switches</a>
-                    <a href="#" className="text-gray-600 text-sm">MCBs & RCCBs</a>
-                    <a href="#" className="text-gray-600 text-sm">Distribution Boards</a>
-                  </div>
-                )}
-              </div>
+              <button 
+                onClick={() => handleNavClick('products')}
+                className={`text-left text-sm ${currentPage === 'products' ? 'text-brand-blue font-bold' : 'text-brand-dark font-semibold'}`}
+              >
+                PRODUCTS
+              </button>
 
               <a href="#" className="text-brand-dark font-semibold text-sm">INFRASTRUCTURE</a>
               <a href="#" className="text-brand-dark font-semibold text-sm">QUALITY</a>

@@ -7,9 +7,10 @@ import Sectors from './components/home/Sectors';
 import GlobalPresence from './components/home/GlobalPresence';
 import Footer from './components/layout/Footer';
 import AboutPage from './pages/AboutPage';
+import ProductsPage from './pages/ProductsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products'>('home');
 
   // Automatically scroll to the top of the viewport when changing pages
   useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
       
       <main className="flex-grow flex flex-col w-full">
-        {currentPage === 'home' ? (
+        {currentPage === 'home' && (
           <>
             <HeroSlider />
             <AboutUs />
@@ -30,8 +31,12 @@ function App() {
             <Sectors />
             <GlobalPresence />
           </>
-        ) : (
+        )}
+        {currentPage === 'about' && (
           <AboutPage setCurrentPage={setCurrentPage} />
+        )}
+        {currentPage === 'products' && (
+          <ProductsPage setCurrentPage={setCurrentPage} />
         )}
       </main>
 

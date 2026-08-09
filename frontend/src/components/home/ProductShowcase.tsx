@@ -114,8 +114,11 @@ const productsData: Product[] = [
     specs: ['Emergency Stop Switch', 'LED Status Indicators', 'Rugged Control Enclosure']
   }
 ];
+interface ProductShowcaseProps {
+  showHeader?: boolean;
+}
 
-const ProductShowcase = () => {
+const ProductShowcase = ({ showHeader = true }: ProductShowcaseProps) => {
   const [activeCategory, setActiveCategory] = useState('All Products');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   
@@ -156,25 +159,27 @@ const ProductShowcase = () => {
   };
 
   return (
-    <section className="pt-10 pb-20 sm:pt-14 sm:pb-24 bg-white w-full relative overflow-hidden" id="products">
+    <section className={`pb-20 sm:pb-24 bg-white w-full relative overflow-hidden ${showHeader ? 'pt-10 sm:pt-14' : 'pt-4 sm:pt-6'}`} id="products">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Block */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
-          <div className="flex flex-col items-start text-left">
-            <span className="self-start text-[#009DE1] font-bold text-xs tracking-wider uppercase bg-[#E6F5FC] px-4 py-1.5 rounded-lg mb-4">
-              OUR PRODUCTS
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue tracking-tight mb-4">
-              Certified Electrical Solutions Engineered for Safety, Efficiency, and Long-Term Performance
-            </h2>
+        {showHeader && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
+            <div className="flex flex-col items-start text-left">
+              <span className="self-start text-[#009DE1] font-bold text-xs tracking-wider uppercase bg-[#E6F5FC] px-4 py-1.5 rounded-lg mb-4">
+                OUR PRODUCTS
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue tracking-tight mb-4">
+                Certified Electrical Solutions Engineered for Safety, Efficiency, and Long-Term Performance
+              </h2>
+            </div>
+            <div className="text-left lg:border-l lg:border-slate-200 lg:pl-8 flex flex-col justify-center h-full">
+              <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                Explore our complete range of certified distribution boards, metal MCB enclosures, industrial plugs, sockets, and heavy-duty switchgears manufactured to meet global industrial standards.
+              </p>
+            </div>
           </div>
-          <div className="text-left lg:border-l lg:border-slate-200 lg:pl-8 flex flex-col justify-center h-full">
-            <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-              Explore our complete range of certified distribution boards, metal MCB enclosures, industrial plugs, sockets, and heavy-duty switchgears manufactured to meet global industrial standards.
-            </p>
-          </div>
-        </div>
+        )}
 
         {/* Filter Navigation */}
         <div className="flex flex-wrap gap-2 md:gap-3 mb-12 justify-start items-center">
