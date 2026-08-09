@@ -2,63 +2,23 @@ import { useState } from 'react';
 import { Mail, X, CheckCircle, ArrowRight } from 'lucide-react';
 
 // Import local assets
-import prodImg1 from '../../assets/extracted_catalog_images/prod_img_1.png';
-import prodImg2 from '../../assets/extracted_catalog_images/prod_img_2.png';
-import prodImg3 from '../../assets/extracted_catalog_images/prod_img_3.png';
-import prodImg4 from '../../assets/extracted_catalog_images/prod_img_4.png';
-import prodImg5 from '../../assets/extracted_catalog_images/prod_img_5.png';
-import prodImg6 from '../../assets/extracted_catalog_images/prod_img_6.png';
-import prodImg7 from '../../assets/extracted_catalog_images/prod_img_7.png';
-import prodImg8 from '../../assets/extracted_catalog_images/prod_img_8.png';
-import prodImg9 from '../../assets/extracted_catalog_images/prod_img_9.png';
-import prodImg10 from '../../assets/extracted_catalog_images/prod_img_10.png';
-import prodImg11 from '../../assets/extracted_catalog_images/prod_img_11.png';
-import prodImg12 from '../../assets/extracted_catalog_images/prod_img_12.png';
-import prodImg13 from '../../assets/extracted_catalog_images/prod_img_13.png';
-import prodImg14 from '../../assets/extracted_catalog_images/prod_img_14.png';
-import prodImg15 from '../../assets/extracted_catalog_images/prod_img_15.png';
-import prodImg16 from '../../assets/extracted_catalog_images/prod_img_16.png';
-import prodImg17 from '../../assets/extracted_catalog_images/prod_img_17.png';
-import prodImg18 from '../../assets/extracted_catalog_images/prod_img_18.png';
-import prodImg19 from '../../assets/extracted_catalog_images/prod_img_19.png';
-import prodImg20 from '../../assets/extracted_catalog_images/prod_img_20.png';
-import prodImg21 from '../../assets/extracted_catalog_images/prod_img_21.png';
-import prodImg22 from '../../assets/extracted_catalog_images/prod_img_22.png';
-import prodImg23 from '../../assets/extracted_catalog_images/prod_img_23.png';
-import prodImg24 from '../../assets/extracted_catalog_images/prod_img_24.png';
-import prodImg25 from '../../assets/extracted_catalog_images/prod_img_25.png';
-import prodImg26 from '../../assets/extracted_catalog_images/prod_img_26.png';
-import prodImg27 from '../../assets/extracted_catalog_images/prod_img_27.png';
-import prodImg28 from '../../assets/extracted_catalog_images/prod_img_28.png';
-import prodImg29 from '../../assets/extracted_catalog_images/prod_img_29.png';
-import prodImg30 from '../../assets/extracted_catalog_images/prod_img_30.png';
-import prodImg31 from '../../assets/extracted_catalog_images/prod_img_31.png';
-import prodImg32 from '../../assets/extracted_catalog_images/prod_img_32.png';
-import prodImg33 from '../../assets/extracted_catalog_images/prod_img_33.png';
-import prodImg34 from '../../assets/extracted_catalog_images/prod_img_34.png';
-import prodImg35 from '../../assets/extracted_catalog_images/prod_img_35.png';
-import prodImg36 from '../../assets/extracted_catalog_images/prod_img_36.png';
-import prodImg37 from '../../assets/extracted_catalog_images/prod_img_37.png';
-import prodImg38 from '../../assets/extracted_catalog_images/prod_img_38.png';
-import prodImg39 from '../../assets/extracted_catalog_images/prod_img_39.png';
-import prodImg40 from '../../assets/extracted_catalog_images/prod_img_40.png';
-import prodImg41 from '../../assets/extracted_catalog_images/prod_img_41.png';
-import prodImg42 from '../../assets/extracted_catalog_images/prod_img_42.png';
-import prodImg43 from '../../assets/extracted_catalog_images/prod_img_43.png';
-import prodImg44 from '../../assets/extracted_catalog_images/prod_img_44.png';
-import prodImg45 from '../../assets/extracted_catalog_images/prod_img_45.png';
-import prodImg46 from '../../assets/extracted_catalog_images/prod_img_46.png';
-import prodImg47 from '../../assets/extracted_catalog_images/prod_img_47.png';
-import prodImg48 from '../../assets/extracted_catalog_images/prod_img_48.png';
-import prodImg49 from '../../assets/extracted_catalog_images/prod_img_49.png';
-import prodImg50 from '../../assets/extracted_catalog_images/prod_img_50.png';
-import prodImg51 from '../../assets/extracted_catalog_images/prod_img_51.png';
-import prodImg52 from '../../assets/extracted_catalog_images/prod_img_52.png';
-import prodImg53 from '../../assets/extracted_catalog_images/prod_img_53.png';
-import prodImg54 from '../../assets/extracted_catalog_images/prod_img_54.png';
-import prodImg55 from '../../assets/extracted_catalog_images/prod_img_55.png';
-import prodImg56 from '../../assets/extracted_catalog_images/prod_img_56.png';
-import prodImg57 from '../../assets/extracted_catalog_images/prod_img_57.png';
+import liveImg1 from '../../assets/live_catalog_images/project_1.jpg';
+import liveImg2 from '../../assets/live_catalog_images/project_2.jpg';
+import liveImg3 from '../../assets/live_catalog_images/project_3.jpg';
+import liveImg4 from '../../assets/live_catalog_images/project_4.jpg';
+import liveImg5 from '../../assets/live_catalog_images/project_5.jpg';
+import liveImg6 from '../../assets/live_catalog_images/project_6.jpg';
+import liveImg7 from '../../assets/live_catalog_images/project_7.jpg';
+import liveImg8 from '../../assets/live_catalog_images/project_8.jpg';
+import liveImg9 from '../../assets/live_catalog_images/project_9.jpg';
+import liveImg10 from '../../assets/live_catalog_images/project_10.jpg';
+import liveImg11 from '../../assets/live_catalog_images/project_11.jpg';
+import liveImg12 from '../../assets/live_catalog_images/project_12.jpg';
+import liveImg13 from '../../assets/live_catalog_images/project_13.jpg';
+import liveImg14 from '../../assets/live_catalog_images/project_14.jpg';
+import liveImg15 from '../../assets/live_catalog_images/project_15.jpg';
+import liveImg16 from '../../assets/live_catalog_images/project_16.jpg';
+import liveImg17 from '../../assets/live_catalog_images/project_17.jpg';
 
 export interface ProductModel {
   catNo: string;
@@ -93,7 +53,7 @@ export const productsData: Product[] = [
     id: 1,
     title: 'L.T. Control Reverse Forward Switch',
     category: 'Switchgears & Fuses',
-    image: prodImg1,
+    image: liveImg1,
     description: 'Robust LT control reverse-forwarding switches designed for heavy mechanical operations, featuring silver-point contacts and durable bakelite block base.',
     specs: ['16G Solid Metal Body', 'EC Grade Copper Contacts', 'P.F Moulding Bakelite Block', 'Electric Proof Coating'],
     hsnCode: '85365010',
@@ -108,7 +68,7 @@ export const productsData: Product[] = [
     id: 2,
     title: 'L.T. Control Reverse Forward Switch (SIEMENS Type)',
     category: 'Switchgears & Fuses',
-    image: prodImg2,
+    image: liveImg1,
     description: 'Siemens type reverse forward switch designed with a heavy dust-proof enclosure, silver-plated copper contacts, and a 360-degree rotating handle for industrial setups.',
     specs: ['SIEMENS Type Model design', 'Silver Point Metal Contacts', '360 Rotating steel Handle', 'Shock Proof Coating Finish'],
     hsnCode: '85365010',
@@ -123,7 +83,7 @@ export const productsData: Product[] = [
     id: 3,
     title: 'Compressor Auto Pressure Switch',
     category: 'Switchgears & Fuses',
-    image: prodImg3,
+    image: liveImg4,
     description: 'Pressure control switches designed for air compressor units, featuring silver-point electrical contacts and highly adjustable differential parameters.',
     specs: ['New Plastic Body Design', 'Silver Point Metal Contact', 'Connection Bakelite', 'Pressure & Diff. Adjustable'],
     hsnCode: '90322090',
@@ -142,7 +102,7 @@ export const productsData: Product[] = [
     id: 4,
     title: 'Bench Grinder Rotary Switch',
     category: 'Switchgears & Fuses',
-    image: prodImg4,
+    image: liveImg3,
     description: 'Premium glass-filled rotary switch configured for industrial bench grinding machines, ensuring robust circuit control and easy wiring setup.',
     specs: ['Nylon-6 Glass Field Material', 'EC Grade Copper Rivet', 'Dust Proof Body construction', 'Easy To Connect & Durable'],
     hsnCode: '85365010',
@@ -156,7 +116,7 @@ export const productsData: Product[] = [
     id: 5,
     title: 'Three Phase MCTP Main Switch (Sheet Metal)',
     category: 'Switchgears & Fuses',
-    image: prodImg5,
+    image: liveImg5,
     description: 'Heavy duty sheet metal switchgears configured for three-phase main distribution networks, utilizing pure copper contacts and a quick-break mechanism.',
     specs: ['Heavy Thick Sheet Metal Body', 'Nickel Plated Brass Contacts', 'Pure Copper Top Contacts', 'Strong Metal Handle'],
     hsnCode: '85353090',
@@ -173,7 +133,7 @@ export const productsData: Product[] = [
     id: 6,
     title: 'Change Over Switch (Sheet Metal)',
     category: 'Switchgears & Fuses',
-    image: prodImg6,
+    image: liveImg6,
     description: 'Double throw manual changeover switches designed with premium contacts and thick enclosures for load transfer between grid and backup generators.',
     specs: ['Heavy Gauge Sheet Metal Enclosure', 'High Conductivity Copper Contacts', 'Dual-Position Quick Break Handle', 'Safety interlocking feature'],
     hsnCode: '85365010',
@@ -189,7 +149,7 @@ export const productsData: Product[] = [
     id: 7,
     title: 'Bus Bar Chamber',
     category: 'Switchgears & Fuses',
-    image: prodImg7,
+    image: liveImg7,
     description: 'Sleek and heavy-duty busbar chambers featuring solid copper bars and insulated supports, ideal for multi-connection power distribution systems.',
     specs: ['Thick Gauge Steel Body Enclosure', 'Solid Electrolytic Copper Bars', 'Superior Insulation Block base', 'Removable Gland Plates'],
     hsnCode: '85371000',
@@ -214,9 +174,9 @@ export const productsData: Product[] = [
   },
   {
     id: 8,
-    title: 'Porcelain Kit Kit Fuse (K-Type)',
+    title: 'Porcelain Kit Kat Fuse (K-Type)',
     category: 'Switchgears & Fuses',
-    image: prodImg8,
+    image: liveImg9,
     description: 'Standard ceramic porcelain kit-kat fuses (K-Type) designed with high mechanical dielectric strength and robust nickel-plated brass contacts for ultimate circuit safety.',
     specs: ['Cream Porcelain Ceramic Body', 'Nickel Plated Brass Contacts', 'Dielectric Strength : 55 kV/mm', 'Durable Bottom Clamps'],
     hsnCode: '85361000',
@@ -230,7 +190,7 @@ export const productsData: Product[] = [
     id: 9,
     title: 'Porcelain Kit Kat Fuse (Handle Type)',
     category: 'Switchgears & Fuses',
-    image: prodImg9,
+    image: liveImg9,
     description: 'Heavy amperage porcelain fuse carrier blocks equipped with strong handle locks to ensure secure leverage and protection during high current interruptions.',
     specs: ['Reinforced Handle Grip design', 'EC Grade Copper Top Contacts', 'Arc Extinction Path Support', 'Heavy Dielectric Insulation'],
     hsnCode: '85361000',
@@ -245,7 +205,7 @@ export const productsData: Product[] = [
     id: 10,
     title: 'Porcelain Kit Kat Fuse (SECO Type)',
     category: 'Switchgears & Fuses',
-    image: prodImg10,
+    image: liveImg9,
     description: 'Premium SECO type ceramic cartridge fuse units designed for major utility and industrial switchboard installations. Heavy-duty current protection.',
     specs: ['Industrial SECO Type design', 'Ultra-High Heat Ceramic Body', 'Nickel Plated Heavy Clamps', 'Conforms to IS/IEC standards'],
     hsnCode: '85361000',
@@ -264,7 +224,7 @@ export const productsData: Product[] = [
     id: 11,
     title: 'Weather-Proof IP44 Industrial Plug',
     category: 'Plugs & Sockets',
-    image: prodImg11,
+    image: liveImg14,
     description: 'Standard IP44 splash-proof industrial plugs with solid brass contact pins and durable housing, designed for heavy machinery operations.',
     specs: ['IP44 Splash-Proof Grade', 'Heavy Nylon Impact Body', 'High Conductivity Brass Pins', 'Dust-Tight Gasket Cable Entry'],
     hsnCode: '85366990',
@@ -279,7 +239,7 @@ export const productsData: Product[] = [
     id: 12,
     title: 'Weather-Proof IP44 Industrial Socket',
     category: 'Plugs & Sockets',
-    image: prodImg12,
+    image: liveImg14,
     description: 'IP44 wall mounting splash-proof sockets equipped with spring-loaded protective flip lids and heavy-duty contact sleeves.',
     specs: ['IP44 Protective Flip Lid', 'Solid Brass Terminal Sleeves', 'Chemical & Heat Resistant PVC', 'Conforms to IEC 60309'],
     hsnCode: '85366990',
@@ -294,7 +254,7 @@ export const productsData: Product[] = [
     id: 13,
     title: 'Weather-Proof IP44 Industrial Connector',
     category: 'Plugs & Sockets',
-    image: prodImg13,
+    image: liveImg14,
     description: 'IP44 inline coupler connectors with cable strain relief clamps, providing safe extension links in damp environments.',
     specs: ['IP44 Strain Relief Coupler', 'Double Cable Grip Gasket', 'Nickel Plated Pin Sleeves', 'Industrial Extension Friendly'],
     hsnCode: '85366990',
@@ -309,7 +269,7 @@ export const productsData: Product[] = [
     id: 14,
     title: 'Weather-Proof IP67 Industrial Plug',
     category: 'Plugs & Sockets',
-    image: prodImg14,
+    image: liveImg14,
     description: 'IP67 fully waterproof industrial plugs with threaded locking rings and sealing collars, suitable for wet conditions.',
     specs: ['IP67 Threaded Lock Ring', 'Complete Gasket Seals', 'Heavy Corrosion-Free Pins', 'Waterproof Cap Included'],
     hsnCode: '85366990',
@@ -323,7 +283,7 @@ export const productsData: Product[] = [
     id: 15,
     title: 'Weather-Proof IP67 Industrial Socket',
     category: 'Plugs & Sockets',
-    image: prodImg15,
+    image: liveImg14,
     description: 'IP67 wall/panel-mounting waterproof sockets with secure bayonet locking caps and heat-resistant contacts.',
     specs: ['IP67 Bayonet Locking Cap', 'Sealed Wall Gland Entry', 'Corrosion Resistant Screws', 'Heavy Dielectric Sleeves'],
     hsnCode: '85366990',
@@ -337,7 +297,7 @@ export const productsData: Product[] = [
     id: 16,
     title: 'Weather-Proof IP67 Industrial Connector',
     category: 'Plugs & Sockets',
-    image: prodImg16,
+    image: liveImg14,
     description: 'IP67 inline extension socket connectors utilizing secure sealing collars, perfect for wet wash-down zones.',
     specs: ['IP67 Watertight Seals', 'Reinforced Strain Relief', 'Double Lock Cable Glands', 'Industrial Link Safety'],
     hsnCode: '85366990',
@@ -351,7 +311,7 @@ export const productsData: Product[] = [
     id: 17,
     title: 'Metal Clad Plug',
     category: 'Plugs & Sockets',
-    image: prodImg17,
+    image: liveImg2,
     description: 'Durable metal-clad plugs built with heavy-duty cast aluminum casing, engineered for harsh workshops and factory sites.',
     specs: ['Cast Aluminum Heavy Casing', 'Dielectric Bakelite Pin Base', 'Solid Brass Ground & Power Pins', 'Robust Cable Grip Clamp'],
     hsnCode: '85366990',
@@ -365,7 +325,7 @@ export const productsData: Product[] = [
     id: 18,
     title: 'Metal Clad Socket',
     category: 'Plugs & Sockets',
-    image: prodImg18,
+    image: liveImg2,
     description: 'Heavy-duty wall mounting metal-clad sockets equipped with protective metal spring flip covers and safety ground chains.',
     specs: ['Rust-Proof Powder Finish', 'Spring Metal Protection Cover', 'Safety Ground Grounding Chain', 'Bakelite Core Support'],
     hsnCode: '85366990',
@@ -379,7 +339,7 @@ export const productsData: Product[] = [
     id: 19,
     title: 'Limit Control Switch',
     category: 'Switchgears & Fuses',
-    image: prodImg19,
+    image: liveImg8,
     description: 'Heavy-duty limit switches with double breaker contacts and adjustable lever rollers, engineered for elevator lift systems.',
     specs: ['Aluminum Die Cast Body', 'Adjustable Roller Arm lever', '1NO + 1NC Micro-Switch Core', 'Durable spring return action'],
     hsnCode: '85365090',
@@ -393,7 +353,7 @@ export const productsData: Product[] = [
     id: 20,
     title: 'European Standard Panel Socket Board',
     category: 'Plugs & Sockets',
-    image: prodImg20,
+    image: liveImg14,
     description: 'German standard modular panel board mounting industrial sockets with integrated SP or DP MCBs and flip cover slots.',
     specs: ['IP54 Splash Proof Sockets', 'Integrated DIN Rail MCB Slot', 'Tough PVC Housing Enclosure', 'Factory Pre-wired busbars'],
     hsnCode: '85371000',
@@ -407,7 +367,7 @@ export const productsData: Product[] = [
     id: 21,
     title: 'Metal MCB Enclosure (SP/DP)',
     category: 'Distribution Boards',
-    image: prodImg21,
+    image: liveImg10,
     description: 'Compact sheet metal MCB enclosures suitable for SP or DP breakers, finished with electrostatic scratch-free powder coating.',
     specs: ['22G Thick Sheet Metal Body', 'Electrostatic Powder finish', 'Easy DIN Rail Mounting rail', 'Compact Flush mounting style'],
     hsnCode: '85371000',
@@ -422,7 +382,7 @@ export const productsData: Product[] = [
     id: 22,
     title: 'SPN Deluxe MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg22,
+    image: liveImg10,
     description: 'Standard single door MCB distribution boards for SPN networks, featuring pre-mounted neutral links and removable front plate.',
     specs: ['22G Solid Sheet Metal Body', 'Zinc Plated Neutral Link base', 'Pre-installed DIN Rail channel', 'Generous wiring wire space'],
     hsnCode: '85371000',
@@ -439,7 +399,7 @@ export const productsData: Product[] = [
     id: 23,
     title: 'SPN Deluxe MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg23,
+    image: liveImg11,
     description: 'Double door version of the SPN distribution board, offering a flush safety cover and internal gasket seals for neat installations.',
     specs: ['Heavy 20G Double Door front', 'Flush Lock Latches & handles', 'Protective Internal Shield plate', 'IP43 Dust Ingress Protection'],
     hsnCode: '85371000',
@@ -456,7 +416,7 @@ export const productsData: Product[] = [
     id: 24,
     title: 'SPN Magnetic MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg24,
+    image: liveImg10,
     description: 'Magnetic single door distribution board utilizing quick-snap magnetic locks for fast access and tool-free maintenance.',
     specs: ['Quick Snap Magnetic Lock latch', 'Finished in Premium ivory shade', 'Knockouts on top and bottom', 'Clean modern aesthetics'],
     hsnCode: '85371000',
@@ -473,7 +433,7 @@ export const productsData: Product[] = [
     id: 25,
     title: 'SPN Magnetic MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg25,
+    image: liveImg11,
     description: 'Double door distribution board combining magnetic lock door closure with dustproof internal shields for residential complexes.',
     specs: ['Magnetic Double Door closure', 'Durable Internal Dust Shield', 'Electrolytic Copper Phase Links', 'Heavy-gauge steel chassis'],
     hsnCode: '85371000',
@@ -490,7 +450,7 @@ export const productsData: Product[] = [
     id: 26,
     title: 'SPN Premium MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg26,
+    image: liveImg10,
     description: 'Premium industrial grade single door DB boards with thick steel backplate, providing superior load protection.',
     specs: ['Reinforced 20G Metal Body', 'Corrosion Resistant Undercoat', 'Pre-fitted Neutral Links Link', 'Flush mounting design frame'],
     hsnCode: '85371000',
@@ -507,7 +467,7 @@ export const productsData: Product[] = [
     id: 27,
     title: 'SPN Premium MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg27,
+    image: liveImg11,
     description: 'High-end premium double door distribution board featuring superior scratch-proof matte paint and heavy brass neutral link components.',
     specs: ['20G Thick Steel Plate', 'Scratch-Proof Matte Paint finish', 'Solid Brass Neutral Links links', 'Spacious Internal Wiring loops'],
     hsnCode: '85371000',
@@ -524,7 +484,7 @@ export const productsData: Product[] = [
     id: 28,
     title: 'Whiteline SPN MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg28,
+    image: liveImg10,
     description: 'Whiteline series single door distribution board, customized with a brilliant white powder coat finish for modern housing.',
     specs: ['Brilliant White Gloss Coating', 'Top & Bottom Knockouts slots', 'Pre-mounted Neutral Bar block', 'Conforms to utility standards'],
     hsnCode: '85371000',
@@ -541,7 +501,7 @@ export const productsData: Product[] = [
     id: 29,
     title: 'Whiteline SPN MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg29,
+    image: liveImg11,
     description: 'Double door version of the Whiteline SPN distribution board, combining high safety with elegant design panels.',
     specs: ['Whiteline Double Door latch', 'Removable Gland Plate cover', 'Insulated Copper Busbar loop', 'Premium modern look feel'],
     hsnCode: '85371000',
@@ -558,7 +518,7 @@ export const productsData: Product[] = [
     id: 30,
     title: 'TPN Deluxe MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg30,
+    image: liveImg12,
     description: 'Standard TPN single door board for three-phase installations, configured with copper face links and heavy neutral bar.',
     specs: ['20G Thick Metal Body', 'Copper Face Links Included', 'Zinc Plated Neutral Bar block', 'Dust Proof Body design'],
     hsnCode: '85371000',
@@ -574,7 +534,7 @@ export const productsData: Product[] = [
     id: 31,
     title: 'TPN Deluxe MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg31,
+    image: liveImg13,
     description: 'Double door version of the TPN distribution board, providing complete internal shield plate safety for three phase breakers.',
     specs: ['Double Door safety shield', 'Internal Copper Phase links', 'Durable lockable door latch', 'IP43 Enclosure Class'],
     hsnCode: '85371000',
@@ -590,7 +550,7 @@ export const productsData: Product[] = [
     id: 32,
     title: 'TPN Magnetic MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg32,
+    image: liveImg12,
     description: 'Magnetic single door distribution board for three-phase lines, utilizing quick-latch magnetic strip locks.',
     specs: ['Quick-Snap Magnetic Latch latch', 'Ivory powder coat color', 'Removable gland plates cover', 'Spacious neutral links loops'],
     hsnCode: '85371000',
@@ -606,7 +566,7 @@ export const productsData: Product[] = [
     id: 33,
     title: 'TPN Magnetic MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg33,
+    image: liveImg13,
     description: 'Three phase double door magnetic distribution board combining snap-close magnetic strip with inner safety face plates.',
     specs: ['Magnetic Double Door closure', 'Durable Internal Dust Shield', 'Solid copper phase bars', 'Knockouts on top and bottom'],
     hsnCode: '85371000',
@@ -622,7 +582,7 @@ export const productsData: Product[] = [
     id: 34,
     title: 'TPN Premium MCB Distribution Board (Single Door)',
     category: 'Distribution Boards',
-    image: prodImg34,
+    image: liveImg12,
     description: 'Premium industrial grade single door TPN boards with heavy-duty metal gauge chassis and robust links.',
     specs: ['Reinforced 20G Metal Body', 'Heavy Copper Busbar bars', 'Specialized Neutral Links links', 'Shock proof undercoat layer'],
     hsnCode: '85371000',
@@ -638,7 +598,7 @@ export const productsData: Product[] = [
     id: 35,
     title: 'TPN Premium MCB Distribution Board (Double Door)',
     category: 'Distribution Boards',
-    image: prodImg35,
+    image: liveImg13,
     description: 'High-end premium TPN double door distribution board featuring double lock handles and pre-fitted copper links.',
     specs: ['20G Thick Steel Chassis', 'Double Lock safety handle', 'Pre-fitted solid copper links', 'Spacious wire entry panels'],
     hsnCode: '85371000',
@@ -654,7 +614,7 @@ export const productsData: Product[] = [
     id: 36,
     title: 'SPN A.C. Box (Metal Enclosure)',
     category: 'Distribution Boards',
-    image: prodImg36,
+    image: liveImg16,
     description: 'Compact A.C. boxes equipped with metal enclosures, designed for residential single-phase A.C. units.',
     specs: ['22G Thick Metal Body', 'Electrostatic Powder finish', 'Built-in Plug Pin socket', 'Flush & wall mounting style'],
     hsnCode: '85371000',
@@ -667,7 +627,7 @@ export const productsData: Product[] = [
     id: 37,
     title: 'TPN A.C. Box (Metal Enclosure)',
     category: 'Distribution Boards',
-    image: prodImg37,
+    image: liveImg16,
     description: 'Heavy-duty three-phase A.C. boxes equipped with metal enclosures, ideal for commercial HVAC and high capacity systems.',
     specs: ['20G Solid Metal Body', 'Durable Bakelite base connector', 'Quick DIN Rail MCB fit', 'Industrial safety paint finish'],
     hsnCode: '85371000',
@@ -680,7 +640,7 @@ export const productsData: Product[] = [
     id: 38,
     title: '1 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg38,
+    image: liveImg15,
     description: 'Compact distribution board for mounting 1 industrial socket and 1 MCB breaker. Fits SP, DP, or TPN breakers.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -693,7 +653,7 @@ export const productsData: Product[] = [
     id: 39,
     title: '2 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg39,
+    image: liveImg15,
     description: 'Metal enclosure board designed to mount 2 industrial sockets and 1 central MCB breaker for safety control.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -706,7 +666,7 @@ export const productsData: Product[] = [
     id: 40,
     title: '3 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg40,
+    image: liveImg15,
     description: 'Distribution board frame designed for 3 socket outlets and 1 central protective MCB breaker unit.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -719,7 +679,7 @@ export const productsData: Product[] = [
     id: 41,
     title: '4 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg41,
+    image: liveImg15,
     description: 'Metal enclosure board with cutout slots for mounting 4 socket units and 1 central MCB switch.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -732,7 +692,7 @@ export const productsData: Product[] = [
     id: 42,
     title: '4 Socket + 2 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg42,
+    image: liveImg15,
     description: 'Durable metal board designed for 4 socket cutouts and 2 separate MCB breaker switches for load partitioning.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -745,7 +705,7 @@ export const productsData: Product[] = [
     id: 43,
     title: '6 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg43,
+    image: liveImg15,
     description: 'Enclosed distribution board frame with cutouts for 6 sockets controlled via 1 central master MCB switch.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -758,7 +718,7 @@ export const productsData: Product[] = [
     id: 44,
     title: '8 Socket + 1 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg44,
+    image: liveImg15,
     description: 'Industrial grade distribution metal board frame supporting 8 sockets and 1 master safety breaker unit.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -771,7 +731,7 @@ export const productsData: Product[] = [
     id: 45,
     title: '4 Socket + 4 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg45,
+    image: liveImg15,
     description: 'Modular distribution board supporting 4 socket connections, each individually controlled by its own dedicated MCB breaker switch.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -784,7 +744,7 @@ export const productsData: Product[] = [
     id: 46,
     title: '6 Socket + 2 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg46,
+    image: liveImg15,
     description: 'Power distribution board frame with mounting spaces for 6 industrial sockets split across 2 central protective MCB systems.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -797,7 +757,7 @@ export const productsData: Product[] = [
     id: 47,
     title: '8 Socket + 2 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg47,
+    image: liveImg15,
     description: 'Heavy-duty commercial distribution board frame for mounting 8 sockets controlled via 2 protective breakers.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -810,7 +770,7 @@ export const productsData: Product[] = [
     id: 48,
     title: '2 Socket + 2 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg48,
+    image: liveImg15,
     description: 'Metal board distribution frame configured for 2 sockets, each controlled via a dedicated safety breaker.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -823,7 +783,7 @@ export const productsData: Product[] = [
     id: 49,
     title: '3 Socket + 3 MCB Board (Only Metal Board)',
     category: 'Distribution Boards',
-    image: prodImg49,
+    image: liveImg15,
     description: 'Modular distribution board frame supporting 3 sockets and 3 separate breaker switch cutouts.',
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
@@ -836,7 +796,7 @@ export const productsData: Product[] = [
     id: 50,
     title: '4 Socket + 2 MCB Board (MMSM Mix Size)',
     category: 'Distribution Boards',
-    image: prodImg50,
+    image: liveImg15,
     description: 'Mix size industrial distribution board designed for mounting 2 small size sockets, 2 big size sockets, and 2 MCB systems.',
     specs: ['20G Thick Metal Body', 'Supports DP & TPN MCBs', 'Mix size socket cutout slots', 'Industrial grade safety coat'],
     hsnCode: '85371000',
@@ -848,7 +808,7 @@ export const productsData: Product[] = [
     id: 51,
     title: '4 Socket + 4 MCB Board (MMSM Mix Size)',
     category: 'Junctions & Push Buttons',
-    image: prodImg51,
+    image: liveImg15,
     description: 'Mix size modular distribution board supporting 2 small sockets, 2 big sockets, and 4 MCB breakers for fully isolated controls.',
     specs: ['20G Thick Metal Body', 'Supports DP & TPN MCBs', 'Four MCB breaker cutouts slots', 'Robust terminal assembly'],
     hsnCode: '85371000',
@@ -860,7 +820,7 @@ export const productsData: Product[] = [
     id: 52,
     title: 'Metal Push Button Board (22mm-HOLE)',
     category: 'Junctions & Push Buttons',
-    image: prodImg52,
+    image: liveImg16,
     description: 'Sheet metal push-button station enclosures pre-punched with standard 22mm holes, finished with shock-proof coating.',
     specs: ['Pre-punched standard 22mm holes', '22G Sturdy Sheet Metal Body', 'Scratch resistant paint finish', 'Flush industrial installation style'],
     hsnCode: '85389000',
@@ -877,7 +837,7 @@ export const productsData: Product[] = [
     id: 53,
     title: 'PVC Socket + MCB Board (MPSM Series)',
     category: 'Junctions & Push Buttons',
-    image: prodImg53,
+    image: liveImg15,
     description: 'High impact ABS plastic board units designed to hold PVC socket outlets and MCB control switches, featuring clean wiring channels.',
     specs: ['High impact ABS plastic body', 'Waterproof & dustproof panel', 'DIN Rail pre-fitted inside', 'Excellent heat insulation core'],
     hsnCode: '85371000',
@@ -896,7 +856,7 @@ export const productsData: Product[] = [
     id: 54,
     title: 'PVC Socket + MCB Board (IP67 Waterproof)',
     category: 'Junctions & Push Buttons',
-    image: prodImg54,
+    image: liveImg14,
     description: 'IP67 fully waterproof distribution boards with ABS plastic casing and carrying handles, built to withstand outdoor industrial zones.',
     specs: ['IP67 Outdoor Waterproof Rating', 'High Impact Tough ABS body', 'Equipped with carrying handles', 'Resistant up to 80 degrees'],
     hsnCode: '85371000',
@@ -912,7 +872,7 @@ export const productsData: Product[] = [
     id: 55,
     title: 'PVC Socket + SP MCB Handle Type Board',
     category: 'Junctions & Push Buttons',
-    image: prodImg55,
+    image: liveImg15,
     description: 'Metal board distribution box with convenient carrying handle, designed for single-phase PVC sockets and SP MCBs.',
     specs: ['20G Thick Metal Enclosure Enclosure', 'Carrying Handle Type layout', 'Shock Proof Coating Coating', 'Fits 4 to 8 PVC Sockets'],
     hsnCode: '85371000',
@@ -926,7 +886,7 @@ export const productsData: Product[] = [
     id: 56,
     title: 'PVC Socket + TPN MCB Handle Type Board',
     category: 'Junctions & Push Buttons',
-    image: prodImg56,
+    image: liveImg15,
     description: 'Heavy-duty carrying handle board configured for three-phase PVC industrial sockets and TPN MCB breakers.',
     specs: ['20G Solid Steel construction', 'Carrying Handle Type layout', 'Shock Proof Coating Coating', 'Fits 4 to 8 PVC Sockets'],
     hsnCode: '85371000',
@@ -940,7 +900,7 @@ export const productsData: Product[] = [
     id: 57,
     title: 'Metal Junction Board',
     category: 'Junctions & Push Buttons',
-    image: prodImg57,
+    image: liveImg17,
     description: 'Sturdy sheet-metal wiring junction enclosures designed with internal terminal mounts and knockouts for quick connections.',
     specs: ['Sturdy 22G Sheet Metal body', 'Shock-Proof Powder finish', 'Integrated grounding point screw', 'Removable top and bottom gland plates'],
     hsnCode: '85389000',
