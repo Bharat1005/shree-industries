@@ -23,6 +23,15 @@ const DownloadCatalogueModal: React.FC<DownloadCatalogueModalProps> = ({ isOpen,
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const triggerDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Shree_Product-Catalogue_2026.pdf';
+    link.download = 'Shree_Product-Catalogue_2026.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -31,13 +40,14 @@ const DownloadCatalogueModal: React.FC<DownloadCatalogueModalProps> = ({ isOpen,
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
+      triggerDownload();
       
-      // Reset after 3 seconds and close
+      // Reset after 6 seconds and close
       setTimeout(() => {
         setIsSuccess(false);
         setFormData({ name: '', email: '', phone: '', company: '' });
         onClose();
-      }, 3000);
+      }, 6000);
     }, 1500);
   };
 
@@ -64,13 +74,23 @@ const DownloadCatalogueModal: React.FC<DownloadCatalogueModalProps> = ({ isOpen,
         {/* Body */}
         <div className="p-6">
           {isSuccess ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center py-8 flex flex-col items-center">
+              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                 <Send size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-2">Success!</h3>
-              <p className="text-gray-600">
-                Your catalogue download link has been sent to your email.
+              <p className="text-gray-600 text-sm mb-4">
+                Your download has started automatically.
+              </p>
+              <p className="text-gray-500 text-xs">
+                If the download did not start,{' '}
+                <a 
+                  href="/Shree_Product-Catalogue_2026.pdf" 
+                  download="Shree_Product-Catalogue_2026.pdf"
+                  className="text-brand-blue font-bold hover:underline"
+                >
+                  click here to download manually
+                </a>.
               </p>
             </div>
           ) : (
