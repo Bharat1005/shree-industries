@@ -28,7 +28,7 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
   };
 
   return (
-    <footer className="w-full bg-transparent relative mt-16 sm:mt-24">
+    <footer id="contact" className="w-full bg-transparent relative">
     <div className="w-full bg-white relative overflow-hidden border-t border-slate-100">
       {/* 2. Main Footer Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-12 sm:pt-16 pb-12">
@@ -57,8 +57,8 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
               {[
                 { name: 'About Us', href: '#about-us' },
                 { name: 'Products', href: '#products' },
-                { name: 'Infrastructure', href: '#infrastructure' },
-                { name: 'Quality', href: '#quality' },
+                { name: 'Infrastructure', href: '#sectors' },
+                { name: 'Quality', href: '#about-us' },
                 { name: 'Blogs', href: '#blogs' },
                 { name: 'Contact', href: '#contact' },
                 { name: 'Privacy Policy', href: '#privacy' },

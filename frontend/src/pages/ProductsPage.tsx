@@ -1,11 +1,18 @@
 import ProductShowcase from '../components/home/ProductShowcase';
 
 interface ProductsPageProps {
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
   setCurrentPage: (page: 'home' | 'about' | 'products') => void;
   onProductClick: (id: number) => void;
 }
 
-export default function ProductsPage({ setCurrentPage, onProductClick }: ProductsPageProps) {
+export default function ProductsPage({
+  selectedCategory,
+  setSelectedCategory,
+  setCurrentPage,
+  onProductClick
+}: ProductsPageProps) {
   return (
     <div className="w-full flex flex-col">
       {/* Inner Banner Section with brand blue theme gradient background */}
@@ -71,7 +78,12 @@ export default function ProductsPage({ setCurrentPage, onProductClick }: Product
       </section>
 
       {/* Products Content Section (Renders the products grid and filter tabs) */}
-      <ProductShowcase showHeader={false} onProductClick={onProductClick} />
+      <ProductShowcase 
+        showHeader={false} 
+        activeCategory={selectedCategory}
+        setActiveCategory={setSelectedCategory}
+        onProductClick={onProductClick} 
+      />
     </div>
   );
 }

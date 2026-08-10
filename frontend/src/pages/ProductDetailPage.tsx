@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Mail, CheckCircle, Download, ShieldCheck, Info, Package } from 'lucide-react';
+import { ArrowLeft, Mail, CheckCircle, Download, ShieldCheck, X, ArrowRight } from 'lucide-react';
 import { productsData } from '../components/home/ProductShowcase';
 
 interface ProductDetailPageProps {
@@ -23,6 +23,9 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
 
   // Tab state
   const [activeTab, setActiveTab] = useState<'features' | 'models'>('features');
+
+  // Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Scroll to top on load
   useEffect(() => {
@@ -114,7 +117,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
       </section>
 
       {/* Main Body Section */}
-      <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section className="pt-12 pb-4 sm:pt-16 sm:pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Back Link */}
         <button
           onClick={() => setCurrentPage('products')}
@@ -124,7 +127,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
         </button>
 
         {/* Upper Segment: Image Showcase & Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-4">
           
           {/* Left Column: Image Box & HSN Code (5 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
@@ -234,207 +237,209 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
                 </div>
               </div>
             )}
+
+            {/* Inquire Now CTA button */}
+            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap gap-4">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#009DE1] hover:bg-[#009DE1]/90 text-white font-bold text-sm uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/15 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+              >
+                Inquire Now
+                <Mail className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Lower Segment: Inline Quotation Form */}
-        <div className="bg-slate-50 rounded-3xl border border-slate-100 overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12">
-          {/* Left Panel: Contact Instructions (4 cols) */}
-          <div className="lg:col-span-4 bg-brand-blue text-white p-8 sm:p-10 flex flex-col justify-between text-left relative overflow-hidden">
-            {/* Subtle glow overlay decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-            
-            <div className="space-y-6 relative z-10">
-              <Mail className="w-12 h-12 text-brand-yellow mb-2" />
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
-                Request a Quote
-              </h3>
-              <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Need customized sizing, bulk order pricing, or certificates of conformity? Fill out this inquiry. Our commercial sales representatives will get in touch with you within 24 business hours.
-              </p>
-            </div>
-
-            <div className="border-t border-white/20 pt-6 mt-8 space-y-4 text-xs font-semibold relative z-10">
-              <div className="flex items-center gap-3">
-                <Info className="w-4 h-4 text-brand-yellow shrink-0" />
-                <span>Export Packaging Available</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Package className="w-4 h-4 text-brand-yellow shrink-0" />
-                <span>Bulk discounts apply above 100 units</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Panel: Quotation Form Input fields (8 cols) */}
-          <div className="lg:col-span-8 p-8 sm:p-10 bg-white">
-            {!isSubmitted ? (
-              <form onSubmit={handleInquirySubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {/* Product Title (Disabled prefilled) */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Inquiring For
-                    </label>
-                    <input
-                      type="text"
-                      disabled
-                      value={product.title}
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed"
-                    />
-                  </div>
-                  
-                  {/* Specific Model selection dropdown */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Select Model / Rating *
-                    </label>
-                    <select
-                      required
-                      value={formModel}
-                      onChange={(e) => setFormModel(e.target.value)}
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm font-medium focus:outline-none focus:border-brand-blue bg-white"
-                    >
-                      <option value="General Inquiry">General Inquiry (All Models)</option>
-                      {product.models && product.models.map((m) => (
-                        <option key={m.catNo} value={m.catNo}>
-                          {m.catNo} {m.rating ? `- ${m.rating}` : ''} {m.type ? `- ${m.type}` : ''} {m.poles ? `(${m.poles})` : ''}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {/* Full Name */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formName}
-                      onChange={(e) => setFormName(e.target.value)}
-                      placeholder="John Doe"
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
-                    />
-                  </div>
-
-                  {/* Company Name */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      value={formCompany}
-                      onChange={(e) => setFormCompany(e.target.value)}
-                      placeholder="Company Ltd"
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {/* Business Email */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Business Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formEmail}
-                      onChange={(e) => setFormEmail(e.target.value)}
-                      placeholder="john@company.com"
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
-                    />
-                  </div>
-
-                  {/* Phone Number */}
-                  <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={formPhone}
-                      onChange={(e) => setFormPhone(e.target.value)}
-                      placeholder="+91 99999 99999"
-                      className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
-                    />
-                  </div>
-                </div>
-
-                {/* Quantity Needed */}
-                <div>
-                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                    Estimated Order Quantity (Units) *
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    min="1"
-                    value={formQty}
-                    onChange={(e) => setFormQty(e.target.value)}
-                    className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 text-left">
-                    Requirements / Message
-                  </label>
-                  <textarea
-                    rows={4}
-                    value={formMessage}
-                    onChange={(e) => setFormMessage(e.target.value)}
-                    placeholder="Please specify custom sizing, cable entry points, color coding or certification demands..."
-                    className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue resize-none"
-                  />
-                </div>
-
-                {/* Submit button with spinner support */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 bg-brand-blue hover:bg-brand-blue/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/15 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer mt-2"
-                >
-                  {isSubmitting ? (
-                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  ) : (
-                    <>
-                      Submit Inquiry Specification
-                    </>
-                  )}
-                </button>
-              </form>
-            ) : (
-              /* Success confirmation panel */
-              <div className="flex flex-col items-center justify-center text-center p-8 space-y-4 animate-in fade-in duration-300 h-full py-20">
-                <div className="w-20 h-20 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-2">
-                  <CheckCircle className="w-12 h-12" />
-                </div>
-                <h4 className="text-2xl font-bold text-slate-900 tracking-tight">
-                  Inquiry Successfully Logged
-                </h4>
-                <p className="text-slate-500 text-sm leading-relaxed max-w-[340px] mb-4">
-                  Thank you, <strong>{formName}</strong>. Your quotation request for the <strong>{product.title}</strong>, model <strong>{formModel}</strong>, has been sent to our sales department.
-                </p>
-                <button
-                  onClick={() => setIsSubmitted(false)}
-                  className="px-6 py-2.5 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
-                >
-                  Submit Another Request
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
       </section>
+
+      {/* Modal Popup containing the Quotation Inquiry Form */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 animate-in fade-in zoom-in-95 duration-200">
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setIsModalOpen(false);
+                setIsSubmitted(false);
+              }}
+              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors duration-300 cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Modal Body */}
+            <div className="p-8 sm:p-10 text-left bg-white flex flex-col justify-center">
+              <h3 className="text-xl font-bold text-slate-800 tracking-tight mb-5">
+                Quotation Inquiry Form
+              </h3>
+
+              {!isSubmitted ? (
+                <form onSubmit={handleInquirySubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Inquiring For */}
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-500 uppercase mb-1">
+                        Inquiring For
+                      </label>
+                      <input
+                        type="text"
+                        disabled
+                        value={product.title}
+                        className="w-full px-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed"
+                      />
+                    </div>
+                    
+                    {/* Model selection */}
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                        Select Model / Rating *
+                      </label>
+                      <select
+                        required
+                        value={formModel}
+                        onChange={(e) => setFormModel(e.target.value)}
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
+                      >
+                        <option value="General Inquiry">General Inquiry (All Models)</option>
+                        {product.models && product.models.map(m => (
+                          <option key={m.catNo} value={m.catNo}>
+                            {m.catNo} {m.rating ? `- ${m.rating}` : ''} {m.type ? `- ${m.type}` : ''}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                        placeholder="John Doe"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        value={formCompany}
+                        onChange={(e) => setFormCompany(e.target.value)}
+                        placeholder="Power Grid Corp"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formEmail}
+                        onChange={(e) => setFormEmail(e.target.value)}
+                        placeholder="john@example.com"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={formPhone}
+                        onChange={(e) => setFormPhone(e.target.value)}
+                        placeholder="+91 98765 43210"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      Estimated Order Quantity (Units) *
+                    </label>
+                    <input
+                      type="number"
+                      required
+                      min="1"
+                      value={formQty}
+                      onChange={(e) => setFormQty(e.target.value)}
+                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      Requirements / Message
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={formMessage}
+                      onChange={(e) => setFormMessage(e.target.value)}
+                      placeholder="Please specify customization details or certifications required..."
+                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue resize-none"
+                    />
+                  </div>
+
+                  {/* Action submit button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3 bg-brand-blue hover:bg-brand-blue/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isSubmitting ? (
+                      <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    ) : (
+                      <>
+                        Submit Inquiry
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              ) : (
+                /* Success Message State */
+                <div className="flex flex-col items-center justify-center text-center p-6 space-y-4 animate-in fade-in duration-300">
+                  <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-2">
+                    <CheckCircle className="w-10 h-10" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-slate-900 tracking-tight">
+                    Inquiry Submitted!
+                  </h4>
+                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-[280px]">
+                    Thank you, <strong>{formName}</strong>. Your request for <strong>{product.title} ({formModel})</strong> has been logged. Our sales team will email you shortly.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      setIsSubmitted(false);
+                    }}
+                    className="px-6 py-2.5 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                  >
+                    Close Window
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

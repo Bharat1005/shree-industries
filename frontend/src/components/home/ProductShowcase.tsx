@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, X, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, X, CheckCircle, ArrowRight, Zap, Flame, Plug, Grid, Boxes, GitMerge, Disc, Layers, Folder, Droplets, CircleDot, Cable, Wind } from 'lucide-react';
 
 // Import local assets
 import liveImg1 from '../../assets/live_catalog_images/project_1.jpg';
@@ -42,10 +42,127 @@ export interface Product {
 
 export const categories = [
   'All Products',
-  'Distribution Boards',
-  'Plugs & Sockets',
-  'Switchgears & Fuses',
-  'Junctions & Push Buttons'
+  'Switch Gear',
+  'Porcelain Kit Kat Fuse',
+  'Industrial Plug & Socket',
+  'SPN Metal MCB Distribution Board',
+  'TPN Metal MCB Distribution Board',
+  'Junction Board',
+  'Industrial Socket Board',
+  'Metal Socket + MCB Board',
+  'PVC Socket + MCB Board',
+  'IP67 PVC Socket + MCB Board',
+  'Metal Push Button Board',
+  'Bus Bar Chamber',
+  'AC Box Metal Enclosure'
+];
+
+// Map of category names to their corresponding icons and styles for the UI
+const categoryMeta = [
+  { 
+    name: 'Switch Gear', 
+    icon: Zap, 
+    color: 'bg-amber-50 text-amber-500',
+    image: liveImg1,
+    description: 'Robust LT control reverse-forward switches designed for heavy mechanical operations, featuring silver-point contacts and durable bakelite block base.',
+    specs: ['16G Solid Metal Body', 'EC Grade Copper Contacts']
+  },
+  { 
+    name: 'Porcelain Kit Kat Fuse', 
+    icon: Flame, 
+    color: 'bg-orange-50 text-orange-500',
+    image: liveImg9,
+    description: 'Standard ceramic porcelain kit-kat fuses (K-Type) designed with high mechanical dielectric strength and robust nickel-plated brass contacts.',
+    specs: ['Cream Porcelain Body', 'Nickel Plated Brass Contacts']
+  },
+  { 
+    name: 'Industrial Plug & Socket', 
+    icon: Plug, 
+    color: 'bg-blue-50 text-blue-500',
+    image: liveImg14,
+    description: 'Weatherproof industrial plugs, sockets, and connectors with solid brass contact pins, suitable for harsh factory environments.',
+    specs: ['IP44 & IP67 Splash-Proof', 'Heavy Nylon Impact Body']
+  },
+  { 
+    name: 'SPN Metal MCB Distribution Board', 
+    icon: Grid, 
+    color: 'bg-teal-50 text-teal-500',
+    image: liveImg10,
+    description: 'Compact sheet metal MCB enclosures and distribution boards for single-phase installations, finished with electrostatic powder coating.',
+    specs: ['22G Solid Sheet Metal', 'Flush & Single Door Style']
+  },
+  { 
+    name: 'TPN Metal MCB Distribution Board', 
+    icon: Boxes, 
+    color: 'bg-emerald-50 text-emerald-500',
+    image: liveImg13,
+    description: 'Three-phase distribution boards for heavy-duty industrial setups, featuring neutral links and protective shield plates.',
+    specs: ['Double Door Safety Shield', 'Copper Phase Links']
+  },
+  { 
+    name: 'Junction Board', 
+    icon: GitMerge, 
+    color: 'bg-purple-50 text-purple-500',
+    image: liveImg17,
+    description: 'Sturdy sheet metal wiring junction enclosures designed with internal terminal mounts and knockouts for quick wiring links.',
+    specs: ['Sturdy 22G Sheet Metal', 'Grounding Point Screws']
+  },
+  { 
+    name: 'Industrial Socket Board', 
+    icon: Disc, 
+    color: 'bg-indigo-50 text-indigo-500',
+    image: liveImg14,
+    description: 'Modular panel board mounting industrial sockets with integrated SP or DP MCBs and flip cover slots.',
+    specs: ['IP54 Splash Proof Sockets', 'Integrated DIN Rail MCB']
+  },
+  { 
+    name: 'Metal Socket + MCB Board', 
+    icon: Layers, 
+    color: 'bg-cyan-50 text-cyan-500',
+    image: liveImg15,
+    description: 'Heavy-duty distribution metal boards with customizable cutouts for industrial socket and MCB breaker configurations.',
+    specs: ['Scratch-Proof Powder finish', 'Pre-fitted DIN Rails']
+  },
+  { 
+    name: 'PVC Socket + MCB Board', 
+    icon: Folder, 
+    color: 'bg-sky-50 text-sky-500',
+    image: liveImg15,
+    description: 'High impact ABS plastic board units designed to hold PVC socket outlets and MCB control switches.',
+    specs: ['High impact ABS plastic body', 'Pre-fitted DIN Rails']
+  },
+  { 
+    name: 'IP67 PVC Socket + MCB Board', 
+    icon: Droplets, 
+    color: 'bg-cyan-50 text-cyan-500',
+    image: liveImg14,
+    description: 'IP67 fully waterproof outdoor socket boards with carrying handles, built to withstand outdoor industrial zones.',
+    specs: ['IP67 Outdoor Waterproof', 'Carrying Handle Design']
+  },
+  { 
+    name: 'Metal Push Button Board', 
+    icon: CircleDot, 
+    color: 'bg-rose-50 text-rose-500',
+    image: liveImg16,
+    description: 'Sheet metal push-button station enclosures pre-punched with standard 22mm holes and finished with shock-proof coating.',
+    specs: ['Standard 22mm Hole stations', 'Shock-Proof Paint Finish']
+  },
+  { 
+    name: 'Bus Bar Chamber', 
+    icon: Cable, 
+    color: 'bg-pink-50 text-pink-500',
+    image: liveImg7,
+    description: 'Sleek and heavy-duty busbar chambers featuring solid electrolytic copper bars and insulated support blocks.',
+    specs: ['Solid Electrolytic Copper Bars', 'Thick Gauge Steel Body']
+  },
+  { 
+    name: 'AC Box Metal Enclosure', 
+    icon: Wind, 
+    color: 'bg-sky-50 text-sky-600',
+    image: liveImg16,
+    description: 'Compact air conditioner metal enclosures equipped with built-in plugs and quick-fit DIN rails.',
+    specs: ['22G Metal Box Enclosure', 'Built-in Plug Socket']
+  }
 ];
 
 export const productsData: Product[] = [
@@ -912,13 +1029,51 @@ export const productsData: Product[] = [
   }
 ];
 
+// Dynamically map categories for specific product IDs to align with 13 detailed subcategories
+productsData.forEach(p => {
+  if (p.id >= 1 && p.id <= 6) p.category = 'Switch Gear';
+  else if (p.id === 7) p.category = 'Bus Bar Chamber';
+  else if (p.id >= 8 && p.id <= 10) p.category = 'Porcelain Kit Kat Fuse';
+  else if (p.id >= 11 && p.id <= 18) p.category = 'Industrial Plug & Socket';
+  else if (p.id === 19) p.category = 'Switch Gear';
+  else if (p.id === 20) p.category = 'Industrial Socket Board';
+  else if (p.id >= 21 && p.id <= 29) p.category = 'SPN Metal MCB Distribution Board';
+  else if (p.id >= 30 && p.id <= 35) p.category = 'TPN Metal MCB Distribution Board';
+  else if (p.id >= 36 && p.id <= 37) p.category = 'AC Box Metal Enclosure';
+  else if (p.id >= 38 && p.id <= 51) p.category = 'Metal Socket + MCB Board';
+  else if (p.id === 52) p.category = 'Metal Push Button Board';
+  else if (p.id >= 53 && p.id <= 56 && p.id !== 54) p.category = 'PVC Socket + MCB Board';
+  else if (p.id === 54) p.category = 'IP67 PVC Socket + MCB Board';
+  else if (p.id === 57) p.category = 'Junction Board';
+});
+
 interface ProductShowcaseProps {
   showHeader?: boolean;
   onProductClick?: (id: number) => void;
+  onlyShowCategories?: boolean;
+  activeCategory?: string;
+  setActiveCategory?: (category: string) => void;
+  onCategoryClick?: (category: string) => void;
 }
 
-const ProductShowcase = ({ showHeader = true, onProductClick }: ProductShowcaseProps) => {
-  const [activeCategory, setActiveCategory] = useState('All Products');
+const ProductShowcase = ({
+  showHeader = true,
+  onProductClick,
+  onlyShowCategories = false,
+  activeCategory: controlledCategory,
+  setActiveCategory: controlledSetActiveCategory,
+  onCategoryClick
+}: ProductShowcaseProps) => {
+  const [internalCategory, setInternalCategory] = useState('Switch Gear');
+  const activeCategory = controlledCategory !== undefined ? controlledCategory : internalCategory;
+  const setActiveCategory = (cat: string) => {
+    if (controlledSetActiveCategory) {
+      controlledSetActiveCategory(cat);
+    } else {
+      setInternalCategory(cat);
+    }
+  };
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalTab, setModalTab] = useState<'overview' | 'models'>('overview');
   const [searchQuery, setSearchQuery] = useState('');
@@ -989,115 +1144,209 @@ const ProductShowcase = ({ showHeader = true, onProductClick }: ProductShowcaseP
           </div>
         )}
 
-        {/* Categories Tab navigation bar and Search box container */}
-        <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 mb-10 pb-4 border-b border-slate-100">
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
-                  activeCategory === category
-                    ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          
-          <div className="relative min-w-[320px]">
-            <input
-              type="text"
-              placeholder="Search by model, HSN, specs, or name..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-4 pr-10 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue shadow-sm"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-        </div>
+        {/* Helper function to get product counts per category */}
+        {(() => {
+          const getProductCount = (catName: string) => {
+            return productsData.filter(p => p.category === catName).length;
+          };
+          return (
+            <>
+              {/* Category Selection Grid / Cards */}
+              {onlyShowCategories ? (
+                /* Category Cards in Product Card style for the Homepage */
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                  {categoryMeta.map((cat) => {
+                    const count = getProductCount(cat.name);
+                    return (
+                      <div
+                        key={cat.name}
+                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300"
+                      >
+                        {/* Representative Category Image Wrapper */}
+                        <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
+                          <img
+                            src={cat.image}
+                            alt={cat.name}
+                            className="max-h-full max-w-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <span className="absolute top-4 left-4 bg-slate-900/5 text-slate-600 px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider font-sans">
+                            {cat.name}
+                          </span>
+                        </div>
 
-        {/* Product Cards Static Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300"
-            >
-              {/* Image Showcase Wrapper */}
-              <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="max-h-full max-w-full object-contain transform transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute top-4 left-4 bg-slate-900/5 text-slate-600 px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
-                  {product.category}
-                </span>
-              </div>
+                        {/* Description Block */}
+                        <div className="p-6 flex flex-col flex-grow text-left">
+                          <div className="flex justify-between items-start gap-2 mb-2">
+                            <h4 className="text-base sm:text-lg font-semibold text-[#009DE1] font-sans tracking-tight mb-2 group-hover:text-brand-blue transition-colors duration-300">
+                              {cat.name}
+                            </h4>
+                            <span className="shrink-0 text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 uppercase tracking-wide">
+                              {count} {count === 1 ? 'Product' : 'Products'}
+                            </span>
+                          </div>
+                          
+                          <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
+                            {cat.description}
+                          </p>
 
-              {/* Text Description Box */}
-              <div className="p-6 flex flex-col flex-grow text-left">
-                <div className="flex justify-between items-start gap-2 mb-2">
-                  <h4 className="text-base sm:text-lg font-semibold text-[#009DE1] font-sans tracking-tight mb-2 group-hover:text-brand-blue transition-colors duration-300">
-                    {product.title}
-                  </h4>
-                  <span className="shrink-0 text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 uppercase tracking-wide">
-                    HSN: {product.hsnCode}
-                  </span>
+                          {/* Bullet Specifications */}
+                          <div className="border-t border-slate-100 pt-4 mb-5 space-y-2">
+                            {cat.specs?.map((spec, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#00B7AC]"></span>
+                                <span className="text-[10px] sm:text-xs font-medium text-slate-600">{spec}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Button */}
+                          <button
+                            onClick={() => {
+                              if (onCategoryClick) {
+                                onCategoryClick(cat.name);
+                              }
+                            }}
+                            className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-50 group-hover:bg-brand-blue group-hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 group/btn cursor-pointer hover:-translate-y-0.5"
+                          >
+                            Inquire Now
+                            <Mail className="w-4 h-4 transition-transform duration-300 group-hover/btn:scale-110" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-                
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
-                  {product.description}
-                </p>
-
-                {/* Bullet Specifications */}
-                <div className="border-t border-slate-100 pt-4 mb-5 space-y-2">
-                  {product.specs.slice(0, 2).map((spec, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00B7AC]"></span>
-                      <span className="text-[10px] sm:text-xs font-medium text-slate-600">{spec}</span>
-                    </div>
+              ) : (
+                /* Category Selection Tabs (original style with no icons) for the Products page */
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setActiveCategory(category);
+                        setSearchQuery(''); // clear search when switching categories
+                      }}
+                      className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
+                        activeCategory === category
+                          ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
+                          : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
+                      }`}
+                    >
+                      {category}
+                    </button>
                   ))}
                 </div>
+              )}
 
-                {/* CTA Action Button - Triggers Modal popup or navigation */}
-                <button
-                  onClick={() => {
-                    if (onProductClick) {
-                      onProductClick(product.id);
-                    } else {
-                      setSelectedProduct(product);
-                      setModalTab('overview');
-                    }
-                  }}
-                  className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-50 group-hover:bg-brand-blue group-hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 group/btn cursor-pointer hover:-translate-y-0.5"
-                >
-                  Inquire Now
-                  <Mail className="w-4 h-4 transition-transform duration-300 group-hover/btn:scale-110" />
-                </button>
-              </div>
-            </div>
-          ))}
-          {filteredProducts.length === 0 && (
-            <div className="col-span-full text-center py-12 text-slate-500">
-              No products found matching your search.
-            </div>
-          )}
-        </div>
+              {!onlyShowCategories && (
+                <>
+                  {/* Search and Stats bar */}
+                  <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-8 mt-10 pb-4 border-b border-slate-200">
+                    <div className="text-left font-sans">
+                      <p className="text-xs sm:text-sm text-slate-500">
+                        Category: <strong className="text-slate-800 font-bold">{activeCategory}</strong>
+                      </p>
+                      <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
+                        Found {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} matching current filters
+                      </p>
+                    </div>
+                    
+                    <div className="relative min-w-[280px] sm:min-w-[320px]">
+                      <input
+                        type="text"
+                        placeholder={`Search within ${activeCategory}...`}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-4 pr-10 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue shadow-sm bg-white"
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => setSearchQuery('')}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Product Cards Static Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    {filteredProducts.map((product) => (
+                      <div
+                        key={product.id}
+                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300"
+                      >
+                        {/* Image Showcase Wrapper */}
+                        <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
+                          <img
+                            src={product.image}
+                            alt={product.title}
+                            className="max-h-full max-w-full object-contain transform transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <span className="absolute top-4 left-4 bg-slate-900/5 text-slate-600 px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
+                            {product.category}
+                          </span>
+                        </div>
+
+                        {/* Text Description Box */}
+                        <div className="p-6 flex flex-col flex-grow text-left">
+                          <div className="flex justify-between items-start gap-2 mb-2">
+                            <h4 className="text-base sm:text-lg font-semibold text-[#009DE1] font-sans tracking-tight mb-2 group-hover:text-brand-blue transition-colors duration-300">
+                              {product.title}
+                            </h4>
+                            <span className="shrink-0 text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 uppercase tracking-wide">
+                              HSN: {product.hsnCode}
+                            </span>
+                          </div>
+                          
+                          <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
+                            {product.description}
+                          </p>
+
+                          {/* Bullet Specifications */}
+                          <div className="border-t border-slate-100 pt-4 mb-5 space-y-2">
+                            {product.specs.slice(0, 2).map((spec, i) => (
+                              <div key={i} className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#00B7AC]"></span>
+                                <span className="text-[10px] sm:text-xs font-medium text-slate-600">{spec}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* CTA Action Button */}
+                          <button
+                            onClick={() => {
+                              if (onProductClick) {
+                                onProductClick(product.id);
+                              } else {
+                                setSelectedProduct(product);
+                                setModalTab('overview');
+                              }
+                            }}
+                            className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-50 group-hover:bg-brand-blue group-hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 group/btn cursor-pointer hover:-translate-y-0.5"
+                          >
+                            Inquire Now
+                            <Mail className="w-4 h-4 transition-transform duration-300 group-hover/btn:scale-110" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                    {filteredProducts.length === 0 && (
+                      <div className="col-span-full text-center py-12 text-slate-500">
+                        No products found matching your search.
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </>
+          );
+        })()}
       </div>
 
       {/* Inquiry Form Modal Window Popup */}
-      {selectedProduct && (
+      {!onlyShowCategories && selectedProduct && (
         <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300">
           <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row border border-slate-100 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh]">
             

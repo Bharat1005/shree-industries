@@ -5,6 +5,7 @@ import AboutUs from './components/home/AboutUs';
 import ProductShowcase from './components/home/ProductShowcase';
 import Sectors from './components/home/Sectors';
 import GlobalPresence from './components/home/GlobalPresence';
+import BlogSection from './components/home/BlogSection';
 import Footer from './components/layout/Footer';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
@@ -13,6 +14,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'product-detail'>('home');
   const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
 
   // Automatically scroll to the top of the viewport when changing pages
   useEffect(() => {
@@ -25,6 +27,9 @@ function App() {
   };
 
   const handleHeaderNav = (page: 'home' | 'about' | 'products') => {
+    if (page === 'products') {
+      setSelectedCategory('All Products');
+    }
     setCurrentPage(page);
   };
 
@@ -41,16 +46,28 @@ function App() {
           <>
             <HeroSlider />
             <AboutUs />
-            <ProductShowcase onProductClick={handleProductClick} />
+            <ProductShowcase 
+              onlyShowCategories={true}
+              onCategoryClick={(category) => {
+                setSelectedCategory(category);
+                setCurrentPage('products');
+              }}
+            />
             <Sectors />
             <GlobalPresence />
+            <BlogSection setCurrentPage={handleHeaderNav} />
           </>
         )}
         {currentPage === 'about' && (
           <AboutPage setCurrentPage={handleHeaderNav} />
         )}
         {currentPage === 'products' && (
-          <ProductsPage setCurrentPage={handleHeaderNav} onProductClick={handleProductClick} />
+          <ProductsPage 
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            setCurrentPage={handleHeaderNav} 
+            onProductClick={handleProductClick} 
+          />
         )}
         {currentPage === 'product-detail' && selectedProductId !== null && (
           <ProductDetailPage productId={selectedProductId} setCurrentPage={setCurrentPage} />
