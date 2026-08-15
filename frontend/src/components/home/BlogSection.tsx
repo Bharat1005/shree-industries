@@ -6,7 +6,7 @@ import blogFarm from '../../assets/blog_farm.png';
 import blogIndustrial from '../../assets/blog_industrial.png';
 
 interface BlogSectionProps {
-  setCurrentPage: (page: 'home' | 'about' | 'products') => void;
+  setCurrentPage: (page: 'home' | 'about' | 'products' | 'blogs', blogId?: number | null) => void;
 }
 
 export default function BlogSection({ setCurrentPage }: BlogSectionProps) {
@@ -54,7 +54,7 @@ export default function BlogSection({ setCurrentPage }: BlogSectionProps) {
           {/* View All Button */}
           <div>
             <button
-              onClick={() => setCurrentPage('about')}
+              onClick={() => setCurrentPage('blogs')}
               className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#009DE1] hover:bg-[#009DE1]/90 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg shadow-brand-blue/15 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
             >
               View All
@@ -97,7 +97,7 @@ export default function BlogSection({ setCurrentPage }: BlogSectionProps) {
 
                 {/* Read More Button */}
                 <button
-                  onClick={() => setCurrentPage('about')}
+                  onClick={() => setCurrentPage('blogs', blog.id)}
                   className="inline-flex items-center justify-center gap-2 w-full py-3 bg-[#009DE1] hover:bg-[#009DE1]/90 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   Read More

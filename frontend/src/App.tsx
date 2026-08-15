@@ -10,10 +10,14 @@ import Footer from './components/layout/Footer';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import InfrastructurePage from './pages/InfrastructurePage';
+import QualityPage from './pages/QualityPage';
+import BlogsPage from './pages/BlogsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'product-detail'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'product-detail' | 'infrastructure' | 'quality' | 'blogs'>('home');
   const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
 
   // Automatically scroll to the top of the viewport when changing pages
@@ -26,9 +30,15 @@ function App() {
     setCurrentPage('product-detail');
   };
 
-  const handleHeaderNav = (page: 'home' | 'about' | 'products') => {
+  const handleHeaderNav = (
+    page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs',
+    blogId: number | null = null
+  ) => {
     if (page === 'products') {
       setSelectedCategory('All Products');
+    }
+    if (page === 'blogs') {
+      setSelectedBlogId(blogId);
     }
     setCurrentPage(page);
   };
@@ -37,8 +47,8 @@ function App() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header Navigation with routing handlers */}
       <Header 
-        currentPage={currentPage === 'product-detail' ? 'products' : currentPage} 
-        setCurrentPage={handleHeaderNav} 
+        currentPage={currentPage === 'product-detail' ? 'products' : currentPage === 'blogs' ? 'blogs' : currentPage} 
+        setCurrentPage={handleHeaderNav as any} 
       />
       
       <main className="flex-grow flex flex-col w-full">
@@ -55,27 +65,40 @@ function App() {
             />
             <Sectors />
             <GlobalPresence />
-            <BlogSection setCurrentPage={handleHeaderNav} />
+            <BlogSection setCurrentPage={handleHeaderNav as any} />
           </>
         )}
         {currentPage === 'about' && (
-          <AboutPage setCurrentPage={handleHeaderNav} />
+          <AboutPage setCurrentPage={handleHeaderNav as any} />
         )}
         {currentPage === 'products' && (
           <ProductsPage 
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
-            setCurrentPage={handleHeaderNav} 
+            setCurrentPage={handleHeaderNav as any} 
             onProductClick={handleProductClick} 
           />
         )}
+        {currentPage === 'infrastructure' && (
+          <InfrastructurePage setCurrentPage={handleHeaderNav as any} />
+        )}
+        {currentPage === 'quality' && (
+          <QualityPage setCurrentPage={handleHeaderNav as any} />
+        )}
+        {currentPage === 'blogs' && (
+          <BlogsPage 
+            setCurrentPage={handleHeaderNav as any} 
+            selectedBlogId={selectedBlogId}
+            setSelectedBlogId={setSelectedBlogId}
+          />
+        )}
         {currentPage === 'product-detail' && selectedProductId !== null && (
-          <ProductDetailPage productId={selectedProductId} setCurrentPage={setCurrentPage} />
+          <ProductDetailPage productId={selectedProductId} setCurrentPage={setCurrentPage as any} />
         )}
       </main>
 
       {/* Footer Navigation with routing handlers */}
-      <Footer setCurrentPage={handleHeaderNav} />
+      <Footer setCurrentPage={handleHeaderNav as any} />
     </div>
   );
 }

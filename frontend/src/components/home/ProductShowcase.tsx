@@ -1169,9 +1169,6 @@ const ProductShowcase = ({
                             alt={cat.name}
                             className="max-h-full max-w-full object-contain transform transition-transform duration-500 group-hover:scale-105"
                           />
-                          <span className="absolute top-4 left-4 bg-slate-900/5 text-slate-600 px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider font-sans">
-                            {cat.name}
-                          </span>
                         </div>
 
                         {/* Description Block */}
