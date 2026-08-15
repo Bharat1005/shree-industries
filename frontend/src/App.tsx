@@ -57,7 +57,7 @@ function App() {
       home: {
         title: "Shree Industries | Premium Electrical Switchgears & Sheet Metal Fabrication Rajkot",
         desc: "Shree Industries is a leading manufacturer of premium electrical switchgears, kit-kat fuses, industrial plugs, sockets, and custom sheet metal fabrication in Rajkot, Gujarat. ISO 9001:2015 certified.",
-        image: "https://shree-industries.co.in/images/shree_switch_logo.png"
+        image: "/seo-about.png"
       },
       about: {
         title: "About Us | Shree Industries - Electrical Manufacturing Pioneers",
