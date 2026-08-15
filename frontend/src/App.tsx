@@ -15,7 +15,15 @@ import BlogsPage from './pages/BlogsPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const pageParam = params.get('page');
+    const validPages = ['home', 'about', 'products', 'infrastructure', 'quality', 'blogs', 'contact'];
+    if (pageParam && validPages.includes(pageParam)) {
+      return pageParam as any;
+    }
+    return 'home';
+  });
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
   const [scrollToContactForm, setScrollToContactForm] = useState(false);
@@ -23,6 +31,15 @@ function App() {
   // Automatically scroll to the top of the viewport and update SEO Metadata when changing pages
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as any });
+
+    // Update URL query parameters to support search engine indexing
+    const url = new URL(window.location.href);
+    if (currentPage === 'home') {
+      url.searchParams.delete('page');
+    } else {
+      url.searchParams.set('page', currentPage);
+    }
+    window.history.pushState({}, '', url.toString());
 
     const seoMap: Record<string, { title: string; desc: string }> = {
       home: {
