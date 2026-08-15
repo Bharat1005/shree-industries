@@ -3,16 +3,25 @@ import { Phone, Mail, Award, FileText, Menu, X, ArrowRight } from 'lucide-react'
 import DownloadCatalogueModal from '../common/DownloadCatalogueModal';
 
 interface HeaderProps {
-  currentPage: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs';
-  setCurrentPage: (page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs') => void;
+  currentPage: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact';
+  setCurrentPage: (
+    page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact',
+    blogId?: number | null,
+    scrollForm?: boolean
+  ) => void;
 }
 
 const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
-  const handleNavClick = (page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs') => {
-    setCurrentPage(page);
+  const handleNavClick = (page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact') => {
+    setCurrentPage(page, null, false);
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleQuoteClick = () => {
+    setCurrentPage('contact', null, true);
     setIsMobileMenuOpen(false);
   };
 
@@ -120,7 +129,15 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
             >
               BLOGS
             </button>
-            <a href="#" className="text-brand-dark hover:text-brand-blue font-semibold text-sm transition-colors">CONTACT US</a>
+            <button
+              onClick={() => handleNavClick('contact')}
+              className={`text-sm pb-1 transition-all cursor-pointer ${currentPage === 'contact'
+                  ? 'text-brand-blue font-bold border-b-2 border-brand-yellow'
+                  : 'text-brand-dark hover:text-brand-blue font-semibold'
+                }`}
+            >
+              CONTACT US
+            </button>
           </nav>
 
           {/* CTA Buttons */}
@@ -132,10 +149,13 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
               <FileText size={16} />
               DOWNLOAD CATALOGUE
             </button>
-            <a href="#" className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10">
+            <button 
+              onClick={handleQuoteClick}
+              className="flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10 cursor-pointer border-none"
+            >
               GET A QUOTE
               <ArrowRight size={16} />
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -189,7 +209,12 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
               >
                 BLOGS
               </button>
-              <a href="#" className="text-brand-dark font-semibold text-sm">CONTACT US</a>
+              <button
+                onClick={() => handleNavClick('contact')}
+                className={`text-left text-sm ${currentPage === 'contact' ? 'text-brand-blue font-bold' : 'text-brand-dark font-semibold'}`}
+              >
+                CONTACT US
+              </button>
 
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-100">
                 <button
@@ -198,9 +223,12 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
                 >
                   <FileText size={16} /> DOWNLOAD CATALOGUE
                 </button>
-                <a href="#" className="flex items-center justify-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg text-center hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10">
+                <button 
+                  onClick={handleQuoteClick}
+                  className="flex items-center justify-center gap-2 bg-brand-yellow text-brand-dark font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg text-center hover:bg-yellow-500 hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider shadow-lg shadow-brand-yellow/10 cursor-pointer border-none w-full"
+                >
                   GET A QUOTE <ArrowRight size={16} />
-                </a>
+                </button>
               </div>
             </nav>
           </div>

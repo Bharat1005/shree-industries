@@ -12,11 +12,13 @@ import ProductsPage from './pages/ProductsPage';
 import InfrastructurePage from './pages/InfrastructurePage';
 import QualityPage from './pages/QualityPage';
 import BlogsPage from './pages/BlogsPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'>('home');
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
+  const [scrollToContactForm, setScrollToContactForm] = useState(false);
 
   // Automatically scroll to the top of the viewport when changing pages
   useEffect(() => {
@@ -25,8 +27,9 @@ function App() {
 
 
   const handleHeaderNav = (
-    page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs',
-    blogId: number | null = null
+    page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact',
+    blogId: number | null = null,
+    scrollForm: boolean = false
   ) => {
     if (page === 'products') {
       setSelectedCategory('All Products');
@@ -34,6 +37,7 @@ function App() {
     if (page === 'blogs') {
       setSelectedBlogId(blogId);
     }
+    setScrollToContactForm(scrollForm);
     setCurrentPage(page);
   };
 
@@ -83,6 +87,13 @@ function App() {
             setCurrentPage={handleHeaderNav as any} 
             selectedBlogId={selectedBlogId}
             setSelectedBlogId={setSelectedBlogId}
+          />
+        )}
+        {currentPage === 'contact' && (
+          <ContactPage 
+            setCurrentPage={handleHeaderNav as any} 
+            scrollToForm={scrollToContactForm}
+            setScrollToForm={setScrollToContactForm}
           />
         )}
       </main>
