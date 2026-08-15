@@ -9,7 +9,7 @@
   </url>
   <!-- About Us Page -->
   <url>
-    <loc>https://shree-industries.co.in/about-us</loc>
+    <loc>https://shree-industries.co.in/about</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -44,7 +44,7 @@
   </url>
   <!-- Contact Us Page -->
   <url>
-    <loc>https://shree-industries.co.in/contact-us</loc>
+    <loc>https://shree-industries.co.in/contact</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

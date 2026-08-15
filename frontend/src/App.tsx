@@ -16,13 +16,19 @@ import ContactPage from './pages/ContactPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'>(() => {
-    const params = new URLSearchParams(window.location.search);
-    const pageParam = params.get('page');
-    const validPages = ['home', 'about', 'products', 'infrastructure', 'quality', 'blogs', 'contact'];
-    if (pageParam && validPages.includes(pageParam)) {
-      return pageParam as any;
-    }
-    return 'home';
+    const path = window.location.pathname;
+    const pathToPage: Record<string, 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'> = {
+      '/': 'home',
+      '/about': 'about',
+      '/about-us': 'about',
+      '/products': 'products',
+      '/infrastructure': 'infrastructure',
+      '/quality': 'quality',
+      '/blogs': 'blogs',
+      '/contact': 'contact',
+      '/contact-us': 'contact'
+    };
+    return pathToPage[path] || 'home';
   });
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
@@ -33,13 +39,19 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' as any });
 
     // Update URL query parameters to support search engine indexing
-    const url = new URL(window.location.href);
-    if (currentPage === 'home') {
-      url.searchParams.delete('page');
-    } else {
-      url.searchParams.set('page', currentPage);
+    const pageToPath: Record<string, string> = {
+      home: '/',
+      about: '/about',
+      products: '/products',
+      infrastructure: '/infrastructure',
+      quality: '/quality',
+      blogs: '/blogs',
+      contact: '/contact'
+    };
+    const targetPath = pageToPath[currentPage] || '/';
+    if (window.location.pathname !== targetPath || window.location.search || window.location.hash) {
+      window.history.pushState({}, '', targetPath);
     }
-    window.history.pushState({}, '', url.toString());
 
     const seoMap: Record<string, { title: string; desc: string }> = {
       home: {
@@ -103,6 +115,42 @@ function App() {
       document.head.appendChild(ogDesc);
     }
     ogDesc.setAttribute('content', currentSeo.desc);
+
+    // Update Open Graph (OG) URL
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement('meta');
+      ogUrl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute('content', window.location.href);
+
+    // Update Twitter Title
+    let twitterTitle = document.querySelector('meta[property="twitter:title"]') || document.querySelector('meta[name="twitter:title"]');
+    if (!twitterTitle) {
+      twitterTitle = document.createElement('meta');
+      twitterTitle.setAttribute('property', 'twitter:title');
+      document.head.appendChild(twitterTitle);
+    }
+    twitterTitle.setAttribute('content', currentSeo.title);
+
+    // Update Twitter Description
+    let twitterDesc = document.querySelector('meta[property="twitter:description"]') || document.querySelector('meta[name="twitter:description"]');
+    if (!twitterDesc) {
+      twitterDesc = document.createElement('meta');
+      twitterDesc.setAttribute('property', 'twitter:description');
+      document.head.appendChild(twitterDesc);
+    }
+    twitterDesc.setAttribute('content', currentSeo.desc);
+
+    // Update Twitter URL
+    let twitterUrl = document.querySelector('meta[property="twitter:url"]') || document.querySelector('meta[name="twitter:url"]');
+    if (!twitterUrl) {
+      twitterUrl = document.createElement('meta');
+      twitterUrl.setAttribute('property', 'twitter:url');
+      document.head.appendChild(twitterUrl);
+    }
+    twitterUrl.setAttribute('content', window.location.href);
   }, [currentPage]);
 
 
