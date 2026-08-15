@@ -53,39 +53,51 @@ function App() {
       window.history.pushState({}, '', targetPath);
     }
 
-    const seoMap: Record<string, { title: string; desc: string }> = {
+    const seoMap: Record<string, { title: string; desc: string; image: string }> = {
       home: {
         title: "Shree Industries | Premium Electrical Switchgears & Sheet Metal Fabrication Rajkot",
-        desc: "Shree Industries is a leading manufacturer of premium electrical switchgears, kit-kat fuses, industrial plugs, sockets, and custom sheet metal fabrication in Rajkot, Gujarat. ISO 9001:2015 certified."
+        desc: "Shree Industries is a leading manufacturer of premium electrical switchgears, kit-kat fuses, industrial plugs, sockets, and custom sheet metal fabrication in Rajkot, Gujarat. ISO 9001:2015 certified.",
+        image: "https://shree-industries.co.in/images/shree_switch_logo.png"
       },
       about: {
         title: "About Us | Shree Industries - Electrical Manufacturing Pioneers",
-        desc: "Learn about Shree Industries, a trusted name with 25+ years of manufacturing excellence in Rajkot, Gujarat. Discover our history, team, quality values, and certification standards."
+        desc: "Learn about Shree Industries, a trusted name with 25+ years of manufacturing excellence in Rajkot, Gujarat. Discover our history, team, quality values, and certification standards.",
+        image: "/seo-about.png"
       },
       products: {
         title: "Electrical Switchgears & Distribution Products | Shree Industries",
-        desc: "Explore our range of heavy-duty industrial plugs, sockets, kit-kat porcelain fuses, changeover switches, limit switches, and custom distribution boxes manufactured by Shree Industries."
+        desc: "Explore our range of heavy-duty industrial plugs, sockets, kit-kat porcelain fuses, changeover switches, limit switches, and custom distribution boxes manufactured by Shree Industries.",
+        image: "/seo-products.png"
       },
       infrastructure: {
         title: "Infrastructure & Precision Sheet Metal Machinery | Shree Industries",
-        desc: "Take a tour of our state-of-the-art manufacturing facility in Rajkot, Gujarat, equipped with automatic powder coating plants, CNC bending, and advanced sheet metal tooling."
+        desc: "Take a tour of our state-of-the-art manufacturing facility in Rajkot, Gujarat, equipped with automatic powder coating plants, CNC bending, and advanced sheet metal tooling.",
+        image: "/seo-infrastructure.png"
       },
       quality: {
         title: "Quality Control & CPRI Testing Standards | Shree Industries",
-        desc: "Discover the quality assurance processes at Shree Industries. From CPRI pre-tested switchgear models to strict raw material audits and safety check systems."
+        desc: "Discover the quality assurance processes at Shree Industries. From CPRI pre-tested switchgear models to strict raw material audits and safety check systems.",
+        image: "/seo-quality.png"
       },
       blogs: {
         title: "Industrial Electrical Insights & Industry Blog | Shree Industries",
-        desc: "Read the latest guides and insights on industrial power distribution, electrical safety standards, sheet metal design, and energy efficiency solutions."
+        desc: "Read the latest guides and insights on industrial power distribution, electrical safety standards, sheet metal design, and energy efficiency solutions.",
+        image: "/seo-blogs.png"
       },
       contact: {
         title: "Contact Us & Quotation Inquiry Desk | Shree Industries Rajkot",
-        desc: "Get in touch with Shree Industries Rajkot. Send your custom metal fabrication inquiries, dealership requests, or product quotation requirements online."
+        desc: "Get in touch with Shree Industries Rajkot. Send your custom metal fabrication inquiries, dealership requests, or product quotation requirements online.",
+        image: "/seo-contact.png"
       }
     };
 
     const currentSeo = seoMap[currentPage] || seoMap.home;
     
+    // Resolve absolute image URL path
+    const targetImage = currentSeo.image.startsWith('http')
+      ? currentSeo.image
+      : window.location.origin + currentSeo.image;
+
     // Update document title
     document.title = currentSeo.title;
     
@@ -116,6 +128,15 @@ function App() {
     }
     ogDesc.setAttribute('content', currentSeo.desc);
 
+    // Update Open Graph (OG) Image
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    ogImage.setAttribute('content', targetImage);
+
     // Update Open Graph (OG) URL
     let ogUrl = document.querySelector('meta[property="og:url"]');
     if (!ogUrl) {
@@ -142,6 +163,15 @@ function App() {
       document.head.appendChild(twitterDesc);
     }
     twitterDesc.setAttribute('content', currentSeo.desc);
+
+    // Update Twitter Image
+    let twitterImage = document.querySelector('meta[property="twitter:image"]') || document.querySelector('meta[name="twitter:image"]');
+    if (!twitterImage) {
+      twitterImage = document.createElement('meta');
+      twitterImage.setAttribute('property', 'twitter:image');
+      document.head.appendChild(twitterImage);
+    }
+    twitterImage.setAttribute('content', targetImage);
 
     // Update Twitter URL
     let twitterUrl = document.querySelector('meta[property="twitter:url"]') || document.querySelector('meta[name="twitter:url"]');
