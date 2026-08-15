@@ -4,14 +4,12 @@ interface ProductsPageProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
   setCurrentPage: (page: 'home' | 'about' | 'products') => void;
-  onProductClick: (id: number) => void;
 }
 
 export default function ProductsPage({
   selectedCategory,
   setSelectedCategory,
-  setCurrentPage,
-  onProductClick
+  setCurrentPage
 }: ProductsPageProps) {
   return (
     <div className="w-full flex flex-col">
@@ -77,12 +75,10 @@ export default function ProductsPage({
         <div className="absolute bottom-0 left-0 w-full h-[3px] bg-brand-yellow"></div>
       </section>
 
-      {/* Products Content Section (Renders the products grid and filter tabs) */}
       <ProductShowcase 
         showHeader={false} 
         activeCategory={selectedCategory}
         setActiveCategory={setSelectedCategory}
-        onProductClick={onProductClick} 
       />
     </div>
   );

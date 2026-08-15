@@ -1,16 +1,12 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Calendar,
   Clock,
-  Search,
   ArrowUpRight,
-  Mail,
   BookOpen,
   User,
-  Share2,
-  CheckCircle,
-  X
+  Share2
 } from 'lucide-react';
 
 // Import blog card background images
@@ -41,11 +37,7 @@ interface BlogArticle {
 }
 
 export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedBlogId }: BlogsPageProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
   const [internalSelectedBlogId, setInternalSelectedBlogId] = useState<number | null>(null);
-  const [emailInput, setEmailInput] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
 
   // Active blog state (combines internal page state and external selected ID)
   const activeBlogId = selectedBlogId !== undefined ? selectedBlogId : internalSelectedBlogId;
@@ -78,8 +70,6 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
       setScrollProgress(0);
     }
   }, [activeBlogId]);
-
-  const categories = ['All', 'Energy & Biofuels', 'Climate & Farming', 'Industrial Innovation'];
 
   const blogs: BlogArticle[] = [
     {
@@ -240,30 +230,7 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
     }
   ];
 
-  // Filtering blogs based on category and search query
-  const filteredBlogs = useMemo(() => {
-    return blogs.filter((blog) => {
-      const matchesCategory = selectedCategory === 'All' || blog.category === selectedCategory;
-      const matchesSearch =
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.category.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [selectedCategory, searchQuery]);
-
-  // Featured blog (typically the first one, or most recent)
   const featuredBlog = blogs[0];
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (emailInput.trim()) {
-      setIsSubscribed(true);
-      setEmailInput('');
-      setTimeout(() => setIsSubscribed(false), 5000);
-    }
-  };
-
   const currentBlog = blogs.find((b) => b.id === activeBlogId);
 
   return (
@@ -326,7 +293,7 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
             style={{ width: `${scrollProgress}%` }}
           />
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             {/* Back Button */}
             <button
               onClick={() => setActiveBlogId(null)}
@@ -339,9 +306,6 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
             {/* Title Metadata Header */}
             <div className="mb-8">
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
-                <span className="bg-[#E6F5FC] text-[#009DE1] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
-                  {currentBlog.category}
-                </span>
                 <span className="flex items-center gap-1 text-slate-500 text-xs font-semibold">
                   <Calendar className="w-3.5 h-3.5" />
                   {currentBlog.date}
@@ -474,8 +438,8 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
         <div className="w-full py-12 sm:py-20 bg-slate-50/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            {/* Featured Post Card (Hero layout) - Displayed if no filter is active */}
-            {selectedCategory === 'All' && searchQuery === '' && featuredBlog && (
+            {/* Featured Post Card (Hero layout) */}
+            {featuredBlog && (
               <div className="mb-12 sm:mb-16">
                 <div className="flex flex-col items-center gap-2 mb-4">
                   <div className="flex items-center gap-2 self-start">
@@ -494,9 +458,6 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
                       alt={featuredBlog.title}
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-[1.02] transition-transform duration-700"
                     />
-                    <div className="absolute top-4 left-4 bg-brand-blue text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm">
-                      {featuredBlog.category}
-                    </div>
                   </div>
 
                   {/* Content Column */}
@@ -534,182 +495,60 @@ export default function BlogsPage({ setCurrentPage, selectedBlogId, setSelectedB
               </div>
             )}
 
-            {/* Filter and Search Section */}
-            <div className="bg-white rounded-[24px] border border-slate-100 p-4 sm:p-6 shadow-sm mb-10 sm:mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
-              
-              {/* Category Filters */}
-              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none scroll-smooth">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer border-none ${
-                      selectedCategory === cat
-                        ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/15'
-                        : 'bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-
-              {/* Search Bar */}
-              <div className="relative w-full md:w-80">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-slate-50 hover:bg-slate-100/80 focus:bg-white text-sm text-brand-dark pl-10 pr-10 py-2.5 rounded-full border border-slate-200/60 focus:border-brand-blue focus:outline-none transition-all"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 p-0.5 text-slate-400 hover:text-slate-600 cursor-pointer bg-transparent border-none"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Article Count & Active Filter Indicator */}
-            {(selectedCategory !== 'All' || searchQuery !== '') && (
-              <div className="mb-6 flex justify-between items-center text-sm font-semibold text-slate-500">
-                <p>
-                  Found {filteredBlogs.length} {filteredBlogs.length === 1 ? 'article' : 'articles'}
-                  {selectedCategory !== 'All' && <span> in "{selectedCategory}"</span>}
-                  {searchQuery !== '' && <span> matching "{searchQuery}"</span>}
-                </p>
-                <button
-                  onClick={() => {
-                    setSelectedCategory('All');
-                    setSearchQuery('');
-                  }}
-                  className="text-brand-blue hover:underline cursor-pointer bg-transparent border-none p-0"
-                >
-                  Clear all filters
-                </button>
-              </div>
-            )}
-
             {/* Articles Grid */}
-            {filteredBlogs.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredBlogs.map((blog) => (
-                  <div
-                    key={blog.id}
-                    className="bg-white rounded-[24px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between group h-full"
-                  >
-                    {/* Top card block */}
-                    <div className="relative">
-                      <div className="h-56 relative overflow-hidden">
-                        <img
-                          src={blog.image}
-                          alt={blog.title}
-                          className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-brand-blue font-bold text-[10px] sm:text-xs uppercase tracking-wider px-3 py-1 rounded-md shadow-sm">
-                          {blog.category}
-                        </div>
-                      </div>
-
-                      <div className="p-6 text-left">
-                        {/* Meta */}
-                        <div className="flex items-center gap-4 text-xs text-slate-400 font-semibold mb-3">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="w-3.5 h-3.5" />
-                            {blog.date}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-3.5 h-3.5" />
-                            {blog.readTime}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h4 className="text-base sm:text-lg font-bold text-brand-dark leading-snug tracking-tight mb-3 group-hover:text-brand-blue transition-colors font-sans line-clamp-2">
-                          {blog.title}
-                        </h4>
-
-                        {/* Summary */}
-                        <p className="text-slate-500 text-xs sm:text-sm leading-relaxed line-clamp-3">
-                          {blog.summary}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Bottom card button block */}
-                    <div className="p-6 pt-0">
-                      <button
-                        onClick={() => setActiveBlogId(blog.id)}
-                        className="inline-flex items-center justify-center gap-2 w-full py-3 bg-[#009DE1] hover:bg-[#009DE1]/90 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-none"
-                      >
-                        Read More
-                        <ArrowUpRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="bg-white rounded-[24px] border border-slate-100 p-12 text-center shadow-sm">
-                <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                <h4 className="text-lg font-bold text-brand-dark mb-1 font-sans">No Articles Found</h4>
-                <p className="text-sm text-slate-500 max-w-sm mx-auto">
-                  We couldn't find any articles matching your search filters. Try clearing your filters or query.
-                </p>
-              </div>
-            )}
-
-            {/* Newsletter Subscription Widget */}
-            <div className="mt-16 sm:mt-24 relative overflow-hidden bg-gradient-to-r from-[#009DE1] via-[#006FA0] to-[#003E5C] rounded-[32px] p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row justify-between items-center gap-8 text-left">
-              <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-
-              <div className="relative z-10 max-w-xl">
-                <span className="text-brand-yellow font-bold text-xs uppercase tracking-widest flex items-center gap-2 mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-                  Newsletter
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight mb-4 font-sans">
-                  Stay Ahead of Sustainable Industrial Progress
-                </h3>
-                <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                  Join our professional subscriber list to receive monthly technical articles, corporate updates, and clean energy transition analyses from our director’s desk directly in your inbox.
-                </p>
-              </div>
-
-              <div className="relative z-10 w-full lg:w-96 flex-shrink-0">
-                {isSubscribed ? (
-                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[20px] p-6 text-center text-white animate-fade-in flex flex-col items-center gap-2">
-                    <CheckCircle className="w-10 h-10 text-brand-yellow" />
-                    <h5 className="font-bold text-base font-sans">Thank you for subscribing!</h5>
-                    <p className="text-xs text-white/80">You've successfully signed up to our monthly technical letters.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                    <div className="relative flex-grow">
-                      <Mail className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
-                      <input
-                        type="email"
-                        required
-                        placeholder="Enter corporate email..."
-                        value={emailInput}
-                        onChange={(e) => setEmailInput(e.target.value)}
-                        className="w-full bg-white text-brand-dark pl-11 pr-4 py-3 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-brand-yellow text-sm placeholder-slate-400 transition-all animate-none"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogs.map((blog) => (
+                <div
+                  key={blog.id}
+                  className="bg-white rounded-[24px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between group h-full"
+                >
+                  {/* Top card block */}
+                  <div className="relative">
+                    <div className="h-56 relative overflow-hidden">
+                      <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
+
+                    <div className="p-6 text-left">
+                      {/* Meta */}
+                      <div className="flex items-center gap-4 text-xs text-slate-400 font-semibold mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" />
+                          {blog.date}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" />
+                          {blog.readTime}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h4 className="text-base sm:text-lg font-bold text-brand-dark leading-snug tracking-tight mb-3 group-hover:text-brand-blue transition-colors font-sans line-clamp-2">
+                        {blog.title}
+                      </h4>
+
+                      {/* Summary */}
+                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed line-clamp-3">
+                        {blog.summary}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bottom card button block */}
+                  <div className="p-6 pt-0">
                     <button
-                      type="submit"
-                      className="px-6 py-3 bg-brand-yellow hover:bg-yellow-500 text-brand-dark font-bold text-xs uppercase tracking-wider rounded-xl hover:-translate-y-0.5 transition-all duration-300 shadow-md cursor-pointer flex-shrink-0 border-none"
+                      onClick={() => setActiveBlogId(blog.id)}
+                      className="inline-flex items-center justify-center gap-2 w-full py-3 bg-[#009DE1] hover:bg-[#009DE1]/90 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-none"
                     >
-                      Subscribe
+                      Read More
+                      <ArrowUpRight className="w-4 h-4" />
                     </button>
-                  </form>
-                )}
-              </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>

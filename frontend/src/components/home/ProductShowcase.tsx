@@ -1345,24 +1345,24 @@ const ProductShowcase = ({
       {/* Inquiry Form Modal Window Popup */}
       {!onlyShowCategories && selectedProduct && (
         <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300">
-          <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row border border-slate-100 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh]">
+          <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row border border-slate-100 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh]">
             
             {/* Modal Close Anchor */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors duration-300 cursor-pointer"
+              className="absolute top-4 right-4 z-30 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors duration-300 cursor-pointer border-none"
             >
               <X className="w-4 h-4" />
             </button>
 
-            {/* Left Box: Product Details Showcase */}
-            <div className="w-full md:w-[45%] bg-slate-50 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-100 text-left">
+            {/* Column 1 (Left): Details Showcase */}
+            <div className="w-full md:w-[48%] bg-slate-50 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-100 text-left overflow-y-auto max-h-[90vh] md:max-h-[none]">
               <div>
-                <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-3 py-1 rounded-full uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-3 py-1 rounded-full uppercase tracking-widest inline-block">
                   {selectedProduct.category}
                 </span>
                 
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-4 mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-4 mb-2 font-sans">
                   {selectedProduct.title}
                 </h3>
                 <span className="inline-block text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded mb-4 uppercase tracking-wider">
@@ -1370,7 +1370,7 @@ const ProductShowcase = ({
                 </span>
 
                 {/* Tab select bar */}
-                <div className="flex border-b border-slate-200 mb-6 mt-2">
+                <div className="flex border-b border-slate-200 mb-4 mt-1">
                   <button
                     onClick={() => setModalTab('overview')}
                     className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
@@ -1412,7 +1412,7 @@ const ProductShowcase = ({
                   </div>
                 ) : (
                   /* Specs Models Table */
-                  <div className="max-h-[300px] overflow-y-auto border border-slate-100 rounded-xl bg-white shadow-inner">
+                  <div className="max-h-[220px] overflow-y-auto border border-slate-100 rounded-xl bg-white shadow-inner">
                     <table className="w-full text-left text-[11px] border-collapse">
                       <thead>
                         <tr className="bg-slate-50 text-slate-600 font-bold border-b border-slate-100 uppercase tracking-wider">
@@ -1438,24 +1438,11 @@ const ProductShowcase = ({
                   </div>
                 )}
               </div>
-
-              <div className="mt-8 border-t border-slate-200 pt-6">
-                <span className="text-[10px] font-bold text-slate-400 block uppercase mb-1">
-                  Download catalogue
-                </span>
-                <a
-                  href="/Shree_Product-Catalogue_2026.pdf"
-                  download="Shree_Product-Catalogue_2026.pdf"
-                  className="text-xs font-bold text-brand-blue hover:text-brand-blue/80 inline-flex items-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  Download Complete Catalogue PDF (20 Pages) &rarr;
-                </a>
-              </div>
             </div>
 
-            {/* Right Box: Lead generation quotation form inputs */}
-            <div className="w-full md:w-[55%] p-8 text-left bg-white flex flex-col justify-center">
-              <h3 className="text-lg font-bold text-slate-800 tracking-tight mb-5">
+            {/* Column 2 (Right): Quotation Inquiry Form */}
+            <div className="w-full md:w-[52%] p-8 text-left bg-white flex flex-col justify-center overflow-y-auto max-h-[90vh] md:max-h-[none]">
+              <h3 className="text-xl font-bold text-slate-800 tracking-tight mb-6">
                 Quotation Inquiry Form
               </h3>
 
@@ -1471,7 +1458,7 @@ const ProductShowcase = ({
                         type="text"
                         disabled
                         value={selectedProduct.title}
-                        className="w-full px-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed"
+                        className="w-full px-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed truncate"
                       />
                     </div>
                     
@@ -1586,7 +1573,7 @@ const ProductShowcase = ({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 bg-brand-blue hover:bg-brand-blue/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 bg-brand-blue hover:bg-brand-blue/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-none"
                   >
                     {isSubmitting ? (
                       <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
@@ -1612,7 +1599,7 @@ const ProductShowcase = ({
                   </p>
                   <button
                     onClick={handleCloseModal}
-                    className="px-6 py-2.5 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                    className="px-6 py-2.5 border border-slate-200 hover:border-slate-300 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 transition-all duration-300 cursor-pointer bg-transparent"
                   >
                     Close Window
                   </button>
@@ -1620,9 +1607,9 @@ const ProductShowcase = ({
               )}
             </div>
 
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </section>
   );
 };

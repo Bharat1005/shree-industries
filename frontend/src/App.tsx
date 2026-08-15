@@ -9,14 +9,12 @@ import BlogSection from './components/home/BlogSection';
 import Footer from './components/layout/Footer';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
-import ProductDetailPage from './pages/ProductDetailPage';
 import InfrastructurePage from './pages/InfrastructurePage';
 import QualityPage from './pages/QualityPage';
 import BlogsPage from './pages/BlogsPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'product-detail' | 'infrastructure' | 'quality' | 'blogs'>('home');
-  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs'>('home');
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
 
@@ -25,10 +23,6 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' as any });
   }, [currentPage]);
 
-  const handleProductClick = (productId: number) => {
-    setSelectedProductId(productId);
-    setCurrentPage('product-detail');
-  };
 
   const handleHeaderNav = (
     page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs',
@@ -47,7 +41,7 @@ function App() {
     <div className="min-h-screen bg-white flex flex-col">
       {/* Header Navigation with routing handlers */}
       <Header 
-        currentPage={currentPage === 'product-detail' ? 'products' : currentPage === 'blogs' ? 'blogs' : currentPage} 
+        currentPage={currentPage === 'blogs' ? 'blogs' : currentPage} 
         setCurrentPage={handleHeaderNav as any} 
       />
       
@@ -76,7 +70,6 @@ function App() {
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
             setCurrentPage={handleHeaderNav as any} 
-            onProductClick={handleProductClick} 
           />
         )}
         {currentPage === 'infrastructure' && (
@@ -91,9 +84,6 @@ function App() {
             selectedBlogId={selectedBlogId}
             setSelectedBlogId={setSelectedBlogId}
           />
-        )}
-        {currentPage === 'product-detail' && selectedProductId !== null && (
-          <ProductDetailPage productId={selectedProductId} setCurrentPage={setCurrentPage as any} />
         )}
       </main>
 
