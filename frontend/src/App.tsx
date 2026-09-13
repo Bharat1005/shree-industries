@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/layout/Header';
 import HeroSlider from './components/home/HeroSlider';
 import AboutUs from './components/home/AboutUs';
-import ProductShowcase from './components/home/ProductShowcase';
+import ProductShowcase, { productsData } from './components/home/ProductShowcase';
 import Sectors from './components/home/Sectors';
 import GlobalPresence from './components/home/GlobalPresence';
 import BlogSection from './components/home/BlogSection';
@@ -14,9 +14,13 @@ import QualityPage from './pages/QualityPage';
 import BlogsPage from './pages/BlogsPage';
 import ContactPage from './pages/ContactPage';
 
+
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'>(() => {
     const path = window.location.pathname;
+    if (path.startsWith('/products')) {
+      return 'products';
+    }
     const pathToPage: Record<string, 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact'> = {
       '/': 'home',
       '/about': 'about',
@@ -31,14 +35,35 @@ function App() {
     return pathToPage[path] || 'home';
   });
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
+  const [selectedCategory, setSelectedCategory] = useState<string>(() => {
+    const path = window.location.pathname;
+    if (path.startsWith('/products')) {
+      const parts = path.split('/');
+      if (parts[2]) {
+        return decodeURIComponent(parts[2]).replace(/-/g, ' ');
+      }
+    }
+    return 'All Products';
+  });
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(() => {
+    const path = window.location.pathname;
+    if (path.startsWith('/products')) {
+      const parts = path.split('/');
+      if (parts[3]) {
+        return parseInt(parts[3], 10) || null;
+      }
+    }
+    return null;
+  });
   const [scrollToContactForm, setScrollToContactForm] = useState(false);
 
-  // Automatically scroll to the top of the viewport and update SEO Metadata when changing pages
+  // Automatically scroll to the top of the viewport when changing page routes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as any });
+  }, [currentPage]);
 
-    // Update URL query parameters to support search engine indexing
+  // Synchronize browser history and update dynamic category/product-wise SEO Metadata (including geo-based keywords)
+  useEffect(() => {
     const pageToPath: Record<string, string> = {
       home: '/',
       about: '/about',
@@ -48,7 +73,22 @@ function App() {
       blogs: '/blogs',
       contact: '/contact'
     };
-    const targetPath = pageToPath[currentPage] || '/';
+    let targetPath = pageToPath[currentPage] || '/';
+    
+    // Build sub-paths for products (pure URL pathnames)
+    if (currentPage === 'products') {
+      if (selectedCategory && selectedCategory !== 'All Products') {
+        targetPath += '/' + encodeURIComponent(selectedCategory.replace(/\s+/g, '-'));
+        if (selectedProductId) {
+          targetPath += '/' + selectedProductId;
+        }
+      } else if (selectedProductId) {
+        const product = productsData.find(p => p.id === selectedProductId);
+        const cat = product ? product.category : 'General';
+        targetPath += '/' + encodeURIComponent(cat.replace(/\s+/g, '-')) + '/' + selectedProductId;
+      }
+    }
+
     if (window.location.pathname !== targetPath || window.location.search || window.location.hash) {
       window.history.pushState({}, '', targetPath);
     }
@@ -61,7 +101,7 @@ function App() {
       },
       about: {
         title: "About Us | Shree Industries - Electrical Manufacturing Pioneers",
-        desc: "Learn about Shree Industries, a trusted name with 25+ years of manufacturing excellence in Rajkot, Gujarat. Discover our history, team, quality values, and certification standards.",
+        desc: "Learn about Shree Industries, a trusted name with 18+ years of manufacturing excellence in Rajkot, Gujarat. Discover our history, team, quality values, and certification standards.",
         image: "/seo-about.png"
       },
       products: {
@@ -91,8 +131,100 @@ function App() {
       }
     };
 
-    const currentSeo = seoMap[currentPage] || seoMap.home;
-    
+    const categorySeoMap: Record<string, { title: string; desc: string; keywords: string }> = {
+      'Switch Gear': {
+        title: "Switchgear Manufacturers in Rajkot, Gujarat | Shree Industries",
+        desc: "Looking for reliable Switchgear manufacturers in Rajkot, Gujarat, India? Shree Industries manufactures high-durability electrical changeover and limit switches built for heavy-duty industrial environments.",
+        keywords: "switchgear manufacturers rajkot, industrial changeover switches gujarat, electrical limit switches india, shree industries switchgears"
+      },
+      'Porcelain Kit Kat Fuse': {
+        title: "Porcelain Kit Kat Fuses Suppliers in Gujarat, India | Shree Industries",
+        desc: "Shree Industries is a premium supplier of Porcelain Kit Kat Fuses in Rajkot, Gujarat. Our kit-kat fuses offer superior insulation, high current ratings, and strict safety compliance.",
+        keywords: "porcelain kit kat fuse rajkot, kit kat fuse supplier gujarat, ceramic electrical fuse india, shree industries fuses"
+      },
+      'Industrial Plug & Socket': {
+        title: "Industrial Plugs & Sockets Manufacturer Rajkot | Shree Industries",
+        desc: "Discover heavy-duty industrial plugs and sockets by Shree Industries. Manufactured in Rajkot, Gujarat, matching international safety standards for reliable factory power supply.",
+        keywords: "industrial plug and socket manufacturer rajkot, heavy duty industrial sockets gujarat, electrical power plugs india, industrial switchgears"
+      },
+      'SPN Metal MCB Distribution Board': {
+        title: "SPN Metal MCB Distribution Boards Rajkot | Shree Industries",
+        desc: "Purchase top-grade Single Pole & Neutral (SPN) metal MCB distribution boards from Shree Industries, Rajkot, Gujarat. Perfect powder coated sheet metal designs.",
+        keywords: "spn metal distribution board rajkot, mcb board manufacturer gujarat, spn enclosure factory india, sheet metal db boards"
+      },
+      'TPN Metal MCB Distribution Board': {
+        title: "TPN Metal MCB Distribution Board Manufacturer Gujarat | Shree Industries",
+        desc: "Shree Industries manufactures TPN (Triple Pole & Neutral) metal MCB distribution boards in Rajkot, India. High heat dissipation, premium durability certifications.",
+        keywords: "tpn metal distribution board rajkot, tpn mcb box gujarat, 3 phase distribution board manufacturers india, shree industries"
+      },
+      'Junction Board': {
+        title: "Industrial Electrical Junction Boards Rajkot | Shree Industries",
+        desc: "Premium quality electrical junction boards manufactured by Shree Industries in Rajkot, Gujarat. Custom size modifications and sheet metal powder coating options.",
+        keywords: "junction board manufacturer rajkot, industrial electrical boxes gujarat, wire junction enclosure india, custom sheet metal boxes"
+      },
+      'Industrial Socket Board': {
+        title: "Industrial Socket Boards Manufacturers Rajkot Gujarat | Shree Industries",
+        desc: "Buy safe and durable industrial socket boards from Shree Industries. Precision manufactured in Kothariya, Rajkot with shockproof enclosures and pre-wired layouts.",
+        keywords: "industrial socket board rajkot, pre wired socket boards gujarat, heavy duty socket assembly india, shree industries"
+      },
+      'Metal Socket + MCB Board': {
+        title: "Metal Socket with MCB Boards Suppliers Rajkot | Shree Industries",
+        desc: "Premium metal socket board panels equipped with MCB protection, engineered by Shree Industries, Rajkot, Gujarat. Built for heavy electrical machines.",
+        keywords: "metal socket mcb board rajkot, mcb protected sockets gujarat, industrial metal socket enclosure india, shree industries"
+      },
+      'PVC Socket + MCB Board': {
+        title: "PVC Socket + MCB Protection Boards Rajkot | Shree Industries",
+        desc: "Explore lightweight and chemical resistant PVC socket boards with integrated MCBs manufactured in Rajkot, Gujarat by Shree Industries.",
+        keywords: "pvc socket board with mcb rajkot, plastic socket board manufacturer gujarat, chemical resistant pvc electrical boxes india"
+      },
+      'IP67 PVC Socket + MCB Board': {
+        title: "IP67 Waterproof PVC Socket Boards Rajkot | Shree Industries",
+        desc: "High-grade IP67 dustproof and waterproof PVC socket boards with MCBs by Shree Industries, Rajkot, Gujarat. Ideal for outdoor construction and wet environments.",
+        keywords: "ip67 waterproof socket board rajkot, outdoor pvc electrical board gujarat, weather resistant socket boxes india"
+      },
+      'Metal Push Button Board': {
+        title: "Metal Push Button Stations & Boards Rajkot | Shree Industries",
+        desc: "Shree Industries designs and manufactures custom metal push button control boards and station enclosures in Rajkot, Gujarat. CNC machined sheet metal panels.",
+        keywords: "metal push button board rajkot, industrial control stations gujarat, push button enclosure manufacturers india"
+      },
+      'Bus Bar Chamber': {
+        title: "Copper & Aluminum Bus Bar Chambers Rajkot | Shree Industries",
+        desc: "Leading manufacturer of high-ampere copper and aluminum bus bar chambers in Rajkot, Gujarat. Shree Industries offers CPRI tested phase distribution layouts.",
+        keywords: "bus bar chamber manufacturers rajkot, copper busbar chamber gujarat, heavy electrical distribution chamber india"
+      },
+      'AC Box Metal Enclosure': {
+        title: "AC Box Metal Enclosures Manufacturers Rajkot | Shree Industries",
+        desc: "Heavy-duty sheet metal AC box enclosures manufactured in Rajkot, Gujarat. Premium paint finish, rustproof treatments, and universal air conditioner fits.",
+        keywords: "ac box metal enclosure rajkot, sheet metal ac box gujarat, air conditioner metal cover india, electrical enclosures"
+      }
+    };
+
+    let currentSeo = seoMap[currentPage] || seoMap.home;
+    let targetKeywords = "shree industries, electrical switchgears, kit-kat fuses, distribution boards, rajkot manufacturer, gujarat electricals";
+
+    // Dynamic resolution of category/product-specific details for search bots
+    if (currentPage === 'products') {
+      if (selectedProductId) {
+        const product = productsData.find(p => p.id === selectedProductId);
+        if (product) {
+          currentSeo = {
+            title: `${product.title} Manufacturer in Rajkot, Gujarat | Shree Industries`,
+            desc: `High quality electrical ${product.title} manufactured by Shree Industries in Rajkot, Gujarat, India. Standard and custom options, safety certified.`,
+            image: product.image
+          };
+          targetKeywords = `${product.title.toLowerCase()} manufacturer, electrical ${product.category.toLowerCase()} supplier gujarat, shree industries ${product.title.toLowerCase()}`;
+        }
+      } else if (selectedCategory && selectedCategory !== 'All Products' && categorySeoMap[selectedCategory]) {
+        const catSeo = categorySeoMap[selectedCategory];
+        currentSeo = {
+          title: catSeo.title,
+          desc: catSeo.desc,
+          image: seoMap.products.image
+        };
+        targetKeywords = catSeo.keywords;
+      }
+    }
+
     // Resolve absolute image URL path
     const targetImage = currentSeo.image.startsWith('http')
       ? currentSeo.image
@@ -109,6 +241,15 @@ function App() {
       document.head.appendChild(metaDescription);
     }
     metaDescription.setAttribute('content', currentSeo.desc);
+
+    // Update Meta Keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', targetKeywords);
 
     // Update Open Graph (OG) Title
     let ogTitle = document.querySelector('meta[property="og:title"]');
@@ -181,7 +322,7 @@ function App() {
       document.head.appendChild(twitterUrl);
     }
     twitterUrl.setAttribute('content', window.location.href);
-  }, [currentPage]);
+  }, [currentPage, selectedCategory, selectedProductId]);
 
 
   const handleHeaderNav = (
@@ -192,6 +333,7 @@ function App() {
     if (page === 'products') {
       setSelectedCategory('All Products');
     }
+    setSelectedProductId(null);
     if (page === 'blogs') {
       setSelectedBlogId(blogId);
     }
@@ -216,6 +358,7 @@ function App() {
               onlyShowCategories={true}
               onCategoryClick={(category) => {
                 setSelectedCategory(category);
+                setSelectedProductId(null);
                 setCurrentPage('products');
               }}
             />
@@ -231,6 +374,8 @@ function App() {
           <ProductsPage 
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
+            selectedProductId={selectedProductId}
+            setSelectedProductId={setSelectedProductId}
             setCurrentPage={handleHeaderNav as any} 
           />
         )}

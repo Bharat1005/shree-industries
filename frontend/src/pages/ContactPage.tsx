@@ -117,7 +117,7 @@ export default function ContactPage({ setCurrentPage, scrollToForm = false, setS
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Quick Contact Info Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {/* Call Support Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md shadow-slate-100/50 flex flex-col items-center text-center group hover:shadow-xl hover:border-slate-200/80 transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-amber-50 text-brand-yellow flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
@@ -144,7 +144,7 @@ export default function ContactPage({ setCurrentPage, scrollToForm = false, setS
               </div>
             </div>
 
-            {/* Factory Address Card */}
+            {/* Office Address Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md shadow-slate-100/50 flex flex-col items-center text-center group hover:shadow-xl hover:border-slate-200/80 transition-all duration-300">
               <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                 <MapPin className="w-6 h-6" />
@@ -152,9 +152,23 @@ export default function ContactPage({ setCurrentPage, scrollToForm = false, setS
               <h3 className="text-lg font-bold text-slate-800 tracking-tight mb-3">Office Address</h3>
               <p className="text-xs text-slate-400 mb-3 max-w-[200px]">Visit our headquarters showroom & office.</p>
               <span className="text-xs font-bold text-slate-700 leading-relaxed">
-                22/30, Samrat Industrial Area,<br />
-                Behind S.T. Workshop, Ambedkar Chowk,<br />
-                Gondal Road, Rajkot - 360004, Gujarat, India
+                24/30-Samrat Industrial Area,<br />
+                B/h S.T. Workshop, Ambedkar Chowk,<br />
+                Gondal Road, Rajkot-4. (Guj.)
+              </span>
+            </div>
+
+            {/* Factory Address Card */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md shadow-slate-100/50 flex flex-col items-center text-center group hover:shadow-xl hover:border-slate-200/80 transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-800 tracking-tight mb-3">Factory Address</h3>
+              <p className="text-xs text-slate-400 mb-3 max-w-[200px]">Our main switchgear & panel production plant.</p>
+              <span className="text-xs font-bold text-slate-700 leading-relaxed">
+                Sardar Industrial Area, Plot No. 33,<br />
+                B/h. Kothariya Solvent Railway Crossing,<br />
+                Gondal Road, Kothariya, Rajkot. (Gujarat) India
               </span>
             </div>
           </div>

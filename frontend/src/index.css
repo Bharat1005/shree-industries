@@ -29,6 +29,17 @@
   --color-gray-500: #999999;
   --color-gray-100: #f2f2f2;
   --color-gray-50: #f2f2f2;
+
+  --animate-float: float 5s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
 }
 
 body {

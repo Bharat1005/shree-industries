@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import AboutUs from '../components/home/AboutUs';
 
 // Import images from assets
@@ -9,11 +9,6 @@ import aboutInt2 from '../assets/about_int2.png';
 import aboutManufacturing from '../assets/about_manufacturing_worker.png';
 import workplaceCollaboration from '../assets/workplace_collaboration.png';
 
-// Import new team profile images
-import teamVirendra from '../assets/team_virendra.png';
-import teamGyan from '../assets/team_gyan.png';
-import teamAsmita from '../assets/team_asmita.png';
-
 interface AboutPageProps {
   setCurrentPage: (page: 'home' | 'about' | 'products') => void;
 }
@@ -21,118 +16,6 @@ interface AboutPageProps {
 export default function AboutPage({ setCurrentPage }: AboutPageProps) {
   // Accordion State for Values
   const [activeValueId, setActiveValueId] = useState('partnership');
-
-  // Slider State for Team
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
-
-  // Team members list
-  const teamMembers = [
-    {
-      name: 'Virendra Singh Shaktawat',
-      role: 'Executive Director',
-      desc: 'Virendra Singh has over 37 years of proven leadership in logistics, supply chain, and shipping. He leads the Consulting and Trading verticals, combining experience and strategy to build impactful, future-ready business solutions.',
-      image: teamVirendra,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Gyan Prakash Gupta',
-      role: 'Chairman Emeritus',
-      desc: 'Gyan Prakash Gupta, fondly known as "Baba Ji," nurtured our venture with two core ethos: "Live Simple, Think Big" and "Help Everyone Selflessly Within Your Capacity." His unwavering values and visionary spirit laid the foundation for a purpose-driven enterprise.',
-      image: teamGyan,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Asmita Goel',
-      role: 'Non-Executive Director',
-      desc: 'Asmita Goel leads the Heritage Handlooms vertical, combining design sensibility with social impact to preserve traditional crafts, uplift rural artisans, and promote eco-conscious, culturally rooted craftsmanship across the country.',
-      image: teamAsmita,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Rajesh Kumar',
-      role: 'Chief Technology Officer',
-      desc: 'Rajesh leads the engineering and technical research departments, bringing over 15 years of experience in designing smart grids, high-performance switchgear mechanisms, and automated manufacturing systems.',
-      image: teamVirendra,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Nisha Patel',
-      role: 'Head of Operations & Quality',
-      desc: 'Nisha Patel oversees our quality control laboratories and production facilities, ensuring that every product manufactured meets strict ISO 9001:2015 specifications and safety standards.',
-      image: teamAsmita,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Vikram Malhotra',
-      role: 'Head of International Trade',
-      desc: 'Vikram leads our global distribution networks and export initiatives, establishing strong trade partnerships across Europe, Middle East, and Asia.',
-      image: teamVirendra,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Pooja Sharma',
-      role: 'Director of Research & Development',
-      desc: 'Pooja directs our product innovation lab, focusing on low-voltage switchgear efficiency, thermal dissipation materials, and smart-grid components.',
-      image: teamAsmita,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Devendra Vyas',
-      role: 'Financial Controller',
-      desc: "Devendra manages the company's financial operations, capital allocation, and budgeting strategies, ensuring lean manufacturing cost structures.",
-      image: teamGyan,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Siddharth Mehta',
-      role: 'Head of Corporate Sales',
-      desc: 'Siddharth leads our domestic corporate partnerships and large-scale industrial contract acquisitions across commercial segments.',
-      image: teamVirendra,
-      linkedin: 'https://linkedin.com'
-    },
-    {
-      name: 'Ananya Sen',
-      role: 'Lead Product Designer',
-      desc: 'Ananya designs our switchboard enclosures and modular accessories, focusing on premium industrial aesthetics and ergonomic usage.',
-      image: teamAsmita,
-      linkedin: 'https://linkedin.com'
-    }
-  ];
-
-  // Screen resize hook to dynamically adjust visible slider cards
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(2);
-      } else {
-        setVisibleCount(3);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const maxIndex = Math.max(0, teamMembers.length - visibleCount);
-  const canSlide = teamMembers.length > visibleCount;
-
-  // Re-bound slide index on screen resize changes
-  useEffect(() => {
-    if (slideIndex > maxIndex) {
-      setSlideIndex(maxIndex);
-    }
-  }, [maxIndex, slideIndex]);
-
-  const handlePrev = () => {
-    setSlideIndex(prev => (prev === 0 ? maxIndex : prev - 1));
-  };
-
-  const handleNext = () => {
-    setSlideIndex(prev => (prev === maxIndex ? 0 : prev + 1));
-  };
 
   const valueItems = [
     {
@@ -215,7 +98,7 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
     <div className="w-full flex flex-col">
       {/* Inner Banner Section with brand blue theme gradient background */}
       <section className="relative py-16 sm:py-24 bg-gradient-to-r from-[#009DE1] via-[#006FA0] to-[#003E5C] overflow-hidden flex items-center">
-        
+
         {/* Soft radial overlay glow matching top-left corner light */}
         <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-white/10 rounded-full blur-[80px] -translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
@@ -225,10 +108,10 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight font-sans">
               About Us
             </h1>
-            
+
             {/* Breadcrumb links */}
             <div className="text-white/80 text-xs sm:text-sm font-semibold tracking-wider mt-3 flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => setCurrentPage('home')}
                 className="hover:text-white transition-colors cursor-pointer"
               >
@@ -241,13 +124,13 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
 
           {/* Right Side: Subtle Watermark Icon (Business Gear Success) */}
           <div className="hidden md:block select-none pointer-events-none transform translate-x-4">
-            <svg 
-              className="w-48 h-48 lg:w-56 lg:h-56 text-white opacity-[0.09]" 
-              viewBox="0 0 100 100" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
+            <svg
+              className="w-48 h-48 lg:w-56 lg:h-56 text-white opacity-[0.09]"
+              viewBox="0 0 100 100"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
               strokeLinejoin="round"
             >
               {/* Gear Outline */}
@@ -273,8 +156,8 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
       {/* Our Values Interactive Accordion Section */}
       <section className="py-12 sm:py-20 bg-white w-full border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start max-h-[700px] mx-auto">
+
             {/* Left Column: Values Accordion (7 cols) */}
             <div className="lg:col-span-7 text-left flex flex-col justify-center">
               {/* Tag / Badge */}
@@ -307,9 +190,8 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
                           <div className={`${isActive ? 'text-[#009DE1]' : 'text-slate-400 group-hover:text-[#009DE1]'} transition-colors duration-300`}>
                             {item.icon}
                           </div>
-                          <span className={`text-base sm:text-lg lg:text-xl font-bold transition-colors duration-300 font-sans ${
-                            isActive ? 'text-[#009DE1]' : 'text-slate-800 group-hover:text-[#009DE1]'
-                          }`}>
+                          <span className={`text-base sm:text-lg lg:text-xl font-bold transition-colors duration-300 font-sans ${isActive ? 'text-[#009DE1]' : 'text-slate-800 group-hover:text-[#009DE1]'
+                            }`}>
                             {item.title}
                           </span>
                         </div>
@@ -319,9 +201,8 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
                       </div>
 
                       {/* Accordion Description Content */}
-                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        isActive ? 'max-h-[150px] opacity-100 mt-3 pl-16' : 'max-h-0 opacity-0 pl-16'
-                      }`}>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isActive ? 'max-h-[150px] opacity-100 mt-3 pl-16' : 'max-h-0 opacity-0 pl-16'
+                        }`}>
                         <p className="text-slate-500 text-xs sm:text-sm leading-relaxed max-w-xl font-medium">
                           {item.description}
                         </p>
@@ -348,125 +229,11 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
         </div>
       </section>
 
-      {/* Leadership Team Responsive Slider Section */}
-      <section className="py-12 sm:py-20 bg-[#003E5C] w-full text-center relative overflow-hidden">
-        {/* Decorative subtle background overlay circles */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          
-          {/* Header */}
-          <div className="flex flex-col items-center mb-8 sm:mb-12">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#009DE1]"></span>
-              <span className="text-[#009DE1] font-bold text-xs uppercase tracking-widest">
-                Our Team
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight font-sans">
-              Leadership
-            </h2>
-          </div>
-
-          {/* Slider Container with absolute buttons */}
-          <div className="relative w-full px-2 sm:px-6">
-            {canSlide && (
-              <>
-                {/* Left Prev Button */}
-                <div className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 -translate-x-0 lg:-translate-x-4 z-20">
-                  <button
-                    onClick={handlePrev}
-                    className="w-10 h-10 rounded-full flex items-center justify-center bg-[#009DE1] hover:bg-[#009DE1]/90 text-white border border-[#009DE1] cursor-pointer hover:scale-105 transition-all duration-300 shadow-lg shadow-[#009DE1]/30"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                </div>
-
-                {/* Right Next Button */}
-                <div className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 translate-x-0 lg:translate-x-4 z-20">
-                  <button
-                    onClick={handleNext}
-                    className="w-10 h-10 rounded-full flex items-center justify-center bg-[#009DE1] hover:bg-[#009DE1]/90 text-white border border-[#009DE1] cursor-pointer hover:scale-105 transition-all duration-300 shadow-lg shadow-[#009DE1]/30"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </>
-            )}
-
-            {/* Slider Content Wrapper */}
-            <div className="overflow-hidden w-full relative rounded-3xl">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ 
-                  transform: `translateX(-${slideIndex * (100 / visibleCount)}%)`,
-                  width: `${(teamMembers.length / visibleCount) * 100}%` 
-                }}
-              >
-                {teamMembers.map((member, i) => (
-                  <div 
-                    key={i} 
-                    style={{ width: `${100 / teamMembers.length}%` }}
-                    className="px-3 sm:px-4 shrink-0 flex"
-                  >
-                    {/* Individual Team Card */}
-                    <div className="bg-white rounded-3xl border border-slate-100 p-5 sm:p-8 flex flex-col justify-between text-left shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 relative w-full h-full">
-                      {/* LinkedIn profile link (top right overlay) */}
-                      {member.linkedin && (
-                        <a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 hover:bg-[#009DE1] text-slate-500 hover:text-white flex items-center justify-center transition-colors duration-300"
-                        >
-                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                          </svg>
-                        </a>
-                      )}
-
-                      {/* Card Content */}
-                      <div>
-                        {/* Circle profile picture */}
-                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#009DE1] mb-6">
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Name and Designation */}
-                        <h4 className="text-lg sm:text-xl font-bold text-[#003E5C] tracking-tight mb-1 font-sans">
-                          {member.name}
-                        </h4>
-                        <p className="text-slate-500 font-semibold text-xs sm:text-sm mb-4">
-                          {member.role}
-                        </p>
-
-                        {/* Thin gray line and biography paragraph */}
-                        <div className="border-t border-slate-100 pt-4">
-                          <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
-                            {member.desc}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
       {/* Careers CTA Section */}
       <section className="py-12 sm:py-20 bg-slate-50 w-full border-t border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 lg:gap-16 items-center">
-            
+
             {/* Left Column: Image (5 cols) */}
             <div className="md:col-span-5 flex justify-center items-center">
               <div className="w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-lg border border-slate-100 bg-white">
@@ -483,7 +250,7 @@ export default function AboutPage({ setCurrentPage }: AboutPageProps) {
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#003E5C] tracking-tight mb-4 font-sans leading-tight">
                 Join a workplace fueled by Innovation and Creativity
               </h2>
-              
+
               <h3 className="text-base sm:text-lg font-semibold text-[#009DE1] mb-4">
                 Be part of a team where Innovation meets Imagination
               </h3>

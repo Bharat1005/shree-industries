@@ -3,12 +3,16 @@ import ProductShowcase from '../components/home/ProductShowcase';
 interface ProductsPageProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
+  selectedProductId: number | null;
+  setSelectedProductId: (id: number | null) => void;
   setCurrentPage: (page: 'home' | 'about' | 'products') => void;
 }
 
 export default function ProductsPage({
   selectedCategory,
   setSelectedCategory,
+  selectedProductId,
+  setSelectedProductId,
   setCurrentPage
 }: ProductsPageProps) {
   return (
@@ -77,8 +81,12 @@ export default function ProductsPage({
 
       <ProductShowcase 
         showHeader={false} 
+        onlyShowCategories={selectedCategory === 'All Products'}
         activeCategory={selectedCategory}
         setActiveCategory={setSelectedCategory}
+        onCategoryClick={(category) => setSelectedCategory(category)}
+        selectedProductId={selectedProductId}
+        setSelectedProductId={setSelectedProductId}
       />
     </div>
   );

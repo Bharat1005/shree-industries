@@ -160,8 +160,8 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
                   </div>
                   <div>
                     <h5 className="font-bold text-xs text-slate-700 uppercase tracking-wider">Office</h5>
-                    <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mt-0.5">
-                      22/30-Samrat industrial Area, B/h. S.T. Workshop, ambedkar Chowk, Gondal Road, Rajkot-4. (Guj.)
+                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mt-0.5">
+                      24/30-Samrat Industrial Area, B/h S.T. Workshop, Ambedkar Chowk, Gondal Road, Rajkot-4. (Guj.)
                     </p>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ const Footer = ({ setCurrentPage }: FooterProps) => {
                   <div>
                     <h5 className="font-bold text-xs text-slate-700 uppercase tracking-wider">Factory</h5>
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mt-0.5">
-                      Sardar Industrial Area, Plot No. 33, B/h. Kothariya Solvent Railway Crossing, Gondal Road, Kothariya, Rajkot. (Gujrat) India.
+                      Sardar Industrial Area, Plot No. 33, B/h. Kothariya Solvent Railway Crossing, Gondal Road, Kothariya, Rajkot. (Gujarat) India.
                     </p>
                   </div>
                 </div>

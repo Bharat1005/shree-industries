@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, X, CheckCircle, ArrowRight, Zap, Flame, Plug, Grid, Boxes, GitMerge, Disc, Layers, Folder, Droplets, CircleDot, Cable, Wind } from 'lucide-react';
+import { X, CheckCircle, ArrowRight, Zap, Flame, Plug, Grid, Boxes, GitMerge, Disc, Layers, Folder, Droplets, CircleDot, Cable, Wind } from 'lucide-react';
 
 // Import local assets
 import liveImg1 from '../../assets/live_catalog_images/project_1.jpg';
@@ -1054,6 +1054,8 @@ interface ProductShowcaseProps {
   activeCategory?: string;
   setActiveCategory?: (category: string) => void;
   onCategoryClick?: (category: string) => void;
+  selectedProductId?: number | null;
+  setSelectedProductId?: (id: number | null) => void;
 }
 
 const ProductShowcase = ({
@@ -1062,7 +1064,9 @@ const ProductShowcase = ({
   onlyShowCategories = false,
   activeCategory: controlledCategory,
   setActiveCategory: controlledSetActiveCategory,
-  onCategoryClick
+  onCategoryClick,
+  selectedProductId,
+  setSelectedProductId
 }: ProductShowcaseProps) => {
   const [internalCategory, setInternalCategory] = useState('Switch Gear');
   const activeCategory = controlledCategory !== undefined ? controlledCategory : internalCategory;
@@ -1074,20 +1078,42 @@ const ProductShowcase = ({
     }
   };
 
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [localSelectedProduct, setLocalSelectedProduct] = useState<Product | null>(null);
+  const selectedProduct = selectedProductId !== undefined
+    ? productsData.find(p => p.id === selectedProductId) || null
+    : localSelectedProduct;
+
+  const setSelectedProduct = (prod: Product | null) => {
+    if (setSelectedProductId) {
+      setSelectedProductId(prod ? prod.id : null);
+    } else {
+      setLocalSelectedProduct(prod);
+    }
+  };
   const [modalTab, setModalTab] = useState<'overview' | 'models'>('overview');
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Form submission states
+  // Quotation Form states
+  const [formModel, setFormModel] = useState('General Inquiry');
   const [formName, setFormName] = useState('');
+  const [formCompany, setFormCompany] = useState('');
   const [formEmail, setFormEmail] = useState('');
   const [formPhone, setFormPhone] = useState('');
-  const [formCompany, setFormCompany] = useState('');
-  const [formQty, setFormQty] = useState('100');
-  const [formModel, setFormModel] = useState('General Inquiry');
+  const [formQty, setFormQty] = useState('1');
   const [formMessage, setFormMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInquirySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate submission delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }, 1200);
+  };
 
   const filteredProducts = productsData.filter(product => {
     const matchesCategory = activeCategory === 'All Products' || product.category === activeCategory;
@@ -1104,27 +1130,27 @@ const ProductShowcase = ({
     return matchesCategory && matchesSearch;
   });
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API request delay
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1200);
-  };
-
   const handleCloseModal = () => {
     setSelectedProduct(null);
-    setIsSubmitted(false);
+    setFormModel('General Inquiry');
     setFormName('');
+    setFormCompany('');
     setFormEmail('');
     setFormPhone('');
-    setFormCompany('');
-    setFormQty('100');
-    setFormModel('General Inquiry');
+    setFormQty('1');
     setFormMessage('');
+    setIsSubmitted(false);
+  };
+  const handleCardClick = (productId: number) => {
+    const product = productsData.find(p => p.id === productId);
+    if (product) {
+      if (onProductClick) {
+        onProductClick(productId);
+      } else {
+        setSelectedProduct(product);
+        setModalTab('overview');
+      }
+    }
   };
 
   return (
@@ -1160,7 +1186,12 @@ const ProductShowcase = ({
                     return (
                       <div
                         key={cat.name}
-                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300"
+                        onClick={() => {
+                          if (onCategoryClick) {
+                            onCategoryClick(cat.name);
+                          }
+                        }}
+                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300 cursor-pointer"
                       >
                         {/* Representative Category Image Wrapper */}
                         <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
@@ -1187,7 +1218,7 @@ const ProductShowcase = ({
                           </p>
 
                           {/* Bullet Specifications */}
-                          <div className="border-t border-slate-100 pt-4 mb-5 space-y-2">
+                          <div className="border-t border-slate-100 pt-4 mb-0 space-y-2">
                             {cat.specs?.map((spec, i) => (
                               <div key={i} className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#00B7AC]"></span>
@@ -1195,19 +1226,6 @@ const ProductShowcase = ({
                               </div>
                             ))}
                           </div>
-
-                          {/* Button */}
-                          <button
-                            onClick={() => {
-                              if (onCategoryClick) {
-                                onCategoryClick(cat.name);
-                              }
-                            }}
-                            className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-50 group-hover:bg-brand-blue group-hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 group/btn cursor-pointer hover:-translate-y-0.5"
-                          >
-                            Inquire Now
-                            <Mail className="w-4 h-4 transition-transform duration-300 group-hover/btn:scale-110" />
-                          </button>
                         </div>
                       </div>
                     );
@@ -1240,8 +1258,15 @@ const ProductShowcase = ({
                   {/* Search and Stats bar */}
                   <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-8 mt-10 pb-4 border-b border-slate-200">
                     <div className="text-left font-sans">
-                      <p className="text-xs sm:text-sm text-slate-500">
-                        Category: <strong className="text-slate-800 font-bold">{activeCategory}</strong>
+                      <p className="text-xs sm:text-sm text-slate-500 flex items-center flex-wrap gap-1.5">
+                        <span>Category:</span>
+                        <strong className="text-slate-800 font-bold">{activeCategory}</strong>
+                        <button
+                          onClick={() => setActiveCategory('All Products')}
+                          className="text-[11px] text-[#009DE1] hover:underline font-bold ml-1.5 cursor-pointer uppercase tracking-wider"
+                        >
+                          (Back to Categories)
+                        </button>
                       </p>
                       <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
                         Found {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} matching current filters
@@ -1272,7 +1297,8 @@ const ProductShowcase = ({
                     {filteredProducts.map((product) => (
                       <div
                         key={product.id}
-                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300"
+                        onClick={() => handleCardClick(product.id)}
+                        className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300 cursor-pointer"
                       >
                         {/* Image Showcase Wrapper */}
                         <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
@@ -1281,15 +1307,12 @@ const ProductShowcase = ({
                             alt={product.title}
                             className="max-h-full max-w-full object-contain transform transition-transform duration-500 group-hover:scale-105"
                           />
-                          <span className="absolute top-4 left-4 bg-slate-900/5 text-slate-600 px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
-                            {product.category}
-                          </span>
                         </div>
 
                         {/* Text Description Box */}
                         <div className="p-6 flex flex-col flex-grow text-left">
                           <div className="flex justify-between items-start gap-2 mb-2">
-                            <h4 className="text-base sm:text-lg font-semibold text-[#009DE1] font-sans tracking-tight mb-2 group-hover:text-brand-blue transition-colors duration-300">
+                            <h4 className="text-base sm:text-lg font-semibold text-[#009DE1] font-sans tracking-tight mb-2 group-hover:text-brand-blue transition-colors duration-300 hover:underline">
                               {product.title}
                             </h4>
                             <span className="shrink-0 text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 uppercase tracking-wide">
@@ -1302,7 +1325,7 @@ const ProductShowcase = ({
                           </p>
 
                           {/* Bullet Specifications */}
-                          <div className="border-t border-slate-100 pt-4 mb-5 space-y-2">
+                          <div className="border-t border-slate-100 pt-4 mb-0 space-y-2">
                             {product.specs.slice(0, 2).map((spec, i) => (
                               <div key={i} className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#00B7AC]"></span>
@@ -1310,22 +1333,6 @@ const ProductShowcase = ({
                               </div>
                             ))}
                           </div>
-
-                          {/* CTA Action Button */}
-                          <button
-                            onClick={() => {
-                              if (onProductClick) {
-                                onProductClick(product.id);
-                              } else {
-                                setSelectedProduct(product);
-                                setModalTab('overview');
-                              }
-                            }}
-                            className="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-50 group-hover:bg-brand-blue group-hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-lg transition-all duration-300 group/btn cursor-pointer hover:-translate-y-0.5"
-                          >
-                            Inquire Now
-                            <Mail className="w-4 h-4 transition-transform duration-300 group-hover/btn:scale-110" />
-                          </button>
                         </div>
                       </div>
                     ))}
@@ -1464,7 +1471,7 @@ const ProductShowcase = ({
                     
                     {/* pre-filled model selection dropdown */}
                     <div>
-                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-650 uppercase mb-1">
                         Select Model / Rating *
                       </label>
                       <select
@@ -1485,7 +1492,7 @@ const ProductShowcase = ({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                         Full Name *
                       </label>
                       <input
@@ -1494,12 +1501,12 @@ const ProductShowcase = ({
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                         Company Name
                       </label>
                       <input
@@ -1507,14 +1514,14 @@ const ProductShowcase = ({
                         value={formCompany}
                         onChange={(e) => setFormCompany(e.target.value)}
                         placeholder="Power Grid Corp"
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                         Email Address *
                       </label>
                       <input
@@ -1523,12 +1530,12 @@ const ProductShowcase = ({
                         value={formEmail}
                         onChange={(e) => setFormEmail(e.target.value)}
                         placeholder="john@example.com"
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                      <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                         Phone Number *
                       </label>
                       <input
@@ -1537,13 +1544,13 @@ const ProductShowcase = ({
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
                         placeholder="+91 98765 43210"
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                    <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                       Estimated Order Quantity (Units) *
                     </label>
                     <input
@@ -1552,12 +1559,12 @@ const ProductShowcase = ({
                       min="1"
                       value={formQty}
                       onChange={(e) => setFormQty(e.target.value)}
-                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-brand-blue bg-white font-medium"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
+                    <label className="block text-[10px] sm:text-xs font-bold text-slate-655 uppercase mb-1">
                       Requirements / Message
                     </label>
                     <textarea
@@ -1565,7 +1572,7 @@ const ProductShowcase = ({
                       value={formMessage}
                       onChange={(e) => setFormMessage(e.target.value)}
                       placeholder="Please specify customization details or certifications required..."
-                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue resize-none"
+                      className="w-full px-3 py-2 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-brand-blue resize-none bg-white font-medium"
                     />
                   </div>
 
@@ -1573,7 +1580,7 @@ const ProductShowcase = ({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 bg-brand-blue hover:bg-brand-blue/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-none"
+                    className="w-full py-3 bg-[#009DE1] hover:bg-[#009DE1]/95 disabled:bg-slate-300 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-lg shadow-brand-blue/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border-none"
                   >
                     {isSubmitting ? (
                       <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>

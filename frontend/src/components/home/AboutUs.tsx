@@ -9,25 +9,25 @@ const AboutUs = ({ showHeader = true }: { showHeader?: boolean }) => {
     {
       id: 1,
       icon: <Clock className="w-8 h-8 text-[#009DE1]" />,
-      count: "25+",
+      count: "18+",
       label: "Years of Experience"
     },
     {
       id: 2,
       icon: <Smile className="w-8 h-8 text-[#009DE1]" />,
-      count: "200+",
+      count: "230+",
       label: "Happy Clients"
     },
     {
       id: 3,
       icon: <Folder className="w-8 h-8 text-[#009DE1]" />,
-      count: "5000+",
+      count: "2000+",
       label: "Completed Projects"
     },
     {
       id: 4,
       icon: <Boxes className="w-8 h-8 text-[#009DE1]" />,
-      count: "50+",
+      count: "80+",
       label: "Product Ranges"
     },
     {

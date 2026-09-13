@@ -3,30 +3,31 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ArrowRight } from 'lucide-react';
 
+import bgImg1 from '../../assets/about_main.png';
+import bgImg2 from '../../assets/about_int1.png';
+import bgImg3 from '../../assets/about_int2.png';
+
 const slides = [
   {
     id: 1,
     subtitle: 'Manufacturing High Quality',
     title: 'Industrial Switchgear &\nElectrical Metal Enclosures',
     description: 'Delivering innovative & reliable electrical solutions\nfor a safer and stronger tomorrow.',
-    // Industrial switchgear control room / manufacturing plant
-    bgImage: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80',
+    bgImage: bgImg1,
   },
   {
     id: 2,
     subtitle: 'Advanced Technology',
     title: 'Custom Electrical Panels &\nControl Systems',
     description: 'Engineered for maximum efficiency and safety in\ndemanding industrial environments.',
-    // Electrical engineering / wiring close up
-    bgImage: 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    bgImage: bgImg2,
   },
   {
     id: 3,
     subtitle: 'Trusted Worldwide',
     title: 'Global Export of\nPremium Switchgears',
     description: 'Meeting international standards with our complete\nrange of electrical distribution solutions.',
-    // Large scale industrial plant
-    bgImage: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+    bgImage: bgImg3,
   }
 ];
 

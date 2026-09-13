@@ -37,7 +37,7 @@ const Header = ({ currentPage, setCurrentPage }: HeaderProps) => {
             </div>
             <div className="hidden md:flex items-center gap-1.5 text-brand-yellow">
               <Award size={16} />
-              <span className="text-white">25+ Years of Manufacturing Excellence</span>
+              <span className="text-white">18+ Years of Manufacturing Excellence</span>
             </div>
           </div>
           <div className="flex items-center gap-4 sm:gap-6">
