@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, CheckCircle, ArrowRight, Zap, Flame, Plug, Grid, Boxes, GitMerge, Disc, Layers, Folder, Droplets, CircleDot, Cable, Wind } from 'lucide-react';
+import { X, CheckCircle, ArrowRight, Zap, Flame, Plug, Grid, Boxes, GitMerge, Disc, Layers, Folder, Droplets, CircleDot, Cable, Wind, ChevronDown } from 'lucide-react';
 
 // Import local assets
 import liveImg1 from '../../assets/live_catalog_images/project_1.jpg';
@@ -1092,6 +1092,7 @@ const ProductShowcase = ({
   };
   const [modalTab, setModalTab] = useState<'overview' | 'models'>('overview');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isCategoryAccordionOpen, setIsCategoryAccordionOpen] = useState(false);
   
   // Quotation Form states
   const [formModel, setFormModel] = useState('General Inquiry');
@@ -1232,25 +1233,89 @@ const ProductShowcase = ({
                   })}
                 </div>
               ) : (
-                /* Category Selection Tabs (original style with no icons) for the Products page */
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => {
-                        setActiveCategory(category);
-                        setSearchQuery(''); // clear search when switching categories
-                      }}
-                      className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
-                        activeCategory === category
-                          ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
-                          : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
+                <>
+                  {/* Tablet + Mobile Category Accordion Selector (< lg screens) */}
+                  <div className="block lg:hidden w-full mb-6">
+                    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all duration-300">
+                      <button
+                        type="button"
+                        onClick={() => setIsCategoryAccordionOpen(!isCategoryAccordionOpen)}
+                        className="w-full px-5 py-4 flex items-center justify-between text-left bg-white hover:bg-slate-50/80 active:bg-slate-100 transition-colors cursor-pointer outline-none select-none"
+                        aria-expanded={isCategoryAccordionOpen}
+                      >
+                        <div className="flex flex-col text-left">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">
+                            Category
+                          </span>
+                          <span className="text-sm sm:text-base font-bold text-slate-800 tracking-tight">
+                            {activeCategory}
+                          </span>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 transition-colors shrink-0">
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform duration-300 ${
+                              isCategoryAccordionOpen ? 'transform rotate-180 text-[#009DE1]' : 'text-slate-500'
+                            }`}
+                          />
+                        </div>
+                      </button>
+
+                      {/* Expandable Accordion Body */}
+                      <div
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                          isCategoryAccordionOpen ? 'max-h-[1200px] opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'
+                        }`}
+                      >
+                        <div className="p-3 bg-slate-50/70 flex flex-col gap-1.5">
+                          {categories.map((category) => {
+                            const isSelected = activeCategory === category;
+                            return (
+                              <button
+                                key={category}
+                                type="button"
+                                onClick={() => {
+                                  setActiveCategory(category);
+                                  setSearchQuery('');
+                                  setIsCategoryAccordionOpen(false);
+                                }}
+                                className={`w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide text-left transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                                  isSelected
+                                    ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20'
+                                    : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'
+                                }`}
+                              >
+                                <span>{category}</span>
+                                {isSelected && (
+                                  <span className="w-2 h-2 rounded-full bg-white shrink-0 ml-2"></span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop Category Selection Tabs (original buttons/chips layout for >= lg screens) */}
+                  <div className="hidden lg:flex flex-wrap gap-2">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setActiveCategory(category);
+                          setSearchQuery(''); // clear search when switching categories
+                        }}
+                        className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
+                          activeCategory === category
+                            ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
 
               {!onlyShowCategories && (
