@@ -49,7 +49,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API request delay
     setTimeout(() => {
       setIsSubmitting(false);
@@ -66,6 +66,8 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
     document.body.removeChild(link);
   };
 
+
+  // sdsfsdfsdefsdfdsff
   return (
     <div className="w-full flex flex-col bg-white">
       {/* Inner Banner Section with brand blue theme gradient background */}
@@ -82,17 +84,17 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight font-sans mt-1">
               {product.title}
             </h1>
-            
+
             {/* Breadcrumb links */}
             <div className="text-white/80 text-xs sm:text-sm font-semibold tracking-wider mt-3 flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => setCurrentPage('home')}
                 className="hover:text-white transition-colors cursor-pointer"
               >
                 Home
               </button>
               <span className="text-white/40">/</span>
-              <button 
+              <button
                 onClick={() => setCurrentPage('products')}
                 className="hover:text-white transition-colors cursor-pointer"
               >
@@ -128,7 +130,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
 
         {/* Upper Segment: Image Showcase & Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-4">
-          
+
           {/* Left Column: Image Box & HSN Code (5 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="w-full aspect-[4/3] bg-white rounded-3xl border border-slate-100 p-8 sm:p-12 flex items-center justify-center shadow-lg shadow-slate-100/50 relative">
@@ -141,7 +143,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
                 HSN Code: {product.hsnCode}
               </span>
             </div>
-            
+
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 flex items-start gap-4">
               <ShieldCheck className="w-6 h-6 text-brand-blue shrink-0 mt-0.5" />
               <div>
@@ -171,22 +173,20 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
             <div className="flex border-b border-slate-100 mb-6">
               <button
                 onClick={() => setActiveTab('features')}
-                className={`pb-3 px-4 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-colors cursor-pointer ${
-                  activeTab === 'features'
+                className={`pb-3 px-4 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-colors cursor-pointer ${activeTab === 'features'
                     ? 'border-brand-blue text-brand-blue'
                     : 'border-transparent text-slate-500 hover:text-slate-800'
-                }`}
+                  }`}
               >
                 Key Features
               </button>
               {product.models && product.models.length > 0 && (
                 <button
                   onClick={() => setActiveTab('models')}
-                  className={`pb-3 px-4 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-colors cursor-pointer ${
-                    activeTab === 'models'
+                  className={`pb-3 px-4 text-xs sm:text-sm font-bold uppercase tracking-wider border-b-2 transition-colors cursor-pointer ${activeTab === 'models'
                       ? 'border-brand-blue text-brand-blue'
                       : 'border-transparent text-slate-500 hover:text-slate-800'
-                  }`}
+                    }`}
                 >
                   Technical Specifications ({product.models.length})
                 </button>
@@ -289,7 +289,7 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
                         className="w-full px-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed"
                       />
                     </div>
-                    
+
                     {/* Model selection */}
                     <div>
                       <label className="block text-[10px] sm:text-xs font-bold text-slate-600 uppercase mb-1">
