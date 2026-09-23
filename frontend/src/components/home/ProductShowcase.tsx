@@ -59,105 +59,105 @@ export const categories = [
 
 // Map of category names to their corresponding icons and styles for the UI
 const categoryMeta = [
-  { 
-    name: 'Switch Gear', 
-    icon: Zap, 
+  {
+    name: 'Switch Gear',
+    icon: Zap,
     color: 'bg-amber-50 text-amber-500',
     image: liveImg1,
     description: 'Robust LT control reverse-forward switches designed for heavy mechanical operations, featuring silver-point contacts and durable bakelite block base.',
     specs: ['16G Solid Metal Body', 'EC Grade Copper Contacts']
   },
-  { 
-    name: 'Porcelain Kit Kat Fuse', 
-    icon: Flame, 
+  {
+    name: 'Porcelain Kit Kat Fuse',
+    icon: Flame,
     color: 'bg-orange-50 text-orange-500',
     image: liveImg9,
     description: 'Standard ceramic porcelain kit-kat fuses (K-Type) designed with high mechanical dielectric strength and robust nickel-plated brass contacts.',
     specs: ['Cream Porcelain Body', 'Nickel Plated Brass Contacts']
   },
-  { 
-    name: 'Industrial Plug & Socket', 
-    icon: Plug, 
+  {
+    name: 'Industrial Plug & Socket',
+    icon: Plug,
     color: 'bg-blue-50 text-blue-500',
     image: liveImg14,
     description: 'Weatherproof industrial plugs, sockets, and connectors with solid brass contact pins, suitable for harsh factory environments.',
     specs: ['IP44 & IP67 Splash-Proof', 'Heavy Nylon Impact Body']
   },
-  { 
-    name: 'SPN Metal MCB Distribution Board', 
-    icon: Grid, 
+  {
+    name: 'SPN Metal MCB Distribution Board',
+    icon: Grid,
     color: 'bg-teal-50 text-teal-500',
     image: liveImg10,
     description: 'Compact sheet metal MCB enclosures and distribution boards for single-phase installations, finished with electrostatic powder coating.',
     specs: ['22G Solid Sheet Metal', 'Flush & Single Door Style']
   },
-  { 
-    name: 'TPN Metal MCB Distribution Board', 
-    icon: Boxes, 
+  {
+    name: 'TPN Metal MCB Distribution Board',
+    icon: Boxes,
     color: 'bg-emerald-50 text-emerald-500',
     image: liveImg13,
     description: 'Three-phase distribution boards for heavy-duty industrial setups, featuring neutral links and protective shield plates.',
     specs: ['Double Door Safety Shield', 'Copper Phase Links']
   },
-  { 
-    name: 'Junction Board', 
-    icon: GitMerge, 
+  {
+    name: 'Junction Board',
+    icon: GitMerge,
     color: 'bg-purple-50 text-purple-500',
     image: liveImg17,
     description: 'Sturdy sheet metal wiring junction enclosures designed with internal terminal mounts and knockouts for quick wiring links.',
     specs: ['Sturdy 22G Sheet Metal', 'Grounding Point Screws']
   },
-  { 
-    name: 'Industrial Socket Board', 
-    icon: Disc, 
+  {
+    name: 'Industrial Socket Board',
+    icon: Disc,
     color: 'bg-indigo-50 text-indigo-500',
     image: liveImg14,
     description: 'Modular panel board mounting industrial sockets with integrated SP or DP MCBs and flip cover slots.',
     specs: ['IP54 Splash Proof Sockets', 'Integrated DIN Rail MCB']
   },
-  { 
-    name: 'Metal Socket + MCB Board', 
-    icon: Layers, 
+  {
+    name: 'Metal Socket + MCB Board',
+    icon: Layers,
     color: 'bg-cyan-50 text-cyan-500',
     image: liveImg15,
     description: 'Heavy-duty distribution metal boards with customizable cutouts for industrial socket and MCB breaker configurations.',
     specs: ['Scratch-Proof Powder finish', 'Pre-fitted DIN Rails']
   },
-  { 
-    name: 'PVC Socket + MCB Board', 
-    icon: Folder, 
+  {
+    name: 'PVC Socket + MCB Board',
+    icon: Folder,
     color: 'bg-sky-50 text-sky-500',
     image: liveImg15,
     description: 'High impact ABS plastic board units designed to hold PVC socket outlets and MCB control switches.',
     specs: ['High impact ABS plastic body', 'Pre-fitted DIN Rails']
   },
-  { 
-    name: 'IP67 PVC Socket + MCB Board', 
-    icon: Droplets, 
+  {
+    name: 'IP67 PVC Socket + MCB Board',
+    icon: Droplets,
     color: 'bg-cyan-50 text-cyan-500',
     image: liveImg14,
     description: 'IP67 fully waterproof outdoor socket boards with carrying handles, built to withstand outdoor industrial zones.',
     specs: ['IP67 Outdoor Waterproof', 'Carrying Handle Design']
   },
-  { 
-    name: 'Metal Push Button Board', 
-    icon: CircleDot, 
+  {
+    name: 'Metal Push Button Board',
+    icon: CircleDot,
     color: 'bg-rose-50 text-rose-500',
     image: liveImg16,
     description: 'Sheet metal push-button station enclosures pre-punched with standard 22mm holes and finished with shock-proof coating.',
     specs: ['Standard 22mm Hole stations', 'Shock-Proof Paint Finish']
   },
-  { 
-    name: 'Bus Bar Chamber', 
-    icon: Cable, 
+  {
+    name: 'Bus Bar Chamber',
+    icon: Cable,
     color: 'bg-pink-50 text-pink-500',
     image: liveImg7,
     description: 'Sleek and heavy-duty busbar chambers featuring solid electrolytic copper bars and insulated support blocks.',
     specs: ['Solid Electrolytic Copper Bars', 'Thick Gauge Steel Body']
   },
-  { 
-    name: 'AC Box Metal Enclosure', 
-    icon: Wind, 
+  {
+    name: 'AC Box Metal Enclosure',
+    icon: Wind,
     color: 'bg-sky-50 text-sky-600',
     image: liveImg16,
     description: 'Compact air conditioner metal enclosures equipped with built-in plugs and quick-fit DIN rails.',
@@ -175,10 +175,10 @@ export const productsData: Product[] = [
     specs: ['16G Solid Metal Body', 'EC Grade Copper Contacts', 'P.F Moulding Bakelite Block', 'Electric Proof Coating'],
     hsnCode: '85365010',
     models: [
-      {catNo: 'RF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F'},
-      {catNo: 'OF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF'},
-      {catNo: 'RF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F'},
-      {catNo: 'OF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF'}
+      { catNo: 'RF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F' },
+      { catNo: 'OF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF' },
+      { catNo: 'RF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F' },
+      { catNo: 'OF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF' }
     ]
   },
   {
@@ -190,10 +190,10 @@ export const productsData: Product[] = [
     specs: ['SIEMENS Type Model design', 'Silver Point Metal Contacts', '360 Rotating steel Handle', 'Shock Proof Coating Finish'],
     hsnCode: '85365010',
     models: [
-      {catNo: 'RFS4003', rating: '40 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'R/F'},
-      {catNo: 'OFS4003', rating: '40 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'ON/OFF'},
-      {catNo: 'RFSB4003', rating: '40 Amp (Big)', poles: '3 Pole', volts: '440V', pkg: '12', type: 'R/F'},
-      {catNo: 'OFSB4003', rating: '40 Amp (Big)', poles: '3 Pole', volts: '440V', pkg: '12', type: 'ON/OFF'}
+      { catNo: 'RFS4003', rating: '40 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'R/F' },
+      { catNo: 'OFS4003', rating: '40 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'ON/OFF' },
+      { catNo: 'RFSB4003', rating: '40 Amp (Big)', poles: '3 Pole', volts: '440V', pkg: '12', type: 'R/F' },
+      { catNo: 'OFSB4003', rating: '40 Amp (Big)', poles: '3 Pole', volts: '440V', pkg: '12', type: 'ON/OFF' }
     ]
   },
   {
@@ -205,14 +205,14 @@ export const productsData: Product[] = [
     specs: ['New Plastic Body Design', 'Silver Point Metal Contact', 'Connection Bakelite', 'Pressure & Diff. Adjustable'],
     hsnCode: '90322090',
     models: [
-      {catNo: 'PR09', rating: '1-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PR15', rating: '1-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PRV09', rating: '1-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PRV15', rating: '1-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PR09X', rating: '4-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PR15X', rating: '4-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PRV09X', rating: '4-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch'},
-      {catNo: 'PRV15X', rating: '4-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch'}
+      { catNo: 'PR09', rating: '1-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PR15', rating: '1-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PRV09', rating: '1-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PRV15', rating: '1-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PR09X', rating: '4-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PR15X', rating: '4-Port / 16A', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PRV09X', rating: '4-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch' },
+      { catNo: 'PRV15X', rating: '4-Port / 16A (With Valve)', volts: '220V', pkg: '50', type: 'Auto Switch' }
     ]
   },
   {
@@ -224,9 +224,9 @@ export const productsData: Product[] = [
     specs: ['Nylon-6 Glass Field Material', 'EC Grade Copper Rivet', 'Dust Proof Body construction', 'Easy To Connect & Durable'],
     hsnCode: '85365010',
     models: [
-      {catNo: 'GRS1602', rating: '16 Amp', poles: '2 Pole', volts: '240V', pkg: '100', type: 'Rotary Switch'},
-      {catNo: 'GRS1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '100', type: 'Rotary Switch'},
-      {catNo: 'GRS1003', rating: '10 Amp', poles: '3 Pole', volts: '440V', pkg: '100', type: 'Rotary Switch'}
+      { catNo: 'GRS1602', rating: '16 Amp', poles: '2 Pole', volts: '240V', pkg: '100', type: 'Rotary Switch' },
+      { catNo: 'GRS1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '100', type: 'Rotary Switch' },
+      { catNo: 'GRS1003', rating: '10 Amp', poles: '3 Pole', volts: '440V', pkg: '100', type: 'Rotary Switch' }
     ]
   },
   {
@@ -238,12 +238,12 @@ export const productsData: Product[] = [
     specs: ['Heavy Thick Sheet Metal Body', 'Nickel Plated Brass Contacts', 'Pure Copper Top Contacts', 'Strong Metal Handle'],
     hsnCode: '85353090',
     models: [
-      {catNo: 'MCTP1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'MCTP Main'},
-      {catNo: 'MCTP3202', rating: '32 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '20', type: 'DP Main'},
-      {catNo: 'MCTP3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'MCTP Main'},
-      {catNo: 'MCTP6303', rating: '63 Amp', poles: '3 Pole', volts: '440V', pkg: '10', type: 'MCTP Main'},
-      {catNo: 'MCTP10003', rating: '100 Amp', poles: '3 Pole', volts: '440V', pkg: '4', type: 'MCTP Main'},
-      {catNo: 'MCTP20003', rating: '200 Amp', poles: '3 Pole', volts: '440V', pkg: '2', type: 'MCTP Main'}
+      { catNo: 'MCTP1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'MCTP Main' },
+      { catNo: 'MCTP3202', rating: '32 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '20', type: 'DP Main' },
+      { catNo: 'MCTP3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '20', type: 'MCTP Main' },
+      { catNo: 'MCTP6303', rating: '63 Amp', poles: '3 Pole', volts: '440V', pkg: '10', type: 'MCTP Main' },
+      { catNo: 'MCTP10003', rating: '100 Amp', poles: '3 Pole', volts: '440V', pkg: '4', type: 'MCTP Main' },
+      { catNo: 'MCTP20003', rating: '200 Amp', poles: '3 Pole', volts: '440V', pkg: '2', type: 'MCTP Main' }
     ]
   },
   {
@@ -255,11 +255,11 @@ export const productsData: Product[] = [
     specs: ['Heavy Gauge Sheet Metal Enclosure', 'High Conductivity Copper Contacts', 'Dual-Position Quick Break Handle', 'Safety interlocking feature'],
     hsnCode: '85365010',
     models: [
-      {catNo: 'COS3202', rating: '32 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '15', type: 'Change Over'},
-      {catNo: 'COS3204', rating: '32 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '10', type: 'Change Over'},
-      {catNo: 'COS6302', rating: '63 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '10', type: 'Change Over'},
-      {catNo: 'COS6304', rating: '63 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '5', type: 'Change Over'},
-      {catNo: 'COS20004', rating: '200 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '2', type: 'Change Over'}
+      { catNo: 'COS3202', rating: '32 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '15', type: 'Change Over' },
+      { catNo: 'COS3204', rating: '32 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '10', type: 'Change Over' },
+      { catNo: 'COS6302', rating: '63 Amp (DP)', poles: '2 Pole', volts: '240V', pkg: '10', type: 'Change Over' },
+      { catNo: 'COS6304', rating: '63 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '5', type: 'Change Over' },
+      { catNo: 'COS20004', rating: '200 Amp (FP)', poles: '4 Pole', volts: '440V', pkg: '2', type: 'Change Over' }
     ]
   },
   {
@@ -271,22 +271,22 @@ export const productsData: Product[] = [
     specs: ['Thick Gauge Steel Body Enclosure', 'Solid Electrolytic Copper Bars', 'Superior Insulation Block base', 'Removable Gland Plates'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'BBC903', rating: '100A / 300mm', poles: '4 Pole', volts: '415V', pkg: '6', type: 'Copper Busbar'},
-      {catNo: 'BBC906', rating: '200A / 300mm', poles: '4 Pole', volts: '415V', pkg: '6', type: 'Copper Busbar'},
-      {catNo: 'BBC1206', rating: '200A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar'},
-      {catNo: 'BBC1210', rating: '320A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar'},
-      {catNo: 'BBC1220', rating: '400A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar'},
-      {catNo: 'BBC1510', rating: '320A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar'},
-      {catNo: 'BBC1520', rating: '400A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar'},
-      {catNo: 'BBC1530', rating: '500A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar'},
-      {catNo: 'BBC1540', rating: '600A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar'},
-      {catNo: 'BBC1820', rating: '400A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar'},
-      {catNo: 'BBC1830', rating: '500A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar'},
-      {catNo: 'BBC1840', rating: '600A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar'},
-      {catNo: 'BBC1860', rating: '800A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar'},
-      {catNo: 'BBC12B', rating: '200A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar'},
-      {catNo: 'BBC15B', rating: '400A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar'},
-      {catNo: 'BBC18B', rating: '600A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar'}
+      { catNo: 'BBC903', rating: '100A / 300mm', poles: '4 Pole', volts: '415V', pkg: '6', type: 'Copper Busbar' },
+      { catNo: 'BBC906', rating: '200A / 300mm', poles: '4 Pole', volts: '415V', pkg: '6', type: 'Copper Busbar' },
+      { catNo: 'BBC1206', rating: '200A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar' },
+      { catNo: 'BBC1210', rating: '320A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar' },
+      { catNo: 'BBC1220', rating: '400A / 375mm', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar' },
+      { catNo: 'BBC1510', rating: '320A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar' },
+      { catNo: 'BBC1520', rating: '400A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar' },
+      { catNo: 'BBC1530', rating: '500A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar' },
+      { catNo: 'BBC1540', rating: '600A / 450mm', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar' },
+      { catNo: 'BBC1820', rating: '400A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar' },
+      { catNo: 'BBC1830', rating: '500A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar' },
+      { catNo: 'BBC1840', rating: '600A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar' },
+      { catNo: 'BBC1860', rating: '800A / 530mm', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar' },
+      { catNo: 'BBC12B', rating: '200A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '4', type: 'Copper Busbar' },
+      { catNo: 'BBC15B', rating: '400A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '2', type: 'Copper Busbar' },
+      { catNo: 'BBC18B', rating: '600A (B-Type)', poles: '4 Pole', volts: '415V', pkg: '1', type: 'Copper Busbar' }
     ]
   },
   {
@@ -298,9 +298,9 @@ export const productsData: Product[] = [
     specs: ['Cream Porcelain Ceramic Body', 'Nickel Plated Brass Contacts', 'Dielectric Strength : 55 kV/mm', 'Durable Bottom Clamps'],
     hsnCode: '85361000',
     models: [
-      {catNo: 'FSRK16', rating: '16 Amp', volts: '240V', pkg: '120', type: 'K-Type Fuse'},
-      {catNo: 'FSRK32', rating: '32 Amp', volts: '415V', pkg: '80', type: 'K-Type Fuse'},
-      {catNo: 'FSRK63', rating: '63 Amp', volts: '415V', pkg: '36', type: 'K-Type Fuse'}
+      { catNo: 'FSRK16', rating: '16 Amp', volts: '240V', pkg: '120', type: 'K-Type Fuse' },
+      { catNo: 'FSRK32', rating: '32 Amp', volts: '415V', pkg: '80', type: 'K-Type Fuse' },
+      { catNo: 'FSRK63', rating: '63 Amp', volts: '415V', pkg: '36', type: 'K-Type Fuse' }
     ]
   },
   {
@@ -312,10 +312,10 @@ export const productsData: Product[] = [
     specs: ['Reinforced Handle Grip design', 'EC Grade Copper Top Contacts', 'Arc Extinction Path Support', 'Heavy Dielectric Insulation'],
     hsnCode: '85361000',
     models: [
-      {catNo: 'FSRH63', rating: '63 Amp', volts: '415V', pkg: '36', type: 'Handle Fuse'},
-      {catNo: 'FSRH63L', rating: '63 Amp (Long)', volts: '415V', pkg: '24', type: 'Handle Fuse'},
-      {catNo: 'FSRH200', rating: '200 Amp', volts: '415V', pkg: '8', type: 'Handle Fuse'},
-      {catNo: 'FSRH200L', rating: '200 Amp (Long)', volts: '415V', pkg: '6', type: 'Handle Fuse'}
+      { catNo: 'FSRH63', rating: '63 Amp', volts: '415V', pkg: '36', type: 'Handle Fuse' },
+      { catNo: 'FSRH63L', rating: '63 Amp (Long)', volts: '415V', pkg: '24', type: 'Handle Fuse' },
+      { catNo: 'FSRH200', rating: '200 Amp', volts: '415V', pkg: '8', type: 'Handle Fuse' },
+      { catNo: 'FSRH200L', rating: '200 Amp (Long)', volts: '415V', pkg: '6', type: 'Handle Fuse' }
     ]
   },
   {
@@ -327,14 +327,14 @@ export const productsData: Product[] = [
     specs: ['Industrial SECO Type design', 'Ultra-High Heat Ceramic Body', 'Nickel Plated Heavy Clamps', 'Conforms to IS/IEC standards'],
     hsnCode: '85361000',
     models: [
-      {catNo: 'FSEK16', rating: '16 Amp (K-Type)', volts: '240V', pkg: '120', type: 'SECO Fuse'},
-      {catNo: 'FSEK32', rating: '32 Amp (K-Type)', volts: '415V', pkg: '80', type: 'SECO Fuse'},
-      {catNo: 'FSEK63', rating: '63 Amp (K-Type)', volts: '415V', pkg: '36', type: 'SECO Fuse'},
-      {catNo: 'FSEH63', rating: '63 Amp (Handle)', volts: '415V', pkg: '36', type: 'SECO Fuse'},
-      {catNo: 'FSEH63L', rating: '63 Amp (Long Handle)', volts: '415V', pkg: '24', type: 'SECO Fuse'},
-      {catNo: 'FSEH200', rating: '200 Amp (Handle)', volts: '415V', pkg: '8', type: 'SECO Fuse'},
-      {catNo: 'FSEH200L', rating: '200 Amp (Long Handle)', volts: '415V', pkg: '6', type: 'SECO Fuse'},
-      {catNo: 'FSEH500L', rating: '500 Amp (Long Handle)', volts: '415V', pkg: '2', type: 'SECO Fuse'}
+      { catNo: 'FSEK16', rating: '16 Amp (K-Type)', volts: '240V', pkg: '120', type: 'SECO Fuse' },
+      { catNo: 'FSEK32', rating: '32 Amp (K-Type)', volts: '415V', pkg: '80', type: 'SECO Fuse' },
+      { catNo: 'FSEK63', rating: '63 Amp (K-Type)', volts: '415V', pkg: '36', type: 'SECO Fuse' },
+      { catNo: 'FSEH63', rating: '63 Amp (Handle)', volts: '415V', pkg: '36', type: 'SECO Fuse' },
+      { catNo: 'FSEH63L', rating: '63 Amp (Long Handle)', volts: '415V', pkg: '24', type: 'SECO Fuse' },
+      { catNo: 'FSEH200', rating: '200 Amp (Handle)', volts: '415V', pkg: '8', type: 'SECO Fuse' },
+      { catNo: 'FSEH200L', rating: '200 Amp (Long Handle)', volts: '415V', pkg: '6', type: 'SECO Fuse' },
+      { catNo: 'FSEH500L', rating: '500 Amp (Long Handle)', volts: '415V', pkg: '2', type: 'SECO Fuse' }
     ]
   },
   {
@@ -346,10 +346,10 @@ export const productsData: Product[] = [
     specs: ['IP44 Splash-Proof Grade', 'Heavy Nylon Impact Body', 'High Conductivity Brass Pins', 'Dust-Tight Gasket Cable Entry'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIP44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Plug'},
-      {catNo: 'PIP44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Plug'},
-      {catNo: 'PIP44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Plug'},
-      {catNo: 'PIP44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Plug'}
+      { catNo: 'PIP44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Plug' },
+      { catNo: 'PIP44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Plug' },
+      { catNo: 'PIP44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Plug' },
+      { catNo: 'PIP44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Plug' }
     ]
   },
   {
@@ -361,10 +361,10 @@ export const productsData: Product[] = [
     specs: ['IP44 Protective Flip Lid', 'Solid Brass Terminal Sleeves', 'Chemical & Heat Resistant PVC', 'Conforms to IEC 60309'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIS44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Socket'},
-      {catNo: 'PIS44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Socket'},
-      {catNo: 'PIS44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Socket'},
-      {catNo: 'PIS44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Socket'}
+      { catNo: 'PIS44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Socket' },
+      { catNo: 'PIS44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Socket' },
+      { catNo: 'PIS44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Socket' },
+      { catNo: 'PIS44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Socket' }
     ]
   },
   {
@@ -376,10 +376,10 @@ export const productsData: Product[] = [
     specs: ['IP44 Strain Relief Coupler', 'Double Cable Grip Gasket', 'Nickel Plated Pin Sleeves', 'Industrial Extension Friendly'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIC44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Connector'},
-      {catNo: 'PIC44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Connector'},
-      {catNo: 'PIC44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Connector'},
-      {catNo: 'PIC44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Connector'}
+      { catNo: 'PIC44013', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '100', type: 'IP44 Connector' },
+      { catNo: 'PIC44015', rating: '16A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '60', type: 'IP44 Connector' },
+      { catNo: 'PIC44023', rating: '32A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP44 Connector' },
+      { catNo: 'PIC44025', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '40', type: 'IP44 Connector' }
     ]
   },
   {
@@ -391,9 +391,9 @@ export const productsData: Product[] = [
     specs: ['IP67 Threaded Lock Ring', 'Complete Gasket Seals', 'Heavy Corrosion-Free Pins', 'Waterproof Cap Included'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIP670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Plug'},
-      {catNo: 'PIP670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Plug'},
-      {catNo: 'PIP67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Plug'}
+      { catNo: 'PIP670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Plug' },
+      { catNo: 'PIP670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Plug' },
+      { catNo: 'PIP67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Plug' }
     ]
   },
   {
@@ -405,9 +405,9 @@ export const productsData: Product[] = [
     specs: ['IP67 Bayonet Locking Cap', 'Sealed Wall Gland Entry', 'Corrosion Resistant Screws', 'Heavy Dielectric Sleeves'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIS670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Socket'},
-      {catNo: 'PIS670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Socket'},
-      {catNo: 'PIS67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Socket'}
+      { catNo: 'PIS670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Socket' },
+      { catNo: 'PIS670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Socket' },
+      { catNo: 'PIS67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Socket' }
     ]
   },
   {
@@ -419,9 +419,9 @@ export const productsData: Product[] = [
     specs: ['IP67 Watertight Seals', 'Reinforced Strain Relief', 'Double Lock Cable Glands', 'Industrial Link Safety'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'PIC670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Connector'},
-      {catNo: 'PIC670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Connector'},
-      {catNo: 'PIC67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Connector'}
+      { catNo: 'PIC670132', rating: '16A / 3-Pin', poles: '2P+E', volts: '240V', pkg: '60', type: 'IP67 Connector' },
+      { catNo: 'PIC670252', rating: '32A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '30', type: 'IP67 Connector' },
+      { catNo: 'PIC67035', rating: '63A / 5-Pin', poles: '3P+N+E', volts: '415V', pkg: '12', type: 'IP67 Connector' }
     ]
   },
   {
@@ -433,9 +433,9 @@ export const productsData: Product[] = [
     specs: ['Cast Aluminum Heavy Casing', 'Dielectric Bakelite Pin Base', 'Solid Brass Ground & Power Pins', 'Robust Cable Grip Clamp'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'MCP202', rating: '20A / 2-Pin', poles: '2P+E', volts: '250V', pkg: '60', type: 'Metal Plug'},
-      {catNo: 'MCP203', rating: '20A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Plug'},
-      {catNo: 'MCP303', rating: '30A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Plug'}
+      { catNo: 'MCP202', rating: '20A / 2-Pin', poles: '2P+E', volts: '250V', pkg: '60', type: 'Metal Plug' },
+      { catNo: 'MCP203', rating: '20A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Plug' },
+      { catNo: 'MCP303', rating: '30A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Plug' }
     ]
   },
   {
@@ -447,23 +447,23 @@ export const productsData: Product[] = [
     specs: ['Rust-Proof Powder Finish', 'Spring Metal Protection Cover', 'Safety Ground Grounding Chain', 'Bakelite Core Support'],
     hsnCode: '85366990',
     models: [
-      {catNo: 'MCS202', rating: '20A / 2-Pin', poles: '2P+E', volts: '250V', pkg: '60', type: 'Metal Socket'},
-      {catNo: 'MCS203', rating: '20A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Socket'},
-      {catNo: 'MCS303', rating: '30A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Socket'}
+      { catNo: 'MCS202', rating: '20A / 2-Pin', poles: '2P+E', volts: '250V', pkg: '60', type: 'Metal Socket' },
+      { catNo: 'MCS203', rating: '20A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Socket' },
+      { catNo: 'MCS303', rating: '30A / 3-Pin', poles: '3P+E', volts: '440V', pkg: '60', type: 'Metal Socket' }
     ]
   },
   {
     id: 19,
-    title: 'Limit Control Switch',
+    title: 'Limit Control Switch (Silver Copper Rivet)',
     category: 'Switchgears & Fuses',
     image: liveImg8,
     description: 'Heavy-duty limit switches with double breaker contacts and adjustable lever rollers, engineered for elevator lift systems.',
     specs: ['Aluminum Die Cast Body', 'Adjustable Roller Arm lever', '1NO + 1NC Micro-Switch Core', 'Durable spring return action'],
     hsnCode: '85365090',
     models: [
-      {catNo: 'LCS1501', rating: '10 Amp', volts: '240V', pkg: '50', type: 'Limit Switch'},
-      {catNo: 'LCS1502', rating: '15 Amp', volts: '415V', pkg: '50', type: 'Limit Switch'},
-      {catNo: 'LCS1504', rating: '20 Amp', volts: '415V', pkg: '30', type: 'Limit Switch'}
+      { catNo: 'LCS1501', rating: '10 Amp', volts: '240V', pkg: '50', type: 'Limit Switch' },
+      { catNo: 'LCS1502', rating: '15 Amp', volts: '415V', pkg: '50', type: 'Limit Switch' },
+      { catNo: 'LCS1504', rating: '20 Amp', volts: '415V', pkg: '30', type: 'Limit Switch' }
     ]
   },
   {
@@ -475,9 +475,9 @@ export const productsData: Product[] = [
     specs: ['IP54 Splash Proof Sockets', 'Integrated DIN Rail MCB Slot', 'Tough PVC Housing Enclosure', 'Factory Pre-wired busbars'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MPSM63111', rating: '16A / 3-Pin Socket + SP MCB', pkg: '30', type: 'Schuko Board'},
-      {catNo: 'MPSM63112', rating: '16A / 3-Pin Socket + DP MCB', pkg: '30', type: 'Schuko Board'},
-      {catNo: 'MPSM63113', rating: '32A / 5-Pin Socket + TPN MCB', pkg: '19', type: 'TPN Schuko Board'}
+      { catNo: 'MPSM63111', rating: '16A / 3-Pin Socket + SP MCB', pkg: '30', type: 'Schuko Board' },
+      { catNo: 'MPSM63112', rating: '16A / 3-Pin Socket + DP MCB', pkg: '30', type: 'Schuko Board' },
+      { catNo: 'MPSM63113', rating: '32A / 5-Pin Socket + TPN MCB', pkg: '19', type: 'TPN Schuko Board' }
     ]
   },
   {
@@ -489,10 +489,10 @@ export const productsData: Product[] = [
     specs: ['22G Thick Sheet Metal Body', 'Electrostatic Powder finish', 'Easy DIN Rail Mounting rail', 'Compact Flush mounting style'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MEB102', rating: '1 or 2 Way (SP)', pkg: '100', type: 'Metal Box'},
-      {catNo: 'MEB104', rating: '3 or 4 Way (DP)', pkg: '80', type: 'Metal Box'},
-      {catNo: 'MEB202', rating: '1 or 2 Way (Premium)', pkg: '100', type: 'Metal Box'},
-      {catNo: 'MEB204', rating: '3 or 4 Way (Premium)', pkg: '80', type: 'Metal Box'}
+      { catNo: 'MEB102', rating: '1 or 2 Way (SP)', pkg: '100', type: 'Metal Box' },
+      { catNo: 'MEB104', rating: '3 or 4 Way (DP)', pkg: '80', type: 'Metal Box' },
+      { catNo: 'MEB202', rating: '1 or 2 Way (Premium)', pkg: '100', type: 'Metal Box' },
+      { catNo: 'MEB204', rating: '3 or 4 Way (Premium)', pkg: '80', type: 'Metal Box' }
     ]
   },
   {
@@ -504,12 +504,12 @@ export const productsData: Product[] = [
     specs: ['22G Solid Sheet Metal Body', 'Zinc Plated Neutral Link base', 'Pre-installed DIN Rail channel', 'Generous wiring wire space'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSSD04', rating: '4 Way SPN', pkg: '20', type: 'Single Door'},
-      {catNo: 'MSSD06', rating: '6 Way SPN', pkg: '20', type: 'Single Door'},
-      {catNo: 'MSSD08', rating: '8 Way SPN', pkg: '15', type: 'Single Door'},
-      {catNo: 'MSSD10', rating: '10 Way SPN', pkg: '15', type: 'Single Door'},
-      {catNo: 'MSSD12', rating: '12 Way SPN', pkg: '10', type: 'Single Door'},
-      {catNo: 'MSSD16', rating: '16 Way SPN', pkg: '10', type: 'Single Door'}
+      { catNo: 'MSSD04', rating: '4 Way SPN', pkg: '20', type: 'Single Door' },
+      { catNo: 'MSSD06', rating: '6 Way SPN', pkg: '20', type: 'Single Door' },
+      { catNo: 'MSSD08', rating: '8 Way SPN', pkg: '15', type: 'Single Door' },
+      { catNo: 'MSSD10', rating: '10 Way SPN', pkg: '15', type: 'Single Door' },
+      { catNo: 'MSSD12', rating: '12 Way SPN', pkg: '10', type: 'Single Door' },
+      { catNo: 'MSSD16', rating: '16 Way SPN', pkg: '10', type: 'Single Door' }
     ]
   },
   {
@@ -521,12 +521,12 @@ export const productsData: Product[] = [
     specs: ['Heavy 20G Double Door front', 'Flush Lock Latches & handles', 'Protective Internal Shield plate', 'IP43 Dust Ingress Protection'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MDDD04', rating: '4 Way SPN', pkg: '10', type: 'Double Door'},
-      {catNo: 'MDDD06', rating: '6 Way SPN', pkg: '10', type: 'Double Door'},
-      {catNo: 'MDDD08', rating: '8 Way SPN', pkg: '8', type: 'Double Door'},
-      {catNo: 'MDDD10', rating: '10 Way SPN', pkg: '8', type: 'Double Door'},
-      {catNo: 'MDDD12', rating: '12 Way SPN', pkg: '6', type: 'Double Door'},
-      {catNo: 'MDDD16', rating: '16 Way SPN', pkg: '6', type: 'Double Door'}
+      { catNo: 'MDDD04', rating: '4 Way SPN', pkg: '10', type: 'Double Door' },
+      { catNo: 'MDDD06', rating: '6 Way SPN', pkg: '10', type: 'Double Door' },
+      { catNo: 'MDDD08', rating: '8 Way SPN', pkg: '8', type: 'Double Door' },
+      { catNo: 'MDDD10', rating: '10 Way SPN', pkg: '8', type: 'Double Door' },
+      { catNo: 'MDDD12', rating: '12 Way SPN', pkg: '6', type: 'Double Door' },
+      { catNo: 'MDDD16', rating: '16 Way SPN', pkg: '6', type: 'Double Door' }
     ]
   },
   {
@@ -538,12 +538,12 @@ export const productsData: Product[] = [
     specs: ['Quick Snap Magnetic Lock latch', 'Finished in Premium ivory shade', 'Knockouts on top and bottom', 'Clean modern aesthetics'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSMD04', rating: '4 Way SPN', pkg: '20', type: 'Magnetic Single'},
-      {catNo: 'MSMD06', rating: '6 Way SPN', pkg: '20', type: 'Magnetic Single'},
-      {catNo: 'MSMD08', rating: '8 Way SPN', pkg: '15', type: 'Magnetic Single'},
-      {catNo: 'MSMD10', rating: '10 Way SPN', pkg: '15', type: 'Magnetic Single'},
-      {catNo: 'MSMD12', rating: '12 Way SPN', pkg: '10', type: 'Magnetic Single'},
-      {catNo: 'MSMD16', rating: '16 Way SPN', pkg: '10', type: 'Magnetic Single'}
+      { catNo: 'MSMD04', rating: '4 Way SPN', pkg: '20', type: 'Magnetic Single' },
+      { catNo: 'MSMD06', rating: '6 Way SPN', pkg: '20', type: 'Magnetic Single' },
+      { catNo: 'MSMD08', rating: '8 Way SPN', pkg: '15', type: 'Magnetic Single' },
+      { catNo: 'MSMD10', rating: '10 Way SPN', pkg: '15', type: 'Magnetic Single' },
+      { catNo: 'MSMD12', rating: '12 Way SPN', pkg: '10', type: 'Magnetic Single' },
+      { catNo: 'MSMD16', rating: '16 Way SPN', pkg: '10', type: 'Magnetic Single' }
     ]
   },
   {
@@ -555,12 +555,12 @@ export const productsData: Product[] = [
     specs: ['Magnetic Double Door closure', 'Durable Internal Dust Shield', 'Electrolytic Copper Phase Links', 'Heavy-gauge steel chassis'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MDMD04', rating: '4 Way SPN', pkg: '10', type: 'Magnetic Double'},
-      {catNo: 'MDMD06', rating: '6 Way SPN', pkg: '10', type: 'Magnetic Double'},
-      {catNo: 'MDMD08', rating: '8 Way SPN', pkg: '8', type: 'Magnetic Double'},
-      {catNo: 'MDMD10', rating: '10 Way SPN', pkg: '8', type: 'Magnetic Double'},
-      {catNo: 'MDMD12', rating: '12 Way SPN', pkg: '6', type: 'Magnetic Double'},
-      {catNo: 'MDMD16', rating: '16 Way SPN', pkg: '6', type: 'Magnetic Double'}
+      { catNo: 'MDMD04', rating: '4 Way SPN', pkg: '10', type: 'Magnetic Double' },
+      { catNo: 'MDMD06', rating: '6 Way SPN', pkg: '10', type: 'Magnetic Double' },
+      { catNo: 'MDMD08', rating: '8 Way SPN', pkg: '8', type: 'Magnetic Double' },
+      { catNo: 'MDMD10', rating: '10 Way SPN', pkg: '8', type: 'Magnetic Double' },
+      { catNo: 'MDMD12', rating: '12 Way SPN', pkg: '6', type: 'Magnetic Double' },
+      { catNo: 'MDMD16', rating: '16 Way SPN', pkg: '6', type: 'Magnetic Double' }
     ]
   },
   {
@@ -572,12 +572,12 @@ export const productsData: Product[] = [
     specs: ['Reinforced 20G Metal Body', 'Corrosion Resistant Undercoat', 'Pre-fitted Neutral Links Link', 'Flush mounting design frame'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSPM04', rating: '4 Way SPN', pkg: '20', type: 'Premium Single'},
-      {catNo: 'MSPM06', rating: '6 Way SPN', pkg: '20', type: 'Premium Single'},
-      {catNo: 'MSPM08', rating: '8 Way SPN', pkg: '15', type: 'Premium Single'},
-      {catNo: 'MSPM10', rating: '10 Way SPN', pkg: '15', type: 'Premium Single'},
-      {catNo: 'MSPM12', rating: '12 Way SPN', pkg: '10', type: 'Premium Single'},
-      {catNo: 'MSPM16', rating: '16 Way SPN', pkg: '10', type: 'Premium Single'}
+      { catNo: 'MSPM04', rating: '4 Way SPN', pkg: '20', type: 'Premium Single' },
+      { catNo: 'MSPM06', rating: '6 Way SPN', pkg: '20', type: 'Premium Single' },
+      { catNo: 'MSPM08', rating: '8 Way SPN', pkg: '15', type: 'Premium Single' },
+      { catNo: 'MSPM10', rating: '10 Way SPN', pkg: '15', type: 'Premium Single' },
+      { catNo: 'MSPM12', rating: '12 Way SPN', pkg: '10', type: 'Premium Single' },
+      { catNo: 'MSPM16', rating: '16 Way SPN', pkg: '10', type: 'Premium Single' }
     ]
   },
   {
@@ -589,12 +589,12 @@ export const productsData: Product[] = [
     specs: ['20G Thick Steel Plate', 'Scratch-Proof Matte Paint finish', 'Solid Brass Neutral Links links', 'Spacious Internal Wiring loops'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MDPM04', rating: '4 Way SPN', pkg: '10', type: 'Premium Double'},
-      {catNo: 'MDPM06', rating: '6 Way SPN', pkg: '10', type: 'Premium Double'},
-      {catNo: 'MDPM08', rating: '8 Way SPN', pkg: '8', type: 'Premium Double'},
-      {catNo: 'MDPM10', rating: '10 Way SPN', pkg: '8', type: 'Premium Double'},
-      {catNo: 'MDPM12', rating: '12 Way SPN', pkg: '6', type: 'Premium Double'},
-      {catNo: 'MDPM16', rating: '16 Way SPN', pkg: '6', type: 'Premium Double'}
+      { catNo: 'MDPM04', rating: '4 Way SPN', pkg: '10', type: 'Premium Double' },
+      { catNo: 'MDPM06', rating: '6 Way SPN', pkg: '10', type: 'Premium Double' },
+      { catNo: 'MDPM08', rating: '8 Way SPN', pkg: '8', type: 'Premium Double' },
+      { catNo: 'MDPM10', rating: '10 Way SPN', pkg: '8', type: 'Premium Double' },
+      { catNo: 'MDPM12', rating: '12 Way SPN', pkg: '6', type: 'Premium Double' },
+      { catNo: 'MDPM16', rating: '16 Way SPN', pkg: '6', type: 'Premium Double' }
     ]
   },
   {
@@ -606,12 +606,12 @@ export const productsData: Product[] = [
     specs: ['Brilliant White Gloss Coating', 'Top & Bottom Knockouts slots', 'Pre-mounted Neutral Bar block', 'Conforms to utility standards'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'WMSD04', rating: '4 Way SPN', pkg: '20', type: 'Whiteline Single'},
-      {catNo: 'WMSD06', rating: '6 Way SPN', pkg: '20', type: 'Whiteline Single'},
-      {catNo: 'WMSD08', rating: '8 Way SPN', pkg: '15', type: 'Whiteline Single'},
-      {catNo: 'WMSD10', rating: '10 Way SPN', pkg: '15', type: 'Whiteline Single'},
-      {catNo: 'WMSD12', rating: '12 Way SPN', pkg: '10', type: 'Whiteline Single'},
-      {catNo: 'WMSD16', rating: '16 Way SPN', pkg: '10', type: 'Whiteline Single'}
+      { catNo: 'WMSD04', rating: '4 Way SPN', pkg: '20', type: 'Whiteline Single' },
+      { catNo: 'WMSD06', rating: '6 Way SPN', pkg: '20', type: 'Whiteline Single' },
+      { catNo: 'WMSD08', rating: '8 Way SPN', pkg: '15', type: 'Whiteline Single' },
+      { catNo: 'WMSD10', rating: '10 Way SPN', pkg: '15', type: 'Whiteline Single' },
+      { catNo: 'WMSD12', rating: '12 Way SPN', pkg: '10', type: 'Whiteline Single' },
+      { catNo: 'WMSD16', rating: '16 Way SPN', pkg: '10', type: 'Whiteline Single' }
     ]
   },
   {
@@ -623,12 +623,12 @@ export const productsData: Product[] = [
     specs: ['Whiteline Double Door latch', 'Removable Gland Plate cover', 'Insulated Copper Busbar loop', 'Premium modern look feel'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'WMDD04', rating: '4 Way SPN', pkg: '10', type: 'Whiteline Double'},
-      {catNo: 'WMDD06', rating: '6 Way SPN', pkg: '10', type: 'Whiteline Double'},
-      {catNo: 'WMDD08', rating: '8 Way SPN', pkg: '8', type: 'Whiteline Double'},
-      {catNo: 'WMDD10', rating: '10 Way SPN', pkg: '8', type: 'Whiteline Double'},
-      {catNo: 'WMDD12', rating: '12 Way SPN', pkg: '6', type: 'Whiteline Double'},
-      {catNo: 'WMDD16', rating: '16 Way SPN', pkg: '6', type: 'Whiteline Double'}
+      { catNo: 'WMDD04', rating: '4 Way SPN', pkg: '10', type: 'Whiteline Double' },
+      { catNo: 'WMDD06', rating: '6 Way SPN', pkg: '10', type: 'Whiteline Double' },
+      { catNo: 'WMDD08', rating: '8 Way SPN', pkg: '8', type: 'Whiteline Double' },
+      { catNo: 'WMDD10', rating: '10 Way SPN', pkg: '8', type: 'Whiteline Double' },
+      { catNo: 'WMDD12', rating: '12 Way SPN', pkg: '6', type: 'Whiteline Double' },
+      { catNo: 'WMDD16', rating: '16 Way SPN', pkg: '6', type: 'Whiteline Double' }
     ]
   },
   {
@@ -640,11 +640,11 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Copper Face Links Included', 'Zinc Plated Neutral Bar block', 'Dust Proof Body design'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTSD04', rating: '4 Way TPN', pkg: '10', type: 'Single Door'},
-      {catNo: 'MTSD06', rating: '6 Way TPN', pkg: '8', type: 'Single Door'},
-      {catNo: 'MTSD08', rating: '8 Way TPN', pkg: '8', type: 'Single Door'},
-      {catNo: 'MTSD10', rating: '10 Way TPN', pkg: '6', type: 'Single Door'},
-      {catNo: 'MTSD12', rating: '12 Way TPN', pkg: '4', type: 'Single Door'}
+      { catNo: 'MTSD04', rating: '4 Way TPN', pkg: '10', type: 'Single Door' },
+      { catNo: 'MTSD06', rating: '6 Way TPN', pkg: '8', type: 'Single Door' },
+      { catNo: 'MTSD08', rating: '8 Way TPN', pkg: '8', type: 'Single Door' },
+      { catNo: 'MTSD10', rating: '10 Way TPN', pkg: '6', type: 'Single Door' },
+      { catNo: 'MTSD12', rating: '12 Way TPN', pkg: '4', type: 'Single Door' }
     ]
   },
   {
@@ -656,11 +656,11 @@ export const productsData: Product[] = [
     specs: ['Double Door safety shield', 'Internal Copper Phase links', 'Durable lockable door latch', 'IP43 Enclosure Class'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTDD04', rating: '4 Way TPN', pkg: '6', type: 'Double Door'},
-      {catNo: 'MTDD06', rating: '6 Way TPN', pkg: '4', type: 'Double Door'},
-      {catNo: 'MTDD08', rating: '8 Way TPN', pkg: '4', type: 'Double Door'},
-      {catNo: 'MTDD10', rating: '10 Way TPN', pkg: '3', type: 'Double Door'},
-      {catNo: 'MTDD12', rating: '12 Way TPN', pkg: '2', type: 'Double Door'}
+      { catNo: 'MTDD04', rating: '4 Way TPN', pkg: '6', type: 'Double Door' },
+      { catNo: 'MTDD06', rating: '6 Way TPN', pkg: '4', type: 'Double Door' },
+      { catNo: 'MTDD08', rating: '8 Way TPN', pkg: '4', type: 'Double Door' },
+      { catNo: 'MTDD10', rating: '10 Way TPN', pkg: '3', type: 'Double Door' },
+      { catNo: 'MTDD12', rating: '12 Way TPN', pkg: '2', type: 'Double Door' }
     ]
   },
   {
@@ -672,11 +672,11 @@ export const productsData: Product[] = [
     specs: ['Quick-Snap Magnetic Latch latch', 'Ivory powder coat color', 'Removable gland plates cover', 'Spacious neutral links loops'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTMD04', rating: '4 Way TPN', pkg: '10', type: 'Magnetic Single'},
-      {catNo: 'MTMD06', rating: '6 Way TPN', pkg: '8', type: 'Magnetic Single'},
-      {catNo: 'MTMD08', rating: '8 Way TPN', pkg: '8', type: 'Magnetic Single'},
-      {catNo: 'MTMD10', rating: '10 Way TPN', pkg: '6', type: 'Magnetic Single'},
-      {catNo: 'MTMD12', rating: '12 Way TPN', pkg: '4', type: 'Magnetic Single'}
+      { catNo: 'MTMD04', rating: '4 Way TPN', pkg: '10', type: 'Magnetic Single' },
+      { catNo: 'MTMD06', rating: '6 Way TPN', pkg: '8', type: 'Magnetic Single' },
+      { catNo: 'MTMD08', rating: '8 Way TPN', pkg: '8', type: 'Magnetic Single' },
+      { catNo: 'MTMD10', rating: '10 Way TPN', pkg: '6', type: 'Magnetic Single' },
+      { catNo: 'MTMD12', rating: '12 Way TPN', pkg: '4', type: 'Magnetic Single' }
     ]
   },
   {
@@ -688,11 +688,11 @@ export const productsData: Product[] = [
     specs: ['Magnetic Double Door closure', 'Durable Internal Dust Shield', 'Solid copper phase bars', 'Knockouts on top and bottom'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTMDD04', rating: '4 Way TPN', pkg: '6', type: 'Magnetic Double'},
-      {catNo: 'MTMDD06', rating: '6 Way TPN', pkg: '4', type: 'Magnetic Double'},
-      {catNo: 'MTMDD08', rating: '8 Way TPN', pkg: '4', type: 'Magnetic Double'},
-      {catNo: 'MTMDD10', rating: '10 Way TPN', pkg: '3', type: 'Magnetic Double'},
-      {catNo: 'MTMDD12', rating: '12 Way TPN', pkg: '2', type: 'Magnetic Double'}
+      { catNo: 'MTMDD04', rating: '4 Way TPN', pkg: '6', type: 'Magnetic Double' },
+      { catNo: 'MTMDD06', rating: '6 Way TPN', pkg: '4', type: 'Magnetic Double' },
+      { catNo: 'MTMDD08', rating: '8 Way TPN', pkg: '4', type: 'Magnetic Double' },
+      { catNo: 'MTMDD10', rating: '10 Way TPN', pkg: '3', type: 'Magnetic Double' },
+      { catNo: 'MTMDD12', rating: '12 Way TPN', pkg: '2', type: 'Magnetic Double' }
     ]
   },
   {
@@ -704,11 +704,11 @@ export const productsData: Product[] = [
     specs: ['Reinforced 20G Metal Body', 'Heavy Copper Busbar bars', 'Specialized Neutral Links links', 'Shock proof undercoat layer'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTPM04', rating: '4 Way TPN', pkg: '10', type: 'Premium Single'},
-      {catNo: 'MTPM06', rating: '6 Way TPN', pkg: '8', type: 'Premium Single'},
-      {catNo: 'MTPM08', rating: '8 Way TPN', pkg: '8', type: 'Premium Single'},
-      {catNo: 'MTPM10', rating: '10 Way TPN', pkg: '6', type: 'Premium Single'},
-      {catNo: 'MTPM12', rating: '12 Way TPN', pkg: '4', type: 'Premium Single'}
+      { catNo: 'MTPM04', rating: '4 Way TPN', pkg: '10', type: 'Premium Single' },
+      { catNo: 'MTPM06', rating: '6 Way TPN', pkg: '8', type: 'Premium Single' },
+      { catNo: 'MTPM08', rating: '8 Way TPN', pkg: '8', type: 'Premium Single' },
+      { catNo: 'MTPM10', rating: '10 Way TPN', pkg: '6', type: 'Premium Single' },
+      { catNo: 'MTPM12', rating: '12 Way TPN', pkg: '4', type: 'Premium Single' }
     ]
   },
   {
@@ -720,11 +720,11 @@ export const productsData: Product[] = [
     specs: ['20G Thick Steel Chassis', 'Double Lock safety handle', 'Pre-fitted solid copper links', 'Spacious wire entry panels'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MTPMD04', rating: '4 Way TPN', pkg: '6', type: 'Premium Double'},
-      {catNo: 'MTPMD06', rating: '6 Way TPN', pkg: '4', type: 'Premium Double'},
-      {catNo: 'MTPMD08', rating: '8 Way TPN', pkg: '4', type: 'Premium Double'},
-      {catNo: 'MTPMD10', rating: '10 Way TPN', pkg: '3', type: 'Premium Double'},
-      {catNo: 'MTPMD12', rating: '12 Way TPN', pkg: '2', type: 'Premium Double'}
+      { catNo: 'MTPMD04', rating: '4 Way TPN', pkg: '6', type: 'Premium Double' },
+      { catNo: 'MTPMD06', rating: '6 Way TPN', pkg: '4', type: 'Premium Double' },
+      { catNo: 'MTPMD08', rating: '8 Way TPN', pkg: '4', type: 'Premium Double' },
+      { catNo: 'MTPMD10', rating: '10 Way TPN', pkg: '3', type: 'Premium Double' },
+      { catNo: 'MTPMD12', rating: '12 Way TPN', pkg: '2', type: 'Premium Double' }
     ]
   },
   {
@@ -736,8 +736,8 @@ export const productsData: Product[] = [
     specs: ['22G Thick Metal Body', 'Electrostatic Powder finish', 'Built-in Plug Pin socket', 'Flush & wall mounting style'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MAC6101', rating: '20A Plug + SP MCB', pkg: '30', type: 'Metal A.C. Box'},
-      {catNo: 'MAC6102', rating: '30A Plug + DP MCB', pkg: '20', type: 'Metal A.C. Box'}
+      { catNo: 'MAC6101', rating: '20A Plug + SP MCB', pkg: '30', type: 'Metal A.C. Box' },
+      { catNo: 'MAC6102', rating: '30A Plug + DP MCB', pkg: '20', type: 'Metal A.C. Box' }
     ]
   },
   {
@@ -749,8 +749,8 @@ export const productsData: Product[] = [
     specs: ['20G Solid Metal Body', 'Durable Bakelite base connector', 'Quick DIN Rail MCB fit', 'Industrial safety paint finish'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MAC6301', rating: '32A Plug + TPN MCB', pkg: '12', type: 'Metal TPN Box'},
-      {catNo: 'MAC6302', rating: '63A Plug + TPN MCB', pkg: '8', type: 'Metal TPN Box'}
+      { catNo: 'MAC6301', rating: '32A Plug + TPN MCB', pkg: '12', type: 'Metal TPN Box' },
+      { catNo: 'MAC6302', rating: '63A Plug + TPN MCB', pkg: '8', type: 'Metal TPN Box' }
     ]
   },
   {
@@ -762,8 +762,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM1101', rating: 'Fits 1 Socket + 1 DP MCB', pkg: '30', type: 'Metal Socket Board'},
-      {catNo: 'MSM1102', rating: 'Fits 1 Socket + 1 TPN MCB', pkg: '20', type: 'Metal Socket Board'}
+      { catNo: 'MSM1101', rating: 'Fits 1 Socket + 1 DP MCB', pkg: '30', type: 'Metal Socket Board' },
+      { catNo: 'MSM1102', rating: 'Fits 1 Socket + 1 TPN MCB', pkg: '20', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -775,8 +775,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM2101', rating: 'Fits 2 Sockets + 1 DP MCB', pkg: '24', type: 'Metal Socket Board'},
-      {catNo: 'MSM2102', rating: 'Fits 2 Sockets + 1 TPN MCB', pkg: '18', type: 'Metal Socket Board'}
+      { catNo: 'MSM2101', rating: 'Fits 2 Sockets + 1 DP MCB', pkg: '24', type: 'Metal Socket Board' },
+      { catNo: 'MSM2102', rating: 'Fits 2 Sockets + 1 TPN MCB', pkg: '18', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -788,8 +788,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM3101', rating: 'Fits 3 Sockets + 1 DP MCB', pkg: '16', type: 'Metal Socket Board'},
-      {catNo: 'MSM3102', rating: 'Fits 3 Sockets + 1 TPN MCB', pkg: '12', type: 'Metal Socket Board'}
+      { catNo: 'MSM3101', rating: 'Fits 3 Sockets + 1 DP MCB', pkg: '16', type: 'Metal Socket Board' },
+      { catNo: 'MSM3102', rating: 'Fits 3 Sockets + 1 TPN MCB', pkg: '12', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -801,8 +801,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM4101', rating: 'Fits 4 Sockets + 1 DP MCB', pkg: '14', type: 'Metal Socket Board'},
-      {catNo: 'MSM4102', rating: 'Fits 4 Sockets + 1 TPN MCB', pkg: '10', type: 'Metal Socket Board'}
+      { catNo: 'MSM4101', rating: 'Fits 4 Sockets + 1 DP MCB', pkg: '14', type: 'Metal Socket Board' },
+      { catNo: 'MSM4102', rating: 'Fits 4 Sockets + 1 TPN MCB', pkg: '10', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -814,8 +814,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM4201', rating: 'Fits 4 Sockets + 2 DP MCBs', pkg: '12', type: 'Metal Socket Board'},
-      {catNo: 'MSM4202', rating: 'Fits 4 Sockets + 2 TPN MCBs', pkg: '8', type: 'Metal Socket Board'}
+      { catNo: 'MSM4201', rating: 'Fits 4 Sockets + 2 DP MCBs', pkg: '12', type: 'Metal Socket Board' },
+      { catNo: 'MSM4202', rating: 'Fits 4 Sockets + 2 TPN MCBs', pkg: '8', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -827,8 +827,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM6101', rating: 'Fits 6 Sockets + 1 DP MCB', pkg: '10', type: 'Metal Socket Board'},
-      {catNo: 'MSM6102', rating: 'Fits 6 Sockets + 1 TPN MCB', pkg: '8', type: 'Metal Socket Board'}
+      { catNo: 'MSM6101', rating: 'Fits 6 Sockets + 1 DP MCB', pkg: '10', type: 'Metal Socket Board' },
+      { catNo: 'MSM6102', rating: 'Fits 6 Sockets + 1 TPN MCB', pkg: '8', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -840,8 +840,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM8101', rating: 'Fits 8 Sockets + 1 DP MCB', pkg: '8', type: 'Metal Socket Board'},
-      {catNo: 'MSM8102', rating: 'Fits 8 Sockets + 1 TPN MCB', pkg: '6', type: 'Metal Socket Board'}
+      { catNo: 'MSM8101', rating: 'Fits 8 Sockets + 1 DP MCB', pkg: '8', type: 'Metal Socket Board' },
+      { catNo: 'MSM8102', rating: 'Fits 8 Sockets + 1 TPN MCB', pkg: '6', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -853,8 +853,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM4401', rating: 'Fits 4 Sockets + 4 DP MCBs', pkg: '10', type: 'Metal Socket Board'},
-      {catNo: 'MSM4402', rating: 'Fits 4 Sockets + 4 TPN MCBs', pkg: '8', type: 'Metal Socket Board'}
+      { catNo: 'MSM4401', rating: 'Fits 4 Sockets + 4 DP MCBs', pkg: '10', type: 'Metal Socket Board' },
+      { catNo: 'MSM4402', rating: 'Fits 4 Sockets + 4 TPN MCBs', pkg: '8', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -866,8 +866,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM6201', rating: 'Fits 6 Sockets + 2 DP MCBs', pkg: '10', type: 'Metal Socket Board'},
-      {catNo: 'MSM6202', rating: 'Fits 6 Sockets + 2 TPN MCBs', pkg: '6', type: 'Metal Socket Board'}
+      { catNo: 'MSM6201', rating: 'Fits 6 Sockets + 2 DP MCBs', pkg: '10', type: 'Metal Socket Board' },
+      { catNo: 'MSM6202', rating: 'Fits 6 Sockets + 2 TPN MCBs', pkg: '6', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -879,8 +879,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM8201', rating: 'Fits 8 Sockets + 2 DP MCBs', pkg: '8', type: 'Metal Socket Board'},
-      {catNo: 'MSM8202', rating: 'Fits 8 Sockets + 2 TPN MCBs', pkg: '4', type: 'Metal Socket Board'}
+      { catNo: 'MSM8201', rating: 'Fits 8 Sockets + 2 DP MCBs', pkg: '8', type: 'Metal Socket Board' },
+      { catNo: 'MSM8202', rating: 'Fits 8 Sockets + 2 TPN MCBs', pkg: '4', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -892,8 +892,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM2201', rating: 'Fits 2 Sockets + 2 DP MCBs', pkg: '20', type: 'Metal Socket Board'},
-      {catNo: 'MSM2202', rating: 'Fits 2 Sockets + 2 TPN MCBs', pkg: '14', type: 'Metal Socket Board'}
+      { catNo: 'MSM2201', rating: 'Fits 2 Sockets + 2 DP MCBs', pkg: '20', type: 'Metal Socket Board' },
+      { catNo: 'MSM2202', rating: 'Fits 2 Sockets + 2 TPN MCBs', pkg: '14', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -905,8 +905,8 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Scratch-Proof Powder finish', 'Customizable cutouts layout', 'DIN Rail pre-fitted inside'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MSM3301', rating: 'Fits 3 Sockets + 3 DP MCBs', pkg: '14', type: 'Metal Socket Board'},
-      {catNo: 'MSM3302', rating: 'Fits 3 Sockets + 3 TPN MCBs', pkg: '10', type: 'Metal Socket Board'}
+      { catNo: 'MSM3301', rating: 'Fits 3 Sockets + 3 DP MCBs', pkg: '14', type: 'Metal Socket Board' },
+      { catNo: 'MSM3302', rating: 'Fits 3 Sockets + 3 TPN MCBs', pkg: '10', type: 'Metal Socket Board' }
     ]
   },
   {
@@ -918,7 +918,7 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Supports DP & TPN MCBs', 'Mix size socket cutout slots', 'Industrial grade safety coat'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MMSM64221', rating: 'Fits 2-16A + 2-32A Sockets + DP & TPN MCB', pkg: '20', type: 'MMSM Board'}
+      { catNo: 'MMSM64221', rating: 'Fits 2-16A + 2-32A Sockets + DP & TPN MCB', pkg: '20', type: 'MMSM Board' }
     ]
   },
   {
@@ -930,7 +930,7 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Body', 'Supports DP & TPN MCBs', 'Four MCB breaker cutouts slots', 'Robust terminal assembly'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MMSM64331', rating: 'Fits 2-16A + 2-32A Sockets + 2-DP & 2-TPN MCB', pkg: '14', type: 'MMSM Board'}
+      { catNo: 'MMSM64331', rating: 'Fits 2-16A + 2-32A Sockets + 2-DP & 2-TPN MCB', pkg: '14', type: 'MMSM Board' }
     ]
   },
   {
@@ -942,12 +942,12 @@ export const productsData: Product[] = [
     specs: ['Pre-punched standard 22mm holes', '22G Sturdy Sheet Metal Body', 'Scratch resistant paint finish', 'Flush industrial installation style'],
     hsnCode: '85389000',
     models: [
-      {catNo: 'MPBB5401', rating: '1 Way Enclosure', pkg: '50', type: 'Push Button Board'},
-      {catNo: 'MPBB5402', rating: '2 Way Enclosure', pkg: '50', type: 'Push Button Board'},
-      {catNo: 'MPBB5403', rating: '3 Way Enclosure', pkg: '50', type: 'Push Button Board'},
-      {catNo: 'MPBB5404', rating: '4 Way Enclosure', pkg: '50', type: 'Push Button Board'},
-      {catNo: 'MPBB5406', rating: '6 Way Enclosure', pkg: '50', type: 'Push Button Board'},
-      {catNo: 'MPBB5408', rating: '8 Way Enclosure', pkg: '50', type: 'Push Button Board'}
+      { catNo: 'MPBB5401', rating: '1 Way Enclosure', pkg: '50', type: 'Push Button Board' },
+      { catNo: 'MPBB5402', rating: '2 Way Enclosure', pkg: '50', type: 'Push Button Board' },
+      { catNo: 'MPBB5403', rating: '3 Way Enclosure', pkg: '50', type: 'Push Button Board' },
+      { catNo: 'MPBB5404', rating: '4 Way Enclosure', pkg: '50', type: 'Push Button Board' },
+      { catNo: 'MPBB5406', rating: '6 Way Enclosure', pkg: '50', type: 'Push Button Board' },
+      { catNo: 'MPBB5408', rating: '8 Way Enclosure', pkg: '50', type: 'Push Button Board' }
     ]
   },
   {
@@ -959,14 +959,14 @@ export const productsData: Product[] = [
     specs: ['High impact ABS plastic body', 'Waterproof & dustproof panel', 'DIN Rail pre-fitted inside', 'Excellent heat insulation core'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MPSM68112', rating: '1+1 Way 16A & DP', pkg: '30', type: 'PVC Board'},
-      {catNo: 'MPSM68222', rating: '2+2 Way 16A & DP', pkg: '20', type: 'PVC Board'},
-      {catNo: 'MPSM68332', rating: '3+3 Way 16A & DP', pkg: '14', type: 'PVC Board'},
-      {catNo: 'MPSM68442', rating: '4+4 Way 16A & DP', pkg: '10', type: 'PVC Board'},
-      {catNo: 'MPSM68114', rating: '1+1 Way 32A & TPN', pkg: '30', type: 'PVC Board'},
-      {catNo: 'MPSM68224', rating: '2+2 Way 32A & TPN', pkg: '20', type: 'PVC Board'},
-      {catNo: 'MPSM68334', rating: '3+3 Way 32A & TPN', pkg: '14', type: 'PVC Board'},
-      {catNo: 'MPSM68444', rating: '4+4 Way 32A & TPN', pkg: '10', type: 'PVC Board'}
+      { catNo: 'MPSM68112', rating: '1+1 Way 16A & DP', pkg: '30', type: 'PVC Board' },
+      { catNo: 'MPSM68222', rating: '2+2 Way 16A & DP', pkg: '20', type: 'PVC Board' },
+      { catNo: 'MPSM68332', rating: '3+3 Way 16A & DP', pkg: '14', type: 'PVC Board' },
+      { catNo: 'MPSM68442', rating: '4+4 Way 16A & DP', pkg: '10', type: 'PVC Board' },
+      { catNo: 'MPSM68114', rating: '1+1 Way 32A & TPN', pkg: '30', type: 'PVC Board' },
+      { catNo: 'MPSM68224', rating: '2+2 Way 32A & TPN', pkg: '20', type: 'PVC Board' },
+      { catNo: 'MPSM68334', rating: '3+3 Way 32A & TPN', pkg: '14', type: 'PVC Board' },
+      { catNo: 'MPSM68444', rating: '4+4 Way 32A & TPN', pkg: '10', type: 'PVC Board' }
     ]
   },
   {
@@ -978,11 +978,11 @@ export const productsData: Product[] = [
     specs: ['IP67 Outdoor Waterproof Rating', 'High Impact Tough ABS body', 'Equipped with carrying handles', 'Resistant up to 80 degrees'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'PPSMIP6711', rating: '1 Socket + 4 SP MCB', pkg: '36', type: 'Waterproof Board'},
-      {catNo: 'PPSMIP6721H', rating: '3 Socket + 4 SP MCB (H Type)', pkg: '20', type: 'Waterproof Board'},
-      {catNo: 'PPSMIP6721', rating: '2 Socket + 8 SP MCB', pkg: '18', type: 'Waterproof Board'},
-      {catNo: 'PPSMIP6741', rating: '4 Socket + 8 SP MCB', pkg: '9', type: 'Waterproof Board'},
-      {catNo: 'PPSMIP6761', rating: '6 Socket + 12 SP MCB', pkg: '8', type: 'Waterproof Board'}
+      { catNo: 'PPSMIP6711', rating: '1 Socket + 4 SP MCB', pkg: '36', type: 'Waterproof Board' },
+      { catNo: 'PPSMIP6721H', rating: '3 Socket + 4 SP MCB (H Type)', pkg: '20', type: 'Waterproof Board' },
+      { catNo: 'PPSMIP6721', rating: '2 Socket + 8 SP MCB', pkg: '18', type: 'Waterproof Board' },
+      { catNo: 'PPSMIP6741', rating: '4 Socket + 8 SP MCB', pkg: '9', type: 'Waterproof Board' },
+      { catNo: 'PPSMIP6761', rating: '6 Socket + 12 SP MCB', pkg: '8', type: 'Waterproof Board' }
     ]
   },
   {
@@ -994,9 +994,9 @@ export const productsData: Product[] = [
     specs: ['20G Thick Metal Enclosure Enclosure', 'Carrying Handle Type layout', 'Shock Proof Coating Coating', 'Fits 4 to 8 PVC Sockets'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MPSMH65408', rating: '4 Sockets + 8 SP MCBs', pkg: '14', type: 'Handle Board'},
-      {catNo: 'MPSMH65610', rating: '6 Sockets + 10 SP MCBs', pkg: '10', type: 'Handle Board'},
-      {catNo: 'MPSMH65812', rating: '8 Sockets + 12 SP MCBs', pkg: '10', type: 'Handle Board'}
+      { catNo: 'MPSMH65408', rating: '4 Sockets + 8 SP MCBs', pkg: '14', type: 'Handle Board' },
+      { catNo: 'MPSMH65610', rating: '6 Sockets + 10 SP MCBs', pkg: '10', type: 'Handle Board' },
+      { catNo: 'MPSMH65812', rating: '8 Sockets + 12 SP MCBs', pkg: '10', type: 'Handle Board' }
     ]
   },
   {
@@ -1008,9 +1008,9 @@ export const productsData: Product[] = [
     specs: ['20G Solid Steel construction', 'Carrying Handle Type layout', 'Shock Proof Coating Coating', 'Fits 4 to 8 PVC Sockets'],
     hsnCode: '85371000',
     models: [
-      {catNo: 'MPSMH65402', rating: '4 Sockets + TPN MCB', pkg: '14', type: 'Handle TPN Board'},
-      {catNo: 'MPSMH65603', rating: '6 Sockets + TPN MCB', pkg: '10', type: 'Handle TPN Board'},
-      {catNo: 'MPSMH65804', rating: '8 Sockets + TPN MCB', pkg: '10', type: 'Handle TPN Board'}
+      { catNo: 'MPSMH65402', rating: '4 Sockets + TPN MCB', pkg: '14', type: 'Handle TPN Board' },
+      { catNo: 'MPSMH65603', rating: '6 Sockets + TPN MCB', pkg: '10', type: 'Handle TPN Board' },
+      { catNo: 'MPSMH65804', rating: '8 Sockets + TPN MCB', pkg: '10', type: 'Handle TPN Board' }
     ]
   },
   {
@@ -1022,9 +1022,9 @@ export const productsData: Product[] = [
     specs: ['Sturdy 22G Sheet Metal body', 'Shock-Proof Powder finish', 'Integrated grounding point screw', 'Removable top and bottom gland plates'],
     hsnCode: '85389000',
     models: [
-      {catNo: 'MJB425', rating: '4 x 4 Inch Box', pkg: '60', type: 'Junction Box'},
-      {catNo: 'MJB625', rating: '6 x 6 Inch Box', pkg: '40', type: 'Junction Box'},
-      {catNo: 'MJB825', rating: '8 x 8 Inch Box', pkg: '30', type: 'Junction Box'}
+      { catNo: 'MJB425', rating: '4 x 4 Inch Box', pkg: '60', type: 'Junction Box' },
+      { catNo: 'MJB625', rating: '6 x 6 Inch Box', pkg: '40', type: 'Junction Box' },
+      { catNo: 'MJB825', rating: '8 x 8 Inch Box', pkg: '30', type: 'Junction Box' }
     ]
   }
 ];
@@ -1093,7 +1093,7 @@ const ProductShowcase = ({
   const [modalTab, setModalTab] = useState<'overview' | 'models'>('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [isCategoryAccordionOpen, setIsCategoryAccordionOpen] = useState(false);
-  
+
   // Quotation Form states
   const [formModel, setFormModel] = useState('General Inquiry');
   const [formName, setFormName] = useState('');
@@ -1108,7 +1108,7 @@ const ProductShowcase = ({
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate submission delay
     setTimeout(() => {
       setIsSubmitting(false);
@@ -1118,13 +1118,13 @@ const ProductShowcase = ({
 
   const filteredProducts = productsData.filter(product => {
     const matchesCategory = activeCategory === 'All Products' || product.category === activeCategory;
-    const matchesSearch = searchQuery.trim() === '' || 
+    const matchesSearch = searchQuery.trim() === '' ||
       product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.hsnCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.specs.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (product.models && product.models.some(m => 
-        m.catNo.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      (product.models && product.models.some(m =>
+        m.catNo.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (m.type && m.type.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (m.rating && m.rating.toLowerCase().includes(searchQuery.toLowerCase()))
       ));
@@ -1213,7 +1213,7 @@ const ProductShowcase = ({
                               {count} {count === 1 ? 'Product' : 'Products'}
                             </span>
                           </div>
-                          
+
                           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
                             {cat.description}
                           </p>
@@ -1253,18 +1253,16 @@ const ProductShowcase = ({
                         </div>
                         <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 transition-colors shrink-0">
                           <ChevronDown
-                            className={`w-4 h-4 transition-transform duration-300 ${
-                              isCategoryAccordionOpen ? 'transform rotate-180 text-[#009DE1]' : 'text-slate-500'
-                            }`}
+                            className={`w-4 h-4 transition-transform duration-300 ${isCategoryAccordionOpen ? 'transform rotate-180 text-[#009DE1]' : 'text-slate-500'
+                              }`}
                           />
                         </div>
                       </button>
 
                       {/* Expandable Accordion Body */}
                       <div
-                        className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                          isCategoryAccordionOpen ? 'max-h-[1200px] opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'
-                        }`}
+                        className={`transition-all duration-300 ease-in-out overflow-hidden ${isCategoryAccordionOpen ? 'max-h-[1200px] opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'
+                          }`}
                       >
                         <div className="p-3 bg-slate-50/70 flex flex-col gap-1.5">
                           {categories.map((category) => {
@@ -1278,11 +1276,10 @@ const ProductShowcase = ({
                                   setSearchQuery('');
                                   setIsCategoryAccordionOpen(false);
                                 }}
-                                className={`w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide text-left transition-all duration-200 flex items-center justify-between cursor-pointer ${
-                                  isSelected
+                                className={`w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide text-left transition-all duration-200 flex items-center justify-between cursor-pointer ${isSelected
                                     ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20'
                                     : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'
-                                }`}
+                                  }`}
                               >
                                 <span>{category}</span>
                                 {isSelected && (
@@ -1305,11 +1302,10 @@ const ProductShowcase = ({
                           setActiveCategory(category);
                           setSearchQuery(''); // clear search when switching categories
                         }}
-                        className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
-                          activeCategory === category
+                        className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${activeCategory === category
                             ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
                             : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
-                        }`}
+                          }`}
                       >
                         {category}
                       </button>
@@ -1337,7 +1333,7 @@ const ProductShowcase = ({
                         Found {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'} matching current filters
                       </p>
                     </div>
-                    
+
                     <div className="relative min-w-[280px] sm:min-w-[320px]">
                       <input
                         type="text"
@@ -1384,7 +1380,7 @@ const ProductShowcase = ({
                               HSN: {product.hsnCode}
                             </span>
                           </div>
-                          
+
                           <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
                             {product.description}
                           </p>
@@ -1418,7 +1414,7 @@ const ProductShowcase = ({
       {!onlyShowCategories && selectedProduct && (
         <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300">
           <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row border border-slate-100 animate-in fade-in zoom-in-95 duration-200 max-h-[90vh]">
-            
+
             {/* Modal Close Anchor */}
             <button
               onClick={handleCloseModal}
@@ -1433,7 +1429,7 @@ const ProductShowcase = ({
                 <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-3 py-1 rounded-full uppercase tracking-widest inline-block">
                   {selectedProduct.category}
                 </span>
-                
+
                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-4 mb-2 font-sans">
                   {selectedProduct.title}
                 </h3>
@@ -1445,22 +1441,20 @@ const ProductShowcase = ({
                 <div className="flex border-b border-slate-200 mb-4 mt-1">
                   <button
                     onClick={() => setModalTab('overview')}
-                    className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
-                      modalTab === 'overview'
+                    className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${modalTab === 'overview'
                         ? 'border-brand-blue text-brand-blue'
                         : 'border-transparent text-slate-400 hover:text-slate-600'
-                    }`}
+                      }`}
                   >
                     Overview
                   </button>
                   {selectedProduct.models && selectedProduct.models.length > 0 && (
                     <button
                       onClick={() => setModalTab('models')}
-                      className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
-                        modalTab === 'models'
+                      className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${modalTab === 'models'
                           ? 'border-brand-blue text-brand-blue'
                           : 'border-transparent text-slate-400 hover:text-slate-600'
-                      }`}
+                        }`}
                     >
                       Models & Ratings
                     </button>
@@ -1533,7 +1527,7 @@ const ProductShowcase = ({
                         className="w-full px-3 py-2 border border-slate-200 bg-slate-50 rounded-lg text-slate-700 text-xs sm:text-sm font-semibold cursor-not-allowed truncate"
                       />
                     </div>
-                    
+
                     {/* pre-filled model selection dropdown */}
                     <div>
                       <label className="block text-[10px] sm:text-xs font-bold text-slate-650 uppercase mb-1">
@@ -1679,9 +1673,9 @@ const ProductShowcase = ({
               )}
             </div>
 
-            </div>
           </div>
-        )}
+        </div>
+      )}
     </section>
   );
 };
