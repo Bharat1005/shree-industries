@@ -175,10 +175,10 @@ export const productsData: Product[] = [
     specs: ['16G Solid Metal Body', 'EC Grade Copper Contacts', 'P.F Moulding Bakelite Block', 'Electric Proof Coating'],
     hsnCode: '85365010',
     models: [
-      { catNo: 'RF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F' },
-      { catNo: 'OF1603', rating: '16 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF' },
-      { catNo: 'RF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'R/F' },
-      { catNo: 'OF3203', rating: '32 Amp', poles: '3 Pole', volts: '440V', pkg: '40', type: 'ON/OFF' }
+      { catNo: '16 SUNRISE', poles: '3', volts: '440', pkg: '50' },
+      { catNo: '16 SUNRISE Deluxe', poles: '3', volts: '440', pkg: '60' },
+      { catNo: '16 SHREE', poles: '3', volts: '440', pkg: '40' },
+      { catNo: '32 SHREE', poles: '3', volts: '440', pkg: '40' }
     ]
   },
   {
@@ -1056,6 +1056,7 @@ interface ProductShowcaseProps {
   onCategoryClick?: (category: string) => void;
   selectedProductId?: number | null;
   setSelectedProductId?: (id: number | null) => void;
+  onContactClick?: () => void;
 }
 
 const ProductShowcase = ({
@@ -1066,7 +1067,8 @@ const ProductShowcase = ({
   setActiveCategory: controlledSetActiveCategory,
   onCategoryClick,
   selectedProductId,
-  setSelectedProductId
+  setSelectedProductId,
+  onContactClick
 }: ProductShowcaseProps) => {
   const [internalCategory, setInternalCategory] = useState('Switch Gear');
   const activeCategory = controlledCategory !== undefined ? controlledCategory : internalCategory;
@@ -1142,6 +1144,16 @@ const ProductShowcase = ({
     setFormMessage('');
     setIsSubmitted(false);
   };
+
+  const handleGoToContact = () => {
+    handleCloseModal();
+    if (onContactClick) {
+      onContactClick();
+    } else {
+      window.location.href = '/contact';
+    }
+  };
+
   const handleCardClick = (productId: number) => {
     const product = productsData.find(p => p.id === productId);
     if (product) {
@@ -1424,7 +1436,7 @@ const ProductShowcase = ({
             </button>
 
             {/* Column 1 (Left): Details Showcase */}
-            <div className="w-full md:w-[48%] bg-slate-50 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-100 text-left overflow-y-auto max-h-[90vh] md:max-h-[none]">
+            <div className="w-full md:w-[48%] bg-slate-50 p-6 sm:p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-100 text-left overflow-y-auto max-h-[90vh] md:max-h-[none]">
               <div>
                 <span className="text-[10px] font-bold text-slate-500 bg-slate-200 px-3 py-1 rounded-full uppercase tracking-widest inline-block">
                   {selectedProduct.category}
@@ -1481,22 +1493,24 @@ const ProductShowcase = ({
                   <div className="max-h-[220px] overflow-y-auto border border-slate-100 rounded-xl bg-white shadow-inner">
                     <table className="w-full text-left text-[11px] border-collapse">
                       <thead>
-                        <tr className="bg-slate-50 text-slate-600 font-bold border-b border-slate-100 uppercase tracking-wider">
-                          <th className="py-2 px-3">Cat. No.</th>
-                          <th className="py-2 px-3">Rating</th>
-                          {selectedProduct.models.some(m => m.poles) && <th className="py-2 px-3">Poles</th>}
-                          {selectedProduct.models.some(m => m.volts) && <th className="py-2 px-3">Volts</th>}
-                          {selectedProduct.models.some(m => m.pkg) && <th className="py-2 px-3">Pkg.</th>}
+                        <tr className="bg-slate-50 text-slate-600 font-bold border-b border-slate-100">
+                          <th className="py-2.5 px-3">{selectedProduct.models.some(m => m.type || m.rating) ? 'Cat. No.' : 'AMPS.'}</th>
+                          {selectedProduct.models.some(m => m.type || m.rating) && <th className="py-2.5 px-3">Rating</th>}
+                          {selectedProduct.models.some(m => m.poles) && <th className="py-2.5 px-3">Poles</th>}
+                          {selectedProduct.models.some(m => m.volts) && <th className="py-2.5 px-3">Volts</th>}
+                          {selectedProduct.models.some(m => m.pkg) && <th className="py-2.5 px-3">Pkg.</th>}
                         </tr>
                       </thead>
                       <tbody>
                         {selectedProduct.models.map(m => (
                           <tr key={m.catNo} className="hover:bg-slate-50 transition-colors border-b border-slate-50 text-slate-700 font-medium">
-                            <td className="py-2 px-3 font-bold text-brand-blue">{m.catNo}</td>
-                            <td className="py-2 px-3">{m.type || m.rating || '-'}</td>
-                            {selectedProduct.models.some(m => m.poles) && <td className="py-2 px-3">{m.poles || '-'}</td>}
-                            {selectedProduct.models.some(m => m.volts) && <td className="py-2 px-3">{m.volts || '-'}</td>}
-                            {selectedProduct.models.some(m => m.pkg) && <td className="py-2 px-3">{m.pkg || '-'}</td>}
+                            <td className={`py-2.5 px-3 ${m.type || m.rating ? 'font-bold text-brand-blue' : 'text-slate-600 font-medium'}`}>{m.catNo}</td>
+                            {selectedProduct.models.some(item => item.type || item.rating) && (
+                              <td className="py-2.5 px-3">{m.type || m.rating || '-'}</td>
+                            )}
+                            {selectedProduct.models.some(item => item.poles) && <td className="py-2.5 px-3">{m.poles || '-'}</td>}
+                            {selectedProduct.models.some(item => item.volts) && <td className="py-2.5 px-3">{m.volts || '-'}</td>}
+                            {selectedProduct.models.some(item => item.pkg) && <td className="py-2.5 px-3">{m.pkg || '-'}</td>}
                           </tr>
                         ))}
                       </tbody>
@@ -1504,10 +1518,22 @@ const ProductShowcase = ({
                   </div>
                 )}
               </div>
+
+              {/* Mobile-Only Action Button: Redirect to Contact Us Page */}
+              <div className="block md:hidden mt-6 pt-4 border-t border-slate-200">
+                <button
+                  type="button"
+                  onClick={handleGoToContact}
+                  className="w-full py-3.5 px-5 bg-[#009DE1] hover:bg-[#008bc8] active:bg-[#007cb3] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-[#009DE1]/20 flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer border-none"
+                >
+                  <span>Contact Us for Inquiry</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
-            {/* Column 2 (Right): Quotation Inquiry Form */}
-            <div className="w-full md:w-[52%] p-8 text-left bg-white flex flex-col justify-center overflow-y-auto max-h-[90vh] md:max-h-[none]">
+            {/* Column 2 (Right): Quotation Inquiry Form (Hidden on mobile, visible on desktop) */}
+            <div className="hidden md:flex md:w-[52%] p-8 text-left bg-white flex-col justify-center overflow-y-auto max-h-[90vh] md:max-h-[none]">
               <h3 className="text-xl font-bold text-slate-800 tracking-tight mb-6">
                 Quotation Inquiry Form
               </h3>

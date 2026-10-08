@@ -5,7 +5,11 @@ interface ProductsPageProps {
   setSelectedCategory: (category: string) => void;
   selectedProductId: number | null;
   setSelectedProductId: (id: number | null) => void;
-  setCurrentPage: (page: 'home' | 'about' | 'products') => void;
+  setCurrentPage: (
+    page: 'home' | 'about' | 'products' | 'infrastructure' | 'quality' | 'blogs' | 'contact',
+    blogId?: number | null,
+    scrollForm?: boolean
+  ) => void;
 }
 
 export default function ProductsPage({
@@ -87,6 +91,7 @@ export default function ProductsPage({
         onCategoryClick={(category) => setSelectedCategory(category)}
         selectedProductId={selectedProductId}
         setSelectedProductId={setSelectedProductId}
+        onContactClick={() => setCurrentPage('contact')}
       />
     </div>
   );

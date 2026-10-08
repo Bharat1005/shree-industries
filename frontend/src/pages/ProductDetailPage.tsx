@@ -214,9 +214,9 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
                 <div className="overflow-x-auto border border-slate-100 rounded-2xl bg-slate-50/30">
                   <table className="w-full text-left text-xs border-collapse">
                     <thead>
-                      <tr className="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider border-b border-slate-200">
-                        <th className="py-3 px-4">Cat. No.</th>
-                        <th className="py-3 px-4">Rating / Type</th>
+                      <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                        <th className="py-3 px-4">{product.models.some(m => m.type || m.rating) ? 'Cat. No.' : 'AMPS.'}</th>
+                        {product.models.some((m) => m.type || m.rating) && <th className="py-3 px-4">Rating / Type</th>}
                         {product.models.some((m) => m.poles) && <th className="py-3 px-4">Poles</th>}
                         {product.models.some((m) => m.volts) && <th className="py-3 px-4">Volts</th>}
                         {product.models.some((m) => m.pkg) && <th className="py-3 px-4">Pkg.</th>}
@@ -225,8 +225,10 @@ export default function ProductDetailPage({ productId, setCurrentPage }: Product
                     <tbody className="divide-y divide-slate-100">
                       {product.models.map((m) => (
                         <tr key={m.catNo} className="hover:bg-slate-100/50 transition-colors text-slate-700 font-medium">
-                          <td className="py-2.5 px-4 font-bold text-brand-blue">{m.catNo}</td>
-                          <td className="py-2.5 px-4">{m.type || m.rating || '-'}</td>
+                          <td className={`py-2.5 px-4 ${m.type || m.rating ? 'font-bold text-brand-blue' : 'text-slate-600 font-medium'}`}>{m.catNo}</td>
+                          {product.models.some(item => item.type || item.rating) && (
+                            <td className="py-2.5 px-4">{m.type || m.rating || '-'}</td>
+                          )}
                           {product.models.some((m) => m.poles) && <td className="py-2.5 px-4">{m.poles || '-'}</td>}
                           {product.models.some((m) => m.volts) && <td className="py-2.5 px-4">{m.volts || '-'}</td>}
                           {product.models.some((m) => m.pkg) && <td className="py-2.5 px-4">{m.pkg || '-'}</td>}

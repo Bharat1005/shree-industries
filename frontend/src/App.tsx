@@ -361,6 +361,7 @@ function App() {
                 setSelectedProductId(null);
                 setCurrentPage('products');
               }}
+              onContactClick={() => setCurrentPage('contact')}
             />
             <Sectors />
             <GlobalPresence />
