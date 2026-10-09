@@ -3,18 +3,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { ArrowRight } from 'lucide-react';
 
-import bgImg1 from '../../assets/main-img.jfif';
 import bgImg2 from '../../assets/about_int1.png';
 import bgImg3 from '../../assets/about_int2.png';
 
 const slides = [
-  {
-    id: 1,
-    subtitle: 'Manufacturing High Quality',
-    title: 'Industrial Switchgear &\nElectrical Metal Enclosures',
-    description: 'Delivering innovative & reliable electrical solutions\nfor a safer and stronger tomorrow.',
-    bgImage: bgImg1,
-  },
   {
     id: 2,
     subtitle: 'Advanced Technology',
