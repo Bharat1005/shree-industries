@@ -1636,7 +1636,7 @@ const ProductShowcase = ({
                         className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl hover:border-slate-200 transition-all duration-300 cursor-pointer"
                       >
                         {/* Representative Category Image Wrapper */}
-                        <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100">
+                        <div className="relative aspect-[4/3] bg-white flex items-center justify-center p-6 sm:p-8 overflow-hidden border-b border-slate-100 bg-[#009DE1] ">
                           <img
                             src={cat.image}
                             alt={cat.name}
@@ -1718,8 +1718,8 @@ const ProductShowcase = ({
                                   setIsCategoryAccordionOpen(false);
                                 }}
                                 className={`w-full px-4 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide text-left transition-all duration-200 flex items-center justify-between cursor-pointer ${isSelected
-                                    ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20'
-                                    : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'
+                                  ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20'
+                                  : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'
                                   }`}
                               >
                                 <span>{category}</span>
@@ -1744,8 +1744,8 @@ const ProductShowcase = ({
                           setSearchQuery(''); // clear search when switching categories
                         }}
                         className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${activeCategory === category
-                            ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
-                            : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
+                          ? 'bg-[#009DE1] text-white shadow-md shadow-[#009DE1]/20 -translate-y-0.5'
+                          : 'bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200'
                           }`}
                       >
                         {category}
@@ -1883,8 +1883,8 @@ const ProductShowcase = ({
                   <button
                     onClick={() => setModalTab('overview')}
                     className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${modalTab === 'overview'
-                        ? 'border-brand-blue text-brand-blue'
-                        : 'border-transparent text-slate-400 hover:text-slate-600'
+                      ? 'border-brand-blue text-brand-blue'
+                      : 'border-transparent text-slate-400 hover:text-slate-600'
                       }`}
                   >
                     Overview
@@ -1893,8 +1893,8 @@ const ProductShowcase = ({
                     <button
                       onClick={() => setModalTab('models')}
                       className={`pb-2.5 px-3 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${modalTab === 'models'
-                          ? 'border-brand-blue text-brand-blue'
-                          : 'border-transparent text-slate-400 hover:text-slate-600'
+                        ? 'border-brand-blue text-brand-blue'
+                        : 'border-transparent text-slate-400 hover:text-slate-600'
                         }`}
                     >
                       Models & Ratings
